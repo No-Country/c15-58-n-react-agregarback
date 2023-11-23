@@ -1,15 +1,15 @@
 ## c15-58-n-react-agregarback
-#Repositorio de la App ReadlyGoods
+# Repositorio de la App ReadlyGoods
 
-##Integrantes:
+## Integrantes:
 
-#Montecinos Esteban
-#Lopez Andree
-#Coronel Matias
-#Perez Mauricio
-#Americo Cornelio
-#Mennichelli Nicolas
+# Montecinos Esteban
+# Lopez Andree
+# Coronel Matias
+# Perez Mauricio
+# Americo Cornelio
+# Mennichelli Nicolas
 
-##TL
+## TL:
 
-#Montecinos Ricardo
+# Montecinos Ricardo
