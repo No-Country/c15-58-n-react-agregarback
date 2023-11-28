@@ -3,7 +3,7 @@ const connectionString = require("./connectionData")
 
 mongoose.connect(connectionString)
 .then(() => {
-    console.log('DataBase Connected')
+    console.log('Conexion a la Base de Datos Establecida')
 })
 .catch(err => {
     console.log(err)
