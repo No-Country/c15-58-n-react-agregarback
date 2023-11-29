@@ -6,7 +6,7 @@ import {
   getBookById,
   updateBook,
   deleteBook,
-} from "../controllers/bookscontrollers";
+} from "../controllers/books.controllers";
 
 booksRouter.get("/", getAllBooks);
 booksRouter.post("/create", postBook);

@@ -1,6 +1,6 @@
 import { Book} from "../models/book.model";
 
-const postBook = (req, res) => {
+export const postBook = (req, res) => {
   const data = req.body;
   const book = new Book(data);
   book
@@ -13,7 +13,7 @@ const postBook = (req, res) => {
     });
 };
 
-const getAllBooks = (req, res) => {
+export const getAllBooks = (req, res) => {
   Book.find({})
     .then((result) => {
       res.status(200).json(result);
@@ -23,7 +23,7 @@ const getAllBooks = (req, res) => {
     });
 };
 
-const updateBook = (req, res) => {
+export const updateBook = (req, res) => {
   const id = req.params.id;
   console.log(id)
   const data = req.body;
@@ -42,7 +42,7 @@ const updateBook = (req, res) => {
   });
 };
 
-const getBookById = (req, res) => {
+export const getBookById = (req, res) => {
   const id = req.params.id;
   Book.find({ _id: id })
     .then((result) => {
@@ -53,7 +53,7 @@ const getBookById = (req, res) => {
     });
 };
 
-const deleteBook = (req, res) => {
+export const deleteBook = (req, res) => {
     const id = req.params.id;
     console.log(id)
     Book.deleteOne({_id: id})
@@ -64,11 +64,3 @@ const deleteBook = (req, res) => {
         res.status(400).send(`El libro con el ID: ${id} no existe`);
       });
 }
-
-module.exports = {
-  postBook,
-  getAllBooks,
-  updateBook,
-  getBookById,
-  deleteBook
-};
