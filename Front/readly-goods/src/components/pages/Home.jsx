@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { context } from "../../context";
 
 const Home = () => {
-  return (
-    <div className='bg-slate-400'>
-      Home
-    </div>
-  )
-}
+const data = useContext(context)
+console.log(data)
 
-export default Home
+  return (
+    <div>
+      <div className="h-96 text-4xl text-center font-bold p-12">Home1 {data.nombre}</div>
+      <div className="h-96 text-4xl text-center font-bold p-12">Home2</div>
+    </div>
+  );
+};
+
+export default Home;
