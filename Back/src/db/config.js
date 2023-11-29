@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import DB_CONNECTION from "../constants/connectionData";
+//import DB_CONNECTION from '../constants/connectionData'
 
 export const connectDB = async () => {
     try {

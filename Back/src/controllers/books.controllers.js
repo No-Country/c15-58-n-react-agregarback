@@ -1,4 +1,4 @@
-import { Book} from "../models/book.model";
+import { Book} from "../models/book.model.js";
 
 export const postBook = (req, res) => {
   const data = req.body;
