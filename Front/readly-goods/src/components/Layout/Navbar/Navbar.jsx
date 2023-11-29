@@ -10,7 +10,7 @@ const Navbar = () => {
         <a className='p-5' href="/">
             <img 
                 className='h-20 w-44'
-                src="src/assets/Logo2.png" 
+                src="src/assets/Logo2.png"
                 alt="logo" 
             />
         </a>
