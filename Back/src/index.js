@@ -3,7 +3,8 @@ import 'dotenv/config'
 import { connectDB } from './db/config.js'
 import { userRouter } from './routers/users.router.js'
 import { booksRouter } from './routers/books.router.js'
-// iniciando express
+import { cartRouter } from './routers/cart.router.js'
+
 const app = express()
 
 app.use(express.json())
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 // endpoints
 app.use('/users', userRouter)
 app.use('/books', booksRouter)
+app.use('/cart', cartRouter)
 
 connectDB()
 
