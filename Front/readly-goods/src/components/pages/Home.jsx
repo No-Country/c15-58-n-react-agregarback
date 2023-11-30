@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
+import Presentation from "./home/Presentation";
 
 const Home = () => {
   return (
     <div>
       <div className="h-96 text-4xl text-center font-bold p-12">
-        Carrusel con fotos
+        Proximamente Carrusel con fotos
       </div>
-      <div className="h-96 text-4xl text-center font-bold p-12">
-        Quienes somos
-      </div>
+      <Presentation />
     </div>
   );
 };

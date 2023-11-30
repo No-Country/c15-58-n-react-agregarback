@@ -7,16 +7,17 @@ const Presentation = () => {
     <div className="bg-white p-16">
       <div className="bg-black rounded-lg flex justify-center items-center px-5">
         <div className="text-white p-5 w-1/2">
-          <h1 className="text-3xl text-cyan-200 p-9 pt-1">En Readly Goods...</h1>
+          <h1 className="text-3xl text-cyan-200 p-9 pt-1">
+            En Readly Goods...
+          </h1>
           <p className="p-2 w-3/4 pl-8">
             Encontrarás la lectura perfecta para satisfacer tus deseos
             literarios.
-         </p> 
-         <p className="p-2 w-3/4 pl-8">
-            Ya sea que busques una escapada emocionante,
-            conocimiento enriquecedor o simplemente una buena dosis de
-            entretenimiento.{" "}
-          </p >
+          </p>
+          <p className="p-2 w-3/4 pl-8">
+            Ya sea que busques una escapada emocionante, conocimiento
+            enriquecedor o simplemente una buena dosis de entretenimiento.{" "}
+          </p>
           <p className="p-2 w-3/4 pl-8">Explore nuestro extenso catálogo.</p>
         </div>
         <div className="text-white p-5 w-1/2 rounded">
@@ -28,7 +29,11 @@ const Presentation = () => {
           <img className="rounded-lg " src={LibrosIngles} alt="LibreoIngles" />
         </div>
         <div className="w-1/2 ">
-          <img className="rounded-lg float-right" src={Cupon} alt="LibreoIngles" />
+          <img
+            className="rounded-lg float-right"
+            src={Cupon}
+            alt="LibreoIngles"
+          />
         </div>
       </div>
     </div>
