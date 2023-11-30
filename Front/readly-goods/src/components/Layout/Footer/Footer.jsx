@@ -5,7 +5,7 @@ import logoPya from "../../../assets/pedidosya.png";
 
 const Footer = () => {
   return (
-    <div className="flex justify-around bg-black p-4">
+    <div className="flex justify-around bg-black p-4 items-center">
       <div className="flex justify-center items-center">
         <p className="m-2 text-white"></p>
         <p className="h-10 w-10 m-1">
