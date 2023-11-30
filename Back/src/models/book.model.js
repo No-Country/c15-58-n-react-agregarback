@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose";
 
 const bookSchema = new Schema({
   title: {
@@ -8,44 +8,45 @@ const bookSchema = new Schema({
   },
   author: {
     type: String,
-    required: true
-},
+    required: true,
+  },
   year: {
     type: Number,
-    required: true
-},
+    required: true,
+  },
   editorial: {
     type: String,
-    required: true
-},
+    required: true,
+  },
   genre: {
     type: String,
-    required: true
-},
+    required: true,
+  },
   stock: {
     type: Number,
-    required: true
-},
+    required: true,
+  },
   image: {
     type: String,
-    required: true
-},
+    required: true,
+  },
   price: {
     type: Number,
-    required: true
-},
+    required: true,
+  },
   description: {
     type: String,
-    required: true
-},
+    required: true,
+  },
+  inCart: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 bookSchema.set("toJSON", {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id;
-    delete returnedObject._id;
     delete returnedObject.__v;
   },
 });
-
 export const Book = model("Book", bookSchema);
