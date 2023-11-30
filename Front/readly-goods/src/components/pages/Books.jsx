@@ -30,7 +30,7 @@ const Books = () => {
     ))
   }
   return (
-    <div className="flex flex-col gap-4 px-12 pt-6">
+    <div className="flex flex-col gap-4 px-12 pt-6 ">
       <div className="flex flex-row justify-between">
         <h1 className="text-2xl font-semibold uppercase">Productos</h1>
         <p className="text-sm text-gray-500">
