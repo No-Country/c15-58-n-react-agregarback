@@ -26,11 +26,11 @@ const Presentation = () => {
       </div>
       <div className="flex justify-between mt-10 w-full">
         <div className="w-1/2 ">
-          <img className="rounded-lg " src={LibrosIngles} alt="LibreoIngles" />
+          <img className="rounded-lg  w-10/12" src={LibrosIngles} alt="LibreoIngles" />
         </div>
         <div className="w-1/2 ">
           <img
-            className="rounded-lg float-right"
+            className="rounded-lg float-right w-10/12"
             src={Cupon}
             alt="LibreoIngles"
           />
