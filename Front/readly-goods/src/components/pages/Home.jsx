@@ -8,7 +8,6 @@ const Home = () => {
       <div className="h-[500px] text-4xl text-center font-bold">
         <Carrousel />
       </div>
-      <div className="h-96 text-4xl text-center font-bold">Quienes somos</div>
       <Presentation />
     </div>
   );

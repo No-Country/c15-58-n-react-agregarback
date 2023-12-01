@@ -4,7 +4,6 @@ import Faq from "../components/pages/Faq";
 import Home from "../components/pages/Home";
 import User from "../components/pages/User";
 
-
 export const menuRoutes = [
   {
     id: "home",
@@ -20,11 +19,6 @@ export const menuRoutes = [
     id: "faq",
     path: "/faq",
     Element: Faq,
-  },
-  {
-    id: "user",
-    path: "/user",
-    Element: User,
   },
   {
     id: "cart",
