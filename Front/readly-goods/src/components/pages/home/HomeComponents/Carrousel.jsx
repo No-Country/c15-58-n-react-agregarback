@@ -1,8 +1,7 @@
-import React from "react";
-import image1 from "../../assets/banner-holly-grande.webp";
-import image2 from "../../assets/banner-lourdes-ferro-g.webp";
-import image3 from "../../assets/banner-manini-el-comandante-sin.webp";
-import image4 from "../../assets/banner-red-grande.webp";
+import image1 from "../../../../assets/banner-holly-grande.webp";
+import image2 from "../../../../assets/banner-lourdes-ferro-g.webp";
+import image3 from "../../../../assets/banner-manini-el-comandante-sin.webp";
+import image4 from "../../../../assets/banner-red-grande.webp";
 import { Carousel } from "flowbite-react";
 
 const Carrousel = () => {
