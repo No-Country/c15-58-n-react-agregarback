@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Carrousel from "../ui/Carrousel";
+import Presentation from "./home/Presentation";
 
 const Home = () => {
   return (
@@ -8,6 +9,8 @@ const Home = () => {
         <Carrousel />
       </div>
       <div className="h-96 text-4xl text-center font-bold">Quienes somos</div>
+      </div>
+      <Presentation />
     </div>
   );
 };
