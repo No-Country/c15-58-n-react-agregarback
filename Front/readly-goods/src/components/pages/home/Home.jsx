@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import Carrousel from "../ui/Carrousel";
-import Presentation from "./home/Presentation";
+import Carrousel from "./HomeComponents/Carrousel";
+import Presentation from "./HomeComponents/Presentation";
 
 const Home = () => {
   return (
