@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React { useContext } from "react";
 import Carrousel from "../ui/Carrousel";
 import Presentation from "./home/Presentation";
 
