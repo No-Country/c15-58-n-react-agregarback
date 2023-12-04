@@ -1,11 +1,11 @@
 import React from "react";
-import Chica_Leyendo from "../../../assets/homeImage/Chica_Leyendo.png";
-import Cupon from "../../../assets/homeImage/Cupon.png";
-import LibrosIngles from "../../../assets/homeImage/LibrosIngles.png";
+import Chica_Leyendo from "../../../../assets/homeImage/Chica_Leyendo.png";
+import Cupon from "../../../../assets/homeImage/Cupon.png";
+import LibrosIngles from "../../../../assets/homeImage/LibrosIngles.png";
 const Presentation = () => {
   return (
-    <div className="bg-white p-16">
-      <div className="bg-black rounded-lg flex justify-center items-center px-5">
+    <div className="bg-white max-w-7xl m-auto my-7">
+      <div className="bg-black rounded-lg flex-col flex justify-center items-center px-5 sm:flex-row">
         <div className="text-white p-5 w-1/2">
           <h1 className="text-3xl text-cyan-200 p-9 pt-1">
             En Readly Goods...
@@ -24,17 +24,15 @@ const Presentation = () => {
           <img src={Chica_Leyendo} alt="foto_Chica_Leyendo" />
         </div>
       </div>
+
       <div className="flex justify-between mt-10 w-full">
-        <div className="w-1/2 ">
-          <img className="rounded-lg " src={LibrosIngles} alt="LibreoIngles" />
-        </div>
-        <div className="w-1/2 ">
-          <img
-            className="rounded-lg float-right"
-            src={Cupon}
-            alt="LibreoIngles"
-          />
-        </div>
+        <img
+          className="rounded-lg w-[45%]"
+          src={LibrosIngles}
+          alt="LibreoIngles"
+        />
+
+        <img className="rounded-lg  w-[45%]" src={Cupon} alt="LibreoIngles" />
       </div>
     </div>
   );
