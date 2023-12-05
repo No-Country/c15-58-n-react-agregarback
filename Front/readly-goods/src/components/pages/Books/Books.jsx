@@ -40,7 +40,7 @@ const Books = () => {
   };
 
   return (
-    <main className="flex flex-col gap-6 w-3/5	m-auto my-12">
+    <main className="flex flex-col w-3/5 gap-6 m-auto my-12">
       <div className="flex flex-row justify-between">
         <h1 className="text-2xl font-semibold uppercase">Productos</h1>
         <p className="text-sm text-gray-500">
@@ -66,8 +66,8 @@ const Books = () => {
         </aside>
         <div className="grid w-full grid-cols-1 gap-4 m-auto md:grid-cols-3">
           {books &&
-            books.map(({ image, title, price }) => (
-              <Card image={image} title={title} price={price} key={title} />
+            books.map(({ _id, image, title, price }) => (
+              <Card image={image} title={title} price={price} id={_id} key={_id} />
             ))}
         </div>
       </div>
