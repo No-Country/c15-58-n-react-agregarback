@@ -27,7 +27,7 @@ const Books = () => {
   }
 
   const getAllGenre = () => {
-    const genres = books?.map((book) => book.genre);
+    const genres = books?.flatMap((book) => book.genre.split(',').map((genre) => genre.trim()));
     const allGenres = [...new Set(genres)];
     return allGenres.map((genre) => (
       genre==queryFilter.genre
