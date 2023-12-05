@@ -76,7 +76,7 @@ const Books = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 px-12 pt-6">
+    <main className="flex flex-col gap-6 w-3/5	m-auto my-12">
       <div className="flex flex-row justify-between">
         <h1 className="text-2xl font-semibold uppercase">Productos</h1>
         <p className="text-sm text-gray-500">
@@ -85,8 +85,8 @@ const Books = () => {
       </div>
       <hr />
 
-      <main className="w-full flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-1">
-        <aside className="hidden w-full md:sticky md:block">
+      <div className="w-full flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-1">
+        <aside className="w-full md:sticky md:block">
           <h4 className="text-lg font-semibold">Género</h4>
           <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
             { queryFilter.genre==""
@@ -118,8 +118,8 @@ const Books = () => {
             )):<h2>No hay libros con estas caracteristicas</h2>}
             
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 
