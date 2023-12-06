@@ -95,7 +95,8 @@ export const useForm = (initialForm) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     validationSignInOk();
-    axios
+    if(formIsOkRef.current){
+      axios
       .post(
         isLogin
           ? "https://c15-58-readlygoods-three.vercel.app/users/login"
@@ -113,6 +114,8 @@ export const useForm = (initialForm) => {
         alert("Error en el registro, por favor vuelve a intentarlo");
         setLoginOk(false);
       });
+    }
+    
   };
 
   return {
