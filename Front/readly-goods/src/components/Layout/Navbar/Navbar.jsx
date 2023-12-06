@@ -12,11 +12,12 @@ const Navbar = () => {
   
 
   return (
-    <>
-      <nav className="sticky top-0 flex bg-black text-white h-24 items-center justify-between z-40 w-full">
+    <header className="sticky top-0 z-10 w-full  bg-black">
+      <nav className="w-3/5 flex text-white h-24 items-center justify-between m-auto">
         <a className="p-5" href="/">
           <img className="h-20 w-44" src={Logo2} alt="logo" />
         </a>
+ 
         <ul className="flex items-center justify-end text-sm sm:mr-10">
           <li className="uppercase sm:p-3 p-1">
             <Link to="/">inicio</Link>
@@ -42,10 +43,12 @@ const Navbar = () => {
               <FontAwesomeIcon className="h-5" icon={faCartShopping} />
             </Link>
           </li>
+          </div>
+
         </ul>
       </nav>
       <Modals />
-    </>
+    </header>
   );
 };
 

@@ -3,12 +3,14 @@ import Presentation from "./HomeComponents/Presentation";
 
 const Home = () => {
   return (
-    <div>
-      <div className="h-[500px] text-4xl text-center font-bold">
-        <Carrousel />
+    <main className="w-full">
+      <Carrousel />
+      <div className="w-3/5	m-auto">
+        <div>
+          <Presentation />
+        </div>
       </div>
-      <Presentation />
-    </div>
+    </main>
   );
 };
 export default Home;
