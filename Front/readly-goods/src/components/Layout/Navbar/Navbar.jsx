@@ -7,9 +7,7 @@ import Modals from "../../modal_formularios/Modals";
 import { context } from "../../../context";
 
 const Navbar = () => {
-  const { openModal, loginOk, form } = useContext(context);
-
-  
+  const { openModal, loginOk, form } = useContext(context);  
 
   return (
     <header className="sticky top-0 z-10 w-full  bg-black">
@@ -43,11 +41,11 @@ const Navbar = () => {
               <FontAwesomeIcon className="h-5" icon={faCartShopping} />
             </Link>
           </li>
-          </div>
+          
 
         </ul>
       </nav>
-      <Modals />
+      <Modals/>
     </header>
   );
 };
