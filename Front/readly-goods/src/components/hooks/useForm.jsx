@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
+import axios from "axios";
 
 export const useForm = (initialForm) => {
+  const [isLogin, setIsLogin] = useState(false); //
 
   const formIsOkRef = useRef(false);
   const [form, setForm] = useState(initialForm);
@@ -10,93 +12,111 @@ export const useForm = (initialForm) => {
     emailError: false,
     passwordError: false,
   });
+  const [loginOk, setLoginOk] = useState(false); // Si inicio sesion correctamente
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
-  
 
-  const validationSignInOk = () =>{
-    const { userNameError, fullNameError, emailError, passwordError} = errors;
-    if(!userNameError && !fullNameError && !emailError && !passwordError){
+  const validationSignInOk = () => {
+    const { userNameError, fullNameError, emailError, passwordError } = errors;
+    if (!userNameError && !fullNameError && !emailError && !passwordError) {
       formIsOkRef.current = true;
-    }else{
+    } else {
       formIsOkRef.current = false;
     }
     return formIsOkRef;
-  }
+  };
 
-  const handleChange = (e) => {    
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
       ...form,
       [name]: value,
-    });    
+    });
   };
-  const validateForm = (nameError, valueError)=>{
+  const validateForm = (nameError, valueError) => {
     setErrors({
       ...errors,
       [nameError]: valueError,
-    });    
+    });
   };
 
   const handleKeyUpUser = () => {
-    let regExpUser = /^[a-zA-Z0-9_\-]+$/;  
-    if(!regExpUser.test(form.userName.trim())){
-     validateForm('userNameError', true);   
-    }else{
-      validateForm('userNameError', false);
-    };  
+    let regExpUser = /^[a-zA-Z0-9_\-]+$/;
+    if (!regExpUser.test(form.userName.trim())) {
+      validateForm("userNameError", true);
+    } else {
+      validateForm("userNameError", false);
+    }
     return errors;
   };
   const handleKeyUpFullName = () => {
     let regExpFullName = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
-    if(!regExpFullName.test(form.fullName.trim())){
-      validateForm('fullNameError', true);
-     }else{
-       validateForm('fullNameError', false);
-     }; 
+    if (!regExpFullName.test(form.fullName.trim())) {
+      validateForm("fullNameError", true);
+    } else {
+      validateForm("fullNameError", false);
+    }
     return errors;
   };
 
   const handleOnBlurEmail = () => {
     let regExpEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-    if(!regExpEmail.test(form.email.trim())){
-       validateForm('emailError', true);
-     } else{
-             validateForm('emailError', false);
-     };
+    if (!regExpEmail.test(form.email.trim())) {
+      validateForm("emailError", true);
+    } else {
+      validateForm("emailError", false);
+    }
     return errors;
-  }; 
+  };
   const handleOnFocusEmail = () => {
-    validateForm('emailError', false);     
+    validateForm("emailError", false);
     return errors;
-  }; 
+  };
 
   const handleOnBlurPassword = () => {
     let regExpPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    if(!regExpPassword.test(form.password.trim())){
-       validateForm('passwordError', true);
-     } else{
-             validateForm('passwordError', false);
-     };
+    if (!regExpPassword.test(form.password.trim())) {
+      validateForm("passwordError", true);
+    } else {
+      validateForm("passwordError", false);
+    }
     return errors;
-  }; 
+  };
   const handleOnFocusPassword = () => {
-    validateForm('passwordError', false);     
+    validateForm("passwordError", false);
     return errors;
-  }; 
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     validationSignInOk();
-    fetch('https://c15-58-readlygoods-three.vercel.app/user7create')
-      .then((res) => res.json())
-      .then((data) => setBooks(data.allBooks));
-    console.log(formIsOkRef);
+    axios
+      .post(
+        isLogin?'https://c15-58-n-react-agregarback.vercel.app/api/v1/user/login':
+          "https://c15-58-n-react-agregarback.vercel.app/api/v1/user/create",
+        form
+      )
+      .then((res) => {
+        console.log(res.data);
+        alert("registro ok");
+        setLoginOk(true);
+        setForm(initialForm);
+        
+      })
+      .catch((er) => {
+        console.log(er);
+        alert("Error en el registro, por favor vuelve a intentarlo");
+        setLoginOk(false);
+      });
   };
 
   return {
     form,
     errors,
+    loginOk,
+    setLoginOk,
+    isLogin,
+    setIsLogin,
     loading,
     response,
     handleChange,
