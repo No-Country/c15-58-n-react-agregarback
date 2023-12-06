@@ -23,8 +23,8 @@ export const createSession = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
         line_items: nuevoArreglo,
         mode: 'payment',
-        success_url: '',
-        cancel_url: ''
+        success_url: 'https://c15-58-readlygoods.vercel.app/',
+        cancel_url: 'https://c15-58-readlygoods.vercel.app/books'
     })
 
     return res.json(session)
