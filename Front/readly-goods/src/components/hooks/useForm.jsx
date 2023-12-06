@@ -42,7 +42,7 @@ export const useForm = (initialForm) => {
 
   const handleKeyUpUser = () => {
     let regExpUser = /^[a-zA-Z0-9_\-]+$/;
-    if (!regExpUser.test(form.userName.trim())) {
+    if (!regExpUser.test(form.username.trim())) {
       validateForm("userNameError", true);
     } else {
       validateForm("userNameError", false);
@@ -51,7 +51,7 @@ export const useForm = (initialForm) => {
   };
   const handleKeyUpFullName = () => {
     let regExpFullName = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
-    if (!regExpFullName.test(form.fullName.trim())) {
+    if (!regExpFullName.test(form.fullname.trim())) {
       validateForm("fullNameError", true);
     } else {
       validateForm("fullNameError", false);
@@ -92,8 +92,8 @@ export const useForm = (initialForm) => {
     validationSignInOk();
     axios
       .post(
-        isLogin?'https://c15-58-n-react-agregarback.vercel.app/api/v1/user/login':
-          "https://c15-58-n-react-agregarback.vercel.app/api/v1/user/create",
+        isLogin?'https://c15-58-readlygoods-three.vercel.app/users/login':
+          "https://c15-58-readlygoods-three.vercel.app/users/create",
         form
       )
       .then((res) => {
