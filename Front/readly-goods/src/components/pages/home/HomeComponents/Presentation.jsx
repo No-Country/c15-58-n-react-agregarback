@@ -4,7 +4,7 @@ import Cupon from "../../../../assets/homeImage/Cupon.png";
 import LibrosIngles from "../../../../assets/homeImage/LibrosIngles.png";
 const Presentation = () => {
   return (
-    <div className="bg-white w-full my-7">
+    <div className="w-full my-7">
       <div className="bg-black rounded-lg flex-col flex justify-center items-center px-5 sm:flex-row">
         <div className="text-white p-5 w-1/2">
           <h1 className="text-3xl text-cyan-200 p-9 pt-1">

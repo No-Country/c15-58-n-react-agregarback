@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* General */
+
+@layer base {
+  html {
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(243 244 246);
+  }
+}
+
+.font-roboto-serif {
+  font-family: "Comfortaa", sans-serif;
+  font-family: "Gabarito", sans-serif;
+  font-family: "Gugi", sans-serif;
+  font-family: "Hind", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Serif", serif;
+}
+
 .whatsapp {
   position: fixed;
   width: 60px;
