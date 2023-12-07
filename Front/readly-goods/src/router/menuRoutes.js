@@ -1,7 +1,7 @@
 import Books from "../components/pages/Books/Books";
 import BooksDetails from "../components/pages/BooksDetails/BooksDetails";
 import Cart from "../components/pages/Cart";
-import Faq from "../components/pages/Faq";
+import Faq from "../components/pages/faq/Faq";
 import Home from "../components/pages/home/Home";
 
 export const menuRoutes = [

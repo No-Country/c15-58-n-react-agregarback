@@ -44,7 +44,6 @@ const ContextProvider = ({ children }) => {
         isOpen,
         openModal,
         closeModal,
-        setIsLogin,
         isLogin,
         setIsLogin,
         loginOk,
