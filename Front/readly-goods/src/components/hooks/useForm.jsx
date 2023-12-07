@@ -12,6 +12,7 @@ export const useForm = (initialForm) => {
     emailError: false,
     passwordError: false,
   });
+
   const [loginOk, setLoginOk] = useState(false); // Si inicio sesion correctamente
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
@@ -38,6 +39,7 @@ export const useForm = (initialForm) => {
       [name]: value,
     });
   };
+
   const validateForm = (nameError, valueError) => {
     setErrors({
       ...errors,
@@ -54,6 +56,7 @@ export const useForm = (initialForm) => {
     }
     return errors;
   };
+
   const handleKeyUpFullName = () => {
     let regExpFullName = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
     if (!regExpFullName.test(form.fullname.trim())) {
@@ -73,6 +76,7 @@ export const useForm = (initialForm) => {
     }
     return errors;
   };
+
   const handleOnFocusEmail = () => {
     validateForm("emailError", false);
     return errors;
@@ -87,6 +91,7 @@ export const useForm = (initialForm) => {
     }
     return errors;
   };
+
   const handleOnFocusPassword = () => {
     validateForm("passwordError", false);
     return errors;
@@ -95,27 +100,26 @@ export const useForm = (initialForm) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     validationSignInOk();
-    if(formIsOkRef.current){
+    if (formIsOkRef.current) {
       axios
-      .post(
-        isLogin
-          ? "https://c15-58-readlygoods-three.vercel.app/users/login"
-          : "https://c15-58-readlygoods-three.vercel.app/users/create",
-        form
-      )
-      .then((res) => {
-        console.log(res.data);
-       // alert("registro ok");
-        setLoginOk(true);
-        closeModal();
-      })
-      .catch((er) => {
-        console.log(er);
-        alert("Error en el registro, por favor vuelve a intentarlo");
-        setLoginOk(false);
-      });
+        .post(
+          isLogin
+            ? "https://c15-58-readlygoods-three.vercel.app/users/login"
+            : "https://c15-58-readlygoods-three.vercel.app/users/create",
+          form
+        )
+        .then((res) => {
+          console.log(res.data);
+          // alert("registro ok");
+          setLoginOk(true);
+          closeModal();
+        })
+        .catch((er) => {
+          console.log(er);
+          alert("Error en el registro, por favor vuelve a intentarlo");
+          setLoginOk(false);
+        });
     }
-    
   };
 
   return {
