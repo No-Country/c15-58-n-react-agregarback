@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../assets/logo/logo.png";
 import Modals from "../../modal_formularios/Modals";
 import { context } from "../../../context";
+import ButtonUser from "./navbarComponents/ButtonUser";
 
 const Navbar = () => {
   const { openModal, loginOk, form } = useContext(context);
@@ -30,27 +31,21 @@ const Navbar = () => {
           <li className="uppercase sm:p-3 p-1 hover:text-[#262525]">
             <Link to="/faq">compras online</Link>
           </li>
-
-          <li
+ {/*----------------------------login--------------------------------------------*/}
+          {loginOk?
+          (<li
             className="sm:p-5 p-1 cursor-pointer flex items-center flex-col"
             onClick={openModal}
           >
-            {/*-----login------------------------------*/}
+            
             <FontAwesomeIcon
-              className={
-                loginOk
-                  ? "h-5 text-[#262525]"
-                  : "text-white h-5 hover:text-[#262525]"
-              }
+              className={"text-white h-5 hover:text-[#262525]"}
               icon={faUser}
             />
-            {loginOk && (
-              <h6 className="h-3 text-[#262525] text-xs">{form.username}</h6>
-            )}
-          </li>
-
+          </li>):(<ButtonUser/>)}
+   {/*--------------------------CARRITO DE COMPRA---------------------------------*/}
           <li className=" sm:p-5 p-1">
-            {/*----------CARRITO DE COMPRA-----------------------*/}
+         
             <Link to="/cart">
               <FontAwesomeIcon
                 className="h-5 hover:text-[#262525]"
