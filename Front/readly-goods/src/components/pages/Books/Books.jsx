@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./BooksComponents/Card";
 
+
 const Books = () => {
   const [books, setBooks] = useState();
   const [filteredBooks, setFilteredBooks] = useState();
@@ -8,10 +9,11 @@ const Books = () => {
     genre: "",
     editorial: "",
     author: "",
+    search:""
   });
+  const [search, setSearch] = useState("")
 
-  let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}`;
-
+  let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
   useEffect(() => {
     fetch(urlData)
       .then((res) => res.json())
@@ -29,6 +31,21 @@ const Books = () => {
 
     setQueryFilter({ ...queryFilter, [name]: value });
   };
+  const handlerOnChangeSearchBar = (e) => {
+    
+    setSearch(e.target.value)
+  }
+
+  console.log(queryFilter)
+
+  const handlerClickSearchBar = (e)=>{
+    e.preventDefault()
+    setQueryFilter({genre: "",
+    editorial: "",
+    author: "",
+    search:search})
+
+  }
 
   const getAllGenre = () => {
     const genres = books?.flatMap((book) =>
@@ -119,13 +136,17 @@ const Books = () => {
   return (
     <main className=" w-full py-12">
       <div className="lg:w-3/5 lg:m-auto mx-12 flex flex-col gap-6">
-        <div className="flex flex-row justify-between">
-          <h1 className="text-2xl font-semibold uppercase text-[#822626]">
+        <div className="flex flex-row items-center justify-between">
+          <h1 className="text-2xl font-semibold uppercase text-[#822626] w-3/6">
             Productos
           </h1>
-          <p className="text-sm text-[#822626]">
+          <p className="text-sm text-[#822626] w-1/6">
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
+          <div className="flex w-2/6">
+            <input value={search} onChange={handlerOnChangeSearchBar} type="text" className="w-2/3 border-solid border-1 border-gray-400 text-gray-600" />
+            <button onClick={handlerClickSearchBar} className="w-1/3 text-[#822626]">Buscar</button>
+          </div>
         </div>
         <hr />
 
