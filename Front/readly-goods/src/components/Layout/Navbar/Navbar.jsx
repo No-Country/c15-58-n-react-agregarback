@@ -29,10 +29,10 @@ const Navbar = () => {
           </li>
 
           <li className="uppercase sm:p-3 p-1 hover:text-[#262525]">
-            <Link to="/faq">compras online</Link>
+            <Link to="/faq">FAQ</Link>
           </li>
  {/*----------------------------login--------------------------------------------*/}
-          {loginOk?
+          {loginOk?(<ButtonUser/>):
           (<li
             className="sm:p-5 p-1 cursor-pointer flex items-center flex-col"
             onClick={openModal}
@@ -42,7 +42,7 @@ const Navbar = () => {
               className={"text-white h-5 hover:text-[#262525]"}
               icon={faUser}
             />
-          </li>):(<ButtonUser/>)}
+          </li>)}
    {/*--------------------------CARRITO DE COMPRA---------------------------------*/}
           <li className=" sm:p-5 p-1">
          

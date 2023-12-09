@@ -192,24 +192,29 @@ const Faq = () => {
                     siempre que la cancelación se comunique antes de que el
                     pedido haya sido puesto a disposición del transportista para
                     su envío. En caso contrario no se realizarán reembolsos ni
-                    cancelaciones. Si un producto distinto al solicitado por el
-                    cliente fuera entregado por error de readlygoods, se le
-                    entregará el producto correcto, recogiendo el primero, sin
-                    ningún cargo adicional para el cliente. Si un producto ha
-                    llegado al cliente roto, dañado, en malas condiciones o con
-                    defectos de fabricación, readlygoods se hará cargo de
-                    recogerlo en su domicilio, sustituyéndolo por otro en buen
-                    estado, sin cargos adicionales. No se realizará cambio
-                    alguno por otro producto distinto al adquirido
-                    originalmente, salvo que por falta de stock no fuese posible
-                    la reposición. En caso de no tener más disponibilidad de
-                    stock, se devolverá la totalidad del dinero de acuerdo al
-                    medio de pago utilizado al momento de la compra. Para la
-                    cancelación de una compra, enviar un mail a
-                    info@readlygoods.com.uy, indicando el número de la orden, el
-                    libro a devolver y el motivo. Para cualquier reclamación o
-                    consulta puede ponerse en contacto con readlygoods a través
-                    de nuestro mail info@readlygoods.com.
+                    cancelaciones.
+                  </p>
+                  <p>
+                    Si un producto distinto al solicitado por el cliente fuera
+                    entregado por error de readlygoods, se le entregará el
+                    producto correcto, recogiendo el primero, sin ningún cargo
+                    adicional para el cliente. Si un producto ha llegado al
+                    cliente roto, dañado, en malas condiciones o con defectos de
+                    fabricación, readlygoods se hará cargo de recogerlo en su
+                    domicilio, sustituyéndolo por otro en buen estado, sin
+                    cargos adicionales.{" "}
+                  </p>
+                  <p>
+                    No se realizará cambio alguno por otro producto distinto al
+                    adquirido originalmente, salvo que por falta de stock no
+                    fuese posible la reposición. En caso de no tener más
+                    disponibilidad de stock, se devolverá la totalidad del
+                    dinero de acuerdo al medio de pago utilizado al momento de
+                    la compra. Para la cancelación de una compra, enviar un mail
+                    a info@readlygoods.com.uy, indicando el número de la orden,
+                    el libro a devolver y el motivo. Para cualquier reclamación
+                    o consulta puede ponerse en contacto con readlygoods a
+                    través de nuestro mail info@readlygoods.com.
                   </p>
                 </div>
               </AccordionContent>

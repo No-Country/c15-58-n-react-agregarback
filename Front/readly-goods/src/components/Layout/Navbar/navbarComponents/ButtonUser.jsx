@@ -2,34 +2,51 @@ import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 
-import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionPanel,
+  AccordionTitle,
+} from "flowbite-react";
 import { context } from "../../../../context";
 
 const ButtonUser = () => {
-    const {  loginOk, form } = useContext(context);
+  const { loginOk, form, handleCloseSesion } = useContext(context);
+
+//--------------------tome del storage el nombre de usuario-----------
+  const user = localStorage.getItem("userData"); //
+  const userdata = JSON.parse(user); //
+
+  //---------------------------------------------------------
 
   return (
     <>
-        <li className=" p-0 cursor-pointer ">
-            {/*-----login------------------------------*/}
-            <Accordion >
-                <AccordionPanel >
-                    <AccordionTitle className="bg-[#822626] p-1 rounded flex border-collapse flex-col hover:bg-[#8f3232] hover:border">
-                       <FontAwesomeIcon
-              className="h-5 px-5 text-[#262525]"
-              icon={faUser}
-            />
-              <div className="h-1 text-[#262525] text-xs">{form.username}Matias1312</div> 
-                    </AccordionTitle>
-                    <AccordionContent className="p-1">
-                        <div className="text-[#262525] text-xs text-center">SALIR</div>
-                    </AccordionContent>
-                </AccordionPanel>
-            </Accordion>
-            
-          </li>
+      <li className=" p-0 cursor-pointer ">
+        {/*-----login------------------------------*/}
+        <Accordion collapseAll className="border-0 ">
+          <AccordionPanel className="border-0 " >
+            <AccordionTitle className="bg-[#822626]  p-1 rounded flex  flex-col hover:bg-[#8f3232]  hover:border-collapse focus:collapse">
+              <FontAwesomeIcon
+                className="h-5 px-5 text-[#E6DDBC]"
+                icon={faUser}
+              />
+              <div className="h-1 text-[#E6DDBC] text-xs">
+                {userdata.data.user.username}
+              </div>
+            </AccordionTitle>
+            <AccordionContent className="p-1 hover:bg-[#8f3232] rounded border-1 border-red-800" >
+              <div
+                className="text-[##E6DDBC] text-xs text-center"
+                onClick={handleCloseSesion}
+              >
+                SALIR
+              </div>
+            </AccordionContent>
+          </AccordionPanel>
+        </Accordion>
+      </li>
     </>
-  )
-}
+  );
+};
 
-export default ButtonUser
+export default ButtonUser;
