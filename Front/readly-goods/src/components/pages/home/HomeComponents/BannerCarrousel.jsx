@@ -4,7 +4,7 @@ import image3 from "../../../../assets/banner-manini-el-comandante-sin.webp";
 import image4 from "../../../../assets/banner-red-grande.webp";
 import { Carousel } from "flowbite-react";
 
-const Carrousel = () => {
+const BannerCarrousel = () => {
   return (
     <div className="h-72 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel>
@@ -17,4 +17,4 @@ const Carrousel = () => {
   );
 };
 
-export default Carrousel;
+export default BannerCarrousel;

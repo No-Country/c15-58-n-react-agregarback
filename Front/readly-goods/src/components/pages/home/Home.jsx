@@ -1,11 +1,11 @@
-import Carrousel from "./HomeComponents/Carrousel";
+import BannerCarrousel from "./HomeComponents/BannerCarrousel";
 import Presentation from "./HomeComponents/Presentation";
 
 const Home = () => {
   return (
     <main className="w-full">
-      <Carrousel />
-      <div className="w-3/5	m-auto">
+      <BannerCarrousel />
+      <div className="m-auto w-[95%] lg:w-[70%]">
         <div>
           <Presentation />
         </div>

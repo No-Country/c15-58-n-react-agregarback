@@ -5,19 +5,26 @@ export const getAllBooks = async (req, res) => {
 
     
     var filter = {}
-    const {author, editorial, genre} = req.query
+    const {author, editorial, genre, search} = req.query
     
-    if(author){
-      filter = {...filter, author:author}
+    if(search){
+      filter = {...filter, title:search}
     }
+    else{
+    if(author){
+          filter = {...filter, author:author}
+        }
 
     if(editorial){
-      filter = {...filter, editorial:editorial}
-    }
+          filter = {...filter, editorial:editorial}
+        }
 
     if(genre){
-      filter = {...filter, genre:genre}
+          filter = {...filter, genre:genre}
+        }
     }
+
+   
     const regexFilter = {};
     for (const key in filter) {
       regexFilter[key] = new RegExp(filter[key], 'i');
@@ -27,6 +34,7 @@ export const getAllBooks = async (req, res) => {
     const filteredBooks = await Book.find(regexFilter)
 
     res.status(201).json({allBooks: allBooks, filteredBooks:filteredBooks});
+    
   } catch (error) {
     res.status(400).send(error.message);
   }
