@@ -121,7 +121,6 @@ export const useForm = (initialForm) => {
           form
         )
         .then((res) => {
-          //console.log(res.data);
           setUserData(res);
           handleOpenSesion();
           setForm(initialForm);

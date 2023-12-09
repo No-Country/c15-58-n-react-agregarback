@@ -36,7 +36,7 @@ const Books = () => {
     setSearch(e.target.value)
   }
 
-  console.log(queryFilter)
+  //console.log(queryFilter)
 
   const handlerClickSearchBar = (e)=>{
     e.preventDefault()
