@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./BooksComponents/Card";
+import libroSpinner from '../../../assets/spinner/libroSpinner.gif'
 
 
 const Books = () => {
@@ -240,7 +241,11 @@ const Books = () => {
                 />
               ))
             ) : (
-              <h2>No hay libros con estas caracteristicas</h2>
+              <>
+                <img className="h-auto w-52 p-10" src={libroSpinner} alt="spinner"/>
+                <h2>No hay libros con estas caracteristicas</h2>
+              </>
+              
             )}
           </div>
         </div>
