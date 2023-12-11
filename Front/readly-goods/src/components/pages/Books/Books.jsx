@@ -141,12 +141,12 @@ const Books = () => {
           <h1 className="text-2xl font-semibold uppercase text-[#822626] w-3/6">
             Productos
           </h1>
-          <p className="text-sm text-[#822626] w-1/6">
+          <p className="text-sm text-[#822626] w-1/6 font-semibold">
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
           <div className="flex w-2/6">
-            <input value={search} onChange={handlerOnChangeSearchBar} type="text" className="w-2/3 border-solid border-1 border-gray-400 text-gray-600" />
-            <button onClick={handlerClickSearchBar} className="w-1/3 text-[#822626]">Buscar</button>
+            <input value={search} onChange={handlerOnChangeSearchBar} type="text" className="w-2/3 border-solid border-1 rounded border-gray-400 text-gray-600" />
+            <button onClick={handlerClickSearchBar} className="w-1/3 text-[#822626] font-semibold">Buscar</button>
           </div>
         </div>
         <hr />
@@ -229,7 +229,8 @@ const Books = () => {
               {books && getAllAuthor()}
             </div>
           </aside>
-          <div className="grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3">
+          <div className={`${filteredBooks?.length > 0 ? 'grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3':
+          'flex justify-center items-center flex-col w-full h-full'}`}>
             {filteredBooks?.length > 0 ? (
               filteredBooks.map(({ _id, image, title, price }) => (
                 <Card
@@ -241,10 +242,12 @@ const Books = () => {
                 />
               ))
             ) : (
-              <>
+              
+              <div className="flex justify-center items-center flex-col w-full h-full">
+                <p className="text-lg text-[#822626] font-semibold">Cargando...</p>
                 <img className="h-auto w-52 p-10" src={libroSpinner} alt="spinner"/>
-                <h2>No hay libros con estas caracteristicas</h2>
-              </>
+              </div>                
+              
               
             )}
           </div>

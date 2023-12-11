@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { context } from "../../../../context";
-import Accordion from "../../../accordion/accordion";
+import Accordion from "../../../accordion/Accordion";
+
 
 const ButtonUser = () => {
   const { handleCloseSesion } = useContext(context);
