@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./BooksComponents/Card";
-import libroSpinner from '../../../assets/spinner/libroSpinner.gif'
-
+import libroSpinner from "../../../assets/spinner/libroSpinner.gif";
 
 const Books = () => {
   const [books, setBooks] = useState();
@@ -10,9 +9,9 @@ const Books = () => {
     genre: "",
     editorial: "",
     author: "",
-    search:""
+    search: "",
   });
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
   useEffect(() => {
@@ -32,21 +31,15 @@ const Books = () => {
 
     setQueryFilter({ ...queryFilter, [name]: value });
   };
+
   const handlerOnChangeSearchBar = (e) => {
-    
-    setSearch(e.target.value)
-  }
+    setSearch(e.target.value);
+  };
 
-  //console.log(queryFilter)
-
-  const handlerClickSearchBar = (e)=>{
-    e.preventDefault()
-    setQueryFilter({genre: "",
-    editorial: "",
-    author: "",
-    search:search})
-
-  }
+  const handlerClickSearchBar = (e) => {
+    e.preventDefault();
+    setQueryFilter({ genre: "", editorial: "", author: "", search: search });
+  };
 
   const getAllGenre = () => {
     const genres = books?.flatMap((book) =>
@@ -145,8 +138,18 @@ const Books = () => {
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
           <div className="flex w-2/6">
-            <input value={search} onChange={handlerOnChangeSearchBar} type="text" className="w-2/3 border-solid border-1 rounded border-gray-400 text-gray-600" />
-            <button onClick={handlerClickSearchBar} className="w-1/3 text-[#822626] font-semibold">Buscar</button>
+            <input
+              value={search}
+              onChange={handlerOnChangeSearchBar}
+              type="text"
+              className="w-2/3 border-solid border-1 rounded border-gray-400 text-gray-600"
+            />
+            <button
+              onClick={handlerClickSearchBar}
+              className="w-1/3 text-[#822626] font-semibold"
+            >
+              Buscar
+            </button>
           </div>
         </div>
         <hr />
@@ -229,8 +232,13 @@ const Books = () => {
               {books && getAllAuthor()}
             </div>
           </aside>
-          <div className={`${filteredBooks?.length > 0 ? 'grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3':
-          'flex justify-center items-center flex-col w-full h-full'}`}>
+          <div
+            className={`${
+              filteredBooks?.length > 0
+                ? "grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3"
+                : "flex justify-center items-center flex-col w-full h-full"
+            }`}
+          >
             {filteredBooks?.length > 0 ? (
               filteredBooks.map(({ _id, image, title, price }) => (
                 <Card
@@ -242,13 +250,16 @@ const Books = () => {
                 />
               ))
             ) : (
-              
               <div className="flex justify-center items-center flex-col w-full h-full">
-                <p className="text-lg text-[#822626] font-semibold">Cargando...</p>
-                <img className="h-auto w-52 p-10" src={libroSpinner} alt="spinner"/>
-              </div>                
-              
-              
+                <p className="text-lg text-[#822626] font-semibold">
+                  Cargando...
+                </p>
+                <img
+                  className="h-auto w-52 p-10"
+                  src={libroSpinner}
+                  alt="spinner"
+                />
+              </div>
             )}
           </div>
         </div>

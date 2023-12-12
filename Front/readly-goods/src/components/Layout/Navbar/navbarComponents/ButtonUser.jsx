@@ -4,10 +4,8 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { context } from "../../../../context";
 import Accordion from "../../../accordion/Accordion";
 
-
 const ButtonUser = () => {
   const { handleCloseSesion } = useContext(context);
- 
 
   //--------------------tome del storage el nombre de usuario-----------
   const user = localStorage.getItem("userData"); //
@@ -16,30 +14,49 @@ const ButtonUser = () => {
 
   return (
     <>
-      <li className=" flex  ">
+      <li>
         {/*-----login------------------------------*/}
         <Accordion
           title={
-            <>
-              <FontAwesomeIcon className="h-5 text-[#E6DDBC] " icon={faUser} />
-              <div className="h-1 text-[#E6DDBC] text-xs">
+            <div className="group">
+              <FontAwesomeIcon
+                className="h-5 text-[#ffffff] group-hover:text-black"
+                icon={faUser}
+              />
+              <div className="h-1 text-[#ffffff] text-xs group-hover:text-black">
                 {userdata.data.user.username}
+              </div>
+            </div>
+          }
+          content={
+            <>
+              <div
+                className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
+                onClick={handleCloseSesion}
+              >
+                Mi Perfil
+              </div>
+              <div
+                className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
+                onClick={handleCloseSesion}
+              >
+                Salir
+              </div>
+              <div
+                className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
+                onClick={handleCloseSesion}
+              >
+                Compras
               </div>
             </>
           }
-          content={
-            <div
-              className="text-[##E6DDBC] text-xs text-center overflow-hidden"
-              onClick={handleCloseSesion}
-            >
-              SALIR
-            </div>
-          }
           classTitle={
-            "bg-[#822626] h-14 p-2 w-full rounded flex items-center justify-center flex-col hover:bg-[#8f3232]"
+            "bg-[#822626] h-14 p-2 w-full rounded flex items-center justify-center flex-col"
           }
-          classContent={" p-2 border-red-800 rounded hover:bg-[#8f3232] duration-300"}
-          classAccordion={""}
+          classContent={
+            " border-red-800 rounded duration-300 absolute w-full bg-[#822626] mt-3"
+          }
+          classAccordion={"relative w-16"}
         />
       </li>
     </>
