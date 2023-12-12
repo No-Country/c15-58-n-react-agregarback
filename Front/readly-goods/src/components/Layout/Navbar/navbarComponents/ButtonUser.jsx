@@ -30,24 +30,14 @@ const ButtonUser = () => {
           }
           content={
             <>
-              <div
-                className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
-                onClick={handleCloseSesion}
-              >
-                Mi Perfil
-              </div>
+              
               <div
                 className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
                 onClick={handleCloseSesion}
               >
                 Salir
               </div>
-              <div
-                className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
-                onClick={handleCloseSesion}
-              >
-                Compras
-              </div>
+              
             </>
           }
           classTitle={
