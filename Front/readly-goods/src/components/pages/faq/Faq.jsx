@@ -1,5 +1,5 @@
 import React from "react";
-import Accordion from "../../accordion/accordion";
+import Accordion from "../../accordion/Accordion";
 
 
 const Faq = () => {
