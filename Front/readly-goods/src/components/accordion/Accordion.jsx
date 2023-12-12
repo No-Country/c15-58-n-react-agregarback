@@ -32,7 +32,6 @@ const Accordion = ({
       <button
         className={`${classTitle}`}
         onClick={() => setAccordionOpen(!accordionOpen)}
-        //
       >
         {title}
       </button>
@@ -42,7 +41,7 @@ const Accordion = ({
             ${
               accordionOpen
                 ? "grid-rows-[1fr] opacity-100"
-                : "grid-rows-[0fr] opacity-0"
+                : "grid-rows-[0fr] opacity-0 h-0 ease-out"
             }`}
       >
         {accordionOpen ? content : <></>}
