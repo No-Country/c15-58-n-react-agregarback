@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import {useClickAway} from 'react-use';
 {
   /* ----Ejemplo de como llamar el component-----------------------------
         <Accordion
@@ -24,27 +25,34 @@ const Accordion = ({
   classAccordion,
 }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
+  const acordionRef = useRef(null);
 
-  const handleOnBlur = () => setAccordionOpen(false);
+  const handleOutsideClick = () => {
+         setAccordionOpen(false);
+    } 
+  useClickAway(acordionRef, handleOutsideClick)
+   
 
   return (
-    <div className={`${classAccordion}  `}>
+    <div className={`${classAccordion}  `} ref={acordionRef}>
       <button
         className={`${classTitle}`}
+        
         onClick={() => setAccordionOpen(!accordionOpen)}
       >
         {title}
       </button>
+      
       <div
-        onBlur={handleOnBlur}
+       
         className={`${classContent} grid overflow-hidden transition-all duration-1000 ease-in-out cursor-pointer 
             ${
               accordionOpen
-                ? "grid-rows-[1fr] opacity-100"
-                : "grid-rows-[0fr] opacity-0 h-0 ease-out"
+                ? "grid-rows-[1fr] opacity-100 "
+                : "grid-rows-[0fr] opacity-0 "
             }`}
       >
-        {accordionOpen ? content : <></>}
+        {accordionOpen && content}
       </div>
     </div>
   );
