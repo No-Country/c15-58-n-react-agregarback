@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./BooksComponents/Card";
-
+import libroSpinner from "../../../assets/spinner/libroSpinner.gif";
 
 const Books = () => {
   const [books, setBooks] = useState();
@@ -9,7 +9,7 @@ const Books = () => {
     genre: "",
     editorial: "",
     author: "",
-    search:""
+    search: "",
   });
 
   let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
@@ -30,6 +30,7 @@ const Books = () => {
     
       setQueryFilter({ ...queryFilter, [name]: value, search:"" });
   };
+
   const handlerOnChangeSearchBar = (e) => {
     const {value} = e.target
     setQueryFilter({...queryFilter, search:value} )
@@ -129,11 +130,13 @@ const Books = () => {
           <h1 className="text-2xl font-semibold uppercase text-[#822626] w-3/6">
             Productos
           </h1>
-          <p className="text-sm text-[#822626] w-1/6">
+          <p className="text-sm text-[#822626] w-1/6 font-semibold">
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
           <div className="flex w-2/6">
+
             <input value={queryFilter.search} onChange={handlerOnChangeSearchBar} type="text" placeholder="Busqueda..." className="w-full border-solid border-1 border-gray-400 text-gray-600" />
+
           </div>
         </div>
         <hr />
@@ -221,7 +224,13 @@ const Books = () => {
               {books && getAllAuthor()}
             </div>
           </aside>
-          <div className="grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3">
+          <div
+            className={`${
+              filteredBooks?.length > 0
+                ? "grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3"
+                : "flex justify-center items-center flex-col w-full h-full"
+            }`}
+          >
             {filteredBooks?.length > 0 ? (
               filteredBooks.map(({ _id, image, title, price }) => (
                 <Card
@@ -233,7 +242,16 @@ const Books = () => {
                 />
               ))
             ) : (
-              <h2>No hay libros con estas caracteristicas</h2>
+              <div className="flex justify-center items-center flex-col w-full h-full">
+                <p className="text-lg text-[#822626] font-semibold">
+                  Cargando...
+                </p>
+                <img
+                  className="h-auto w-52 p-10"
+                  src={libroSpinner}
+                  alt="spinner"
+                />
+              </div>
             )}
           </div>
         </div>

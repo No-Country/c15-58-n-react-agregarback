@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import axios from "axios";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const useForm = (initialForm) => {
   const [isLogin, setIsLogin] = useState(false); //
-
   const formIsOkRef = useRef(false);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({
@@ -13,7 +13,9 @@ export const useForm = (initialForm) => {
     passwordError: false,
   });
 
-  const [loginOk, setLoginOk] = useState(false); // Si inicio sesion correctamente
+  const [loginOk, setLoginOk] = useLocalStorage("loginOk", false); // Si inicio sesion correctamente y se guarda en el storage
+  const [userData, setUserData] = useLocalStorage("userData", {}); // se guarda datos del usuario en el storage
+
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
@@ -21,6 +23,16 @@ export const useForm = (initialForm) => {
   const [isOpen, setIsOpen] = useState(false); //
   const openModal = () => setIsOpen(true); //
   const closeModal = () => setIsOpen(false); //
+
+  const handleCloseSesion = () => {
+    setLoginOk(false);
+    setUserData({});
+    return loginOk;
+  };
+  const handleOpenSesion = () => {
+    setLoginOk(true);
+    return loginOk;
+  };
 
   const validationSignInOk = () => {
     const { userNameError, fullNameError, emailError, passwordError } = errors;
@@ -109,15 +121,15 @@ export const useForm = (initialForm) => {
           form
         )
         .then((res) => {
-          console.log(res.data);
-          // alert("registro ok");
-          setLoginOk(true);
+          setUserData(res);
+          handleOpenSesion();
+          setForm(initialForm);
           closeModal();
         })
         .catch((er) => {
           console.log(er);
           alert("Error en el registro, por favor vuelve a intentarlo");
-          setLoginOk(false);
+          handleCloseSesion();
         });
     }
   };
@@ -132,6 +144,7 @@ export const useForm = (initialForm) => {
     setLoginOk,
     isLogin,
     setIsLogin,
+    handleCloseSesion,
     loading,
     response,
     handleChange,
