@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { useForm } from "../components/hooks/useForm";
+import { useCart } from "../components/hooks/useCart";
 
 export const context = createContext();
 
@@ -13,6 +14,11 @@ const initialForm = {
 //----------------------------------------------------------------------------------------------
 
 const ContextProvider = ({ children }) => {
+  //---------------cart----------------------------------------------------
+  const { products,
+    addProduct,
+    deleteAllProducts,
+    deleteProduct, } = useCart();
   //------------Validacion del form--------------------------------------------------
   const {
     form,
@@ -62,6 +68,10 @@ const ContextProvider = ({ children }) => {
         handleOnBlurPassword,
         handleOnFocusPassword,
         handleSubmit,
+        products,
+    addProduct,
+    deleteAllProducts,
+    deleteProduct,
       }}
     >
       {children}
