@@ -1,14 +1,29 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { redirect, useNavigate, useParams } from "react-router-dom";
+import { context } from "../../../context";
 
 export default function BooksDetails() {
   const { id } = useParams();
   const [book, setBook] = useState();
+  const [count, setCount] = useState(1);
+  const navigate = useNavigate()
   useEffect(() => {
     fetch(`https://c15-58-readlygoods-three.vercel.app/books/${id}`)
       .then((res) => res.json())
       .then((data) => setBook(data[0]));
   }, [id]);
+
+  const handleClickSum = () => setCount((e) => e + 1);
+  const handleClickRes = () => setCount((e) => (e > 1 ? e - 1 : 1));
+
+  const { products, addProduct, deleteAllProducts, deleteProduct } =
+    useContext(context);
+
+  const handleClick = (title, price, quantity,image) => {
+    addProduct({ title, price, quantity,image });   
+
+    navigate('/books')
+  };
 
   return (
     <main className="w-full">
@@ -63,16 +78,27 @@ export default function BooksDetails() {
             </div>
             <div className="flex flex-row gap-2 mt-4">
               <div className="flex items-center justify-center flex-[.5]">
-                <button className="px-2 py-1 border border-gray-200 rounded-sm">
+                <button
+                  onClick={handleClickRes}
+                  className="px-2 py-1 border border-gray-200 rounded-sm"
+                >
                   -
                 </button>
-                <span className="px-2 py-1">1</span>
-                <button className="px-2 py-1 border border-gray-200 rounded-sm">
+                <span className="px-2 py-1">{count}</span>
+                <button
+                  onClick={handleClickSum}
+                  className="px-2 py-1 border border-gray-200 rounded-sm"
+                >
                   +
                 </button>
               </div>
-              <button className="flex-1 py-3 text-white transition-colors bg-[#690202] rounded-sm hover:bg-[#262525]">
-                COMPRAR
+              <button
+                onClick={() => {
+                  handleClick(book.title, book.price, count, book.image);
+                }}
+                className="flex-1 py-3 text-white transition-colors bg-[#690202] rounded-sm hover:bg-[#262525]"
+              >
+                AGREGAR
               </button>
             </div>
           </div>
