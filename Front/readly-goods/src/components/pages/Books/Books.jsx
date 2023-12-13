@@ -11,7 +11,6 @@ const Books = () => {
     author: "",
     search: "",
   });
-  const [search, setSearch] = useState("");
 
   let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
   useEffect(() => {
@@ -28,18 +27,15 @@ const Books = () => {
 
   const handleFilterClick = (e) => {
     const { name, value } = e.target;
-
-    setQueryFilter({ ...queryFilter, [name]: value });
+    
+      setQueryFilter({ ...queryFilter, [name]: value, search:"" });
   };
 
   const handlerOnChangeSearchBar = (e) => {
-    setSearch(e.target.value);
-  };
+    const {value} = e.target
+    setQueryFilter({...queryFilter, search:value} )
+  }
 
-  const handlerClickSearchBar = (e) => {
-    e.preventDefault();
-    setQueryFilter({ genre: "", editorial: "", author: "", search: search });
-  };
 
   const getAllGenre = () => {
     const genres = books?.flatMap((book) =>
@@ -138,26 +134,22 @@ const Books = () => {
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
           <div className="flex w-2/6">
-            <input
-              value={search}
-              onChange={handlerOnChangeSearchBar}
-              type="text"
-              className="w-2/3 border-solid border-1 rounded border-gray-400 text-gray-600"
-            />
-            <button
-              onClick={handlerClickSearchBar}
-              className="w-1/3 text-[#822626] font-semibold"
-            >
-              Buscar
-            </button>
+
+            <input value={queryFilter.search} onChange={handlerOnChangeSearchBar} type="text" placeholder="Busqueda..." className="w-full border-solid border-1 border-gray-400 text-gray-600" />
+
           </div>
         </div>
         <hr />
 
         <div className="w-full flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-1">
           <aside className="w-full md:sticky md:block">
+            <div>
+                <h2>Filtros</h2>
+                <p>algo</p>
+            </div>
             <h4 className="text-lg font-semibold text-[#822626]">Género</h4>
             <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
+              
               {queryFilter.genre == "" ? (
                 <button
                   className="text-black"
