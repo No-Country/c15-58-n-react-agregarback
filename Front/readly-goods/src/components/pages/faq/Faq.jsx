@@ -80,7 +80,7 @@ const Faq = () => {
                 </ol>
               </>
             }
-            classContent={"text-[#525252] p-3"}
+            classContent={"text-[#525252] px-5 py-3"}
             classAccordion={""}
           />
           <Accordion
