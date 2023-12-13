@@ -18,7 +18,7 @@ const ContextProvider = ({ children }) => {
   const { products,
     addProduct,
     deleteAllProducts,
-    deleteProduct, } = useCart();
+    deleteProduct,totalPrice } = useCart();
   //------------Validacion del form--------------------------------------------------
   const {
     form,
@@ -72,6 +72,7 @@ const ContextProvider = ({ children }) => {
     addProduct,
     deleteAllProducts,
     deleteProduct,
+    totalPrice,
       }}
     >
       {children}
