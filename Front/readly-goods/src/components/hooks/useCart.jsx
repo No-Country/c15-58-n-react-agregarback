@@ -23,7 +23,7 @@ export const useCart = () => {
   };
 
   const totalPrice = products.reduce((acc, product) => {
-    return Math.round(acc + product.price * product.quantity * 100) / 100;
+    return Math.round((acc + product.price * product.quantity) * 100) / 100;
   }, 0);
 
   return {
