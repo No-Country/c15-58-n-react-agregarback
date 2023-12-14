@@ -48,7 +48,7 @@ const Books = () => {
     return allGenres.map((genre) =>
       genre == queryFilter.genre ? (
         <button
-          className="bg-[#822626] text-white rounded p-1"
+          className="bg-[#822626] text-white rounded p-1 "
           key={genre}
           onClick={handleFilterClick}
           name={"genre"}
@@ -58,7 +58,7 @@ const Books = () => {
         </button>
       ) : (
         <button
-          className="text-gray-500"
+          className="text-gray-500 hover:shadow-gray-300  hover:shadow-md rounded p-1"
           key={genre}
           onClick={handleFilterClick}
           name={"genre"}
@@ -86,7 +86,7 @@ const Books = () => {
         </button>
       ) : (
         <button
-          className="text-[#525252]"
+          className="text-gray-500 hover:shadow-gray-300  hover:shadow-md rounded p-1"
           key={editorial}
           onClick={handleFilterClick}
           name={"editorial"}
@@ -114,7 +114,7 @@ const Books = () => {
         </button>
       ) : (
         <button
-          className="text-[#525252]"
+          className="text-gray-500 hover:shadow-gray-300  hover:shadow-md rounded p-1"
           key={author}
           onClick={handleFilterClick}
           name={"author"}
@@ -138,7 +138,7 @@ const Books = () => {
           </p>
           <div className="flex w-2/6">
 
-            <input value={queryFilter.search} onChange={handlerOnChangeSearchBar} type="text" placeholder="Busqueda..." className="w-full border-solid border-1 border-gray-400 text-gray-600" />
+            <input value={queryFilter.search} onChange={handlerOnChangeSearchBar} type="text" placeholder="Busqueda..." className="w-full border-solid border-1 border-gray-400 text-gray-600 rounded" />
 
           </div>
         </div>
@@ -147,12 +147,12 @@ const Books = () => {
         <div className="w-full flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-1">
           <aside className="w-full md:sticky md:block">
             <div className="flex flex-wrap gap-3 pb-5">
-                {queryFilter.genre?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-black flex gap-2" name="genre">{queryFilter.genre}</button>:null}
-                {queryFilter.editorial?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-black" name="editorial">{queryFilter.editorial}</button>:null}
-                {queryFilter.author?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-black" name="author">{queryFilter.author}</button>:null}
+                {queryFilter.genre?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-slate-500 rounded flex gap-2" name="genre">{queryFilter.genre}</button>:null}
+                {queryFilter.editorial?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-slate-500 rounded" name="editorial">{queryFilter.editorial}</button>:null}
+                {queryFilter.author?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-slate-500 rounded" name="author">{queryFilter.author}</button>:null}
             </div>
-            <h4 className="text-lg font-semibold text-[#822626]">Género</h4>
-            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
+            <h4 className="text-lg font-semibold text-[#822626] ">Género</h4>
+            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm ">
             
               {books && getAllGenre()}
             </div>

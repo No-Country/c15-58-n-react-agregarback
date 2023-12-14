@@ -1,18 +1,20 @@
 import React from "react";
 import Accordion from "../../accordion/Accordion";
 
-
 const Faq = () => {
+  
   return (
-    <main className="w-full pb-52">
-      <div className="w-3/5	m-auto">
-        <h1 className="text-4xl p-3 bg-[#525252] text-[#f9f9f8] font-bold ">
+    <main className="w-full pb-44">
+      <div className="w-3/5	m-auto py-5">
+        <h1 className="text-4xl p-3 bg-gray-200 rounded text-[#690202] font-bold ">
           Preguntas frecuentes:
         </h1>
         <div className="py-5">
           <Accordion
             title={"CÓMO COMPRAR:"}
-            classTitle={"text-2xl text-[#822626] font-bold"}
+            classTitle={
+              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded border-[#525252] hover:bg-gray-200"
+            }
             content={
               <>
                 <div>PROCESO DE COMPRA</div>
@@ -80,12 +82,14 @@ const Faq = () => {
                 </ol>
               </>
             }
-            classContent={"text-[#525252] p-3"}
+            classContent={"text-[#525252] px-5 py-2 "}
             classAccordion={""}
           />
           <Accordion
             title={"MEDIOS DE PAGO"}
-            classTitle={"text-2xl text-[#822626] font-bold"}
+            classTitle={
+              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+            }
             content={
               <>
                 <div className="p-1 font-bold">MEDIOS DE PAGO</div>
@@ -122,12 +126,14 @@ const Faq = () => {
                 </p>
               </>
             }
-            classContent={"text-[#525252] p-3"}
+            classContent={"text-[#525252] px-5 py-2"}
             classAccordion={""}
           />
           <Accordion
             title={"ENVÍOS"}
-            classTitle={"text-2xl text-[#822626] font-bold"}
+            classTitle={
+              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+            }
             content={
               <>
                 <div className="p-1 font-bold">1. PICK UP CENTER </div>
@@ -164,13 +170,15 @@ const Faq = () => {
                 </p>
               </>
             }
-            classContent={"text-[#525252] p-3"}
+            classContent={"text-[#525252] px-5 py-2"}
             classAccordion={""}
           />
 
           <Accordion
             title={"DEVOLUCIONES"}
-            classTitle={"text-2xl text-[#822626] font-bold"}
+            classTitle={
+              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+            }
             content={
               <>
                 <div className="p-1 font-bold">POLITICA DE DEVOLUCIONES</div>
@@ -205,7 +213,208 @@ const Faq = () => {
                 </p>
               </>
             }
-            classContent={"text-[#525252] p-3"}
+            classContent={"text-[#525252] px-5 py-2"}
+            classAccordion={""}
+          />
+          <Accordion
+            title={"TÉRMINOS Y CONDICIONES"}
+            classTitle={
+              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+            }
+            content={
+              <>
+                <p className="p-1 font-bold">
+                  CONDICIONES GENERALES DE CONTRATACIÓN
+                </p>
+                <p className="p-1 font-bold">
+                  1) OBJETO Y ÁMBITO DE APLICACIÓN
+                </p>
+                <p>
+                  Las presentes Condiciones Generales de Contratación tienen
+                  como objeto regular la relación entre ReadlyGoods Srl. (en
+                  adelante RG) y Ud. (en adelante "el Cliente"), relativas a
+                  todas las transacciones realizadas a través de la página web
+                  www.ReadlyGoods.com.uy, dominio del que es titular
+                  ReadlyGoods, sociedad legalmente constituida, con domicilio
+                  social en Gabriel A. Pereira 3076, 11200 Montevideo (Nigeria).
+                </p>
+                <p className="p-1 font-bold">
+                  2) ACEPTACIÓN Y PRUEBA DE ACEPTACIÓN
+                </p>
+                <p>
+                  La adquisición de los productos debe hacerse a través de la
+                  activación de los botones PAGAR o COMPRAR que aparecen a pie
+                  de página de las solicitudes de compra, y expresan la
+                  aceptación total de todas y cada una de las Condiciones de
+                  Contratación tal y como se muestran en la página web de RG con
+                  anterioridad a la adquisición de los productos.
+                </p>
+                <p>
+                  Desde el momento de la aceptación, el usuario adquiere la
+                  condición de Cliente de RG que se describe en estas
+                  Condiciones Generales de Contratación. RG le informa de que
+                  por motivos legales archiva los documentos electrónicos en que
+                  quedan formalizadas las compras, a los que Ud. podrá acceder,
+                  solicitándolo al e-mail: info@readlygoods.com
+                </p>
+                <p className="p-1 font-bold">
+                  3) PRECIOS, FORMA DE PAGO, ENTREGA Y DESISTIMIENTO
+                </p>
+                <p className="p-1 font-bold">3.1 Precios</p>
+                <p>
+                  Los precios aplicables a cada producto y/o servicio son los
+                  indicados en la página web en la fecha del pedido. En los
+                  envíos realizados a países no pertenecientes al territorio
+                  nacional, RG no asumirá los gastos correspondientes a
+                  impuestos y aranceles aduaneros propios de cada país.
+                </p>
+                <p>
+                  Las ofertas estarán debidamente marcadas e identificadas como
+                  tal, indicando convenientemente el precio anterior y el precio
+                  de la oferta. RG se reserva el derecho de efectuar en la Web,
+                  en cualquier momento y sin previo aviso, las modificaciones
+                  que considere oportunas, pudiendo actualizar productos y
+                  servicios en función del mercado.
+                </p>
+                <p>
+                  Los gastos de envío que aparecen en el sitio web al realizar
+                  el pedido se refieren a envíos dentro del territorio nacional.{" "}
+                </p>
+                <p className="p-1 font-bold">3.2 Forma de pago</p>
+                <p>
+                  Las compras se pueden pagar a través de los medios a
+                  continuación enumerados:
+                </p>
+                <p>
+                  · Contra reembolso: Disponible sólo para compras desde Uruguay
+                  y para todos nuestros productos.
+                </p>
+                <p>· Tarjeta Visa y Oca.</p>
+                <p>· Transferencia bancaria.</p>
+                <p className="p-1 font-bold">3.3 Entrega</p>
+                <p>
+                  Los pedidos se envían a la dirección de entrega que el Cliente
+                  indica, en el plazo indicado al elegir el modo de envío para
+                  productos en stock. En caso de no disponer de stock RG
+                  comunicará debidamente al Cliente este extremo a la mayor
+                  brevedad.
+                </p>
+                <p>
+                  También podrás recoger tus envíos en alguna de nuestras
+                  librerías físicas. Te lo entregamos en la librería que elijas
+                  de las disponibles en un plazo de 24 horas. Para poder recoger
+                  tu pedido será necesario presentar el e-mail de aviso de
+                  recogida, que recibirás cuando éste se encuentre en la
+                  librería seleccionada, y el Documento de Identidad de la
+                  persona que recoge el pedido.
+                </p>
+                <p>
+                  El Cliente podrá seleccionar la forma de envío de entre las
+                  posibles para su zona de entrega que aparezca en la Web.{" "}
+                </p>
+                <p className="p-1 font-bold">
+                  4) TRÁMITES PARA CELEBRAR EL CONTRATO
+                </p>
+                <p>
+                  Para la adquisición de los productos ofertados en la Web se
+                  requiere exclusivamente rellenar el formulario (solicitud) de
+                  compra con los datos personales y los datos de pago.
+                </p>
+                <p>
+                  Una vez recibida una solicitud de compra, RG remitirá de forma
+                  inmediata una confirmación del pedido a la dirección de correo
+                  electrónico indicada en la solicitud de compra antes de que
+                  transcurran 24 horas de la misma.
+                </p>
+                <p className="p-1 font-bold">
+                  5) GARANTÍA LEGAL Y RESPONSABILIDADES DE LA COMPAÑÍA
+                </p>
+                <p>
+                  El consumidor tiene derecho a reclamar frente al vendedor,
+                  ante cualquier falta de conformidad que exista en el momento
+                  de la entrega del bien en los plazos y condiciones que allí se
+                  establecen.
+                </p>
+                <p>
+                  Si la falta de conformidad del producto se manifiesta durante
+                  los primeros 30 días, se entiende que el fallo ya existía
+                  cuando se entregó el producto, salvo que se demuestre lo
+                  contrario o cuando esta presunción sea incompatible con la
+                  naturaleza del producto o la índole de la falta de
+                  conformidad.
+                </p>
+                <p>
+                  Si la falta de conformidad se manifiesta después de esos
+                  primeros 30 días, le corresponderá al Cliente demostrar que el
+                  defecto es de origen para que quede cubierto por la garantía
+                  legal. En caso de defecto de conformidad procederemos, a
+                  nuestro cargo, al restablecimiento de la conformidad del
+                  producto mediante la reparación/sustitución o reducción del
+                  precio, tal como establecen las vigentes disposiciones
+                  legales.
+                </p>
+                <p>
+                  La asistencia en garantía requiere la previa presentación de
+                  la factura de compra. Para cualquier aclaración, incidencia o
+                  reclamación, o cualquier comunicación que sea precisa, deberá
+                  dirigirse al Departamento de Atención al Cliente mediante
+                  correo electrónico a la dirección info@grupolibro.com.uy.
+                </p>
+                <p>
+                  RG garantiza la calidad del servicio contratado a través de la
+                  página web www.ReadlyGoods.com.uy Quedan garantizados todos
+                  los derechos que las Leyes en vigor garanticen a los
+                  consumidores y usuarios. El incumplimiento de cualquiera de
+                  las Condiciones de Contratación podrá dar lugar a la
+                  devolución de los productos o la cancelación de los servicios
+                  adquiridos por el Cliente.
+                </p>
+                <p className="p-1 font-bold">
+                  6) RESPONSABILIDADES DEL CLIENTE
+                </p>
+                <p>
+                  El Cliente se obliga a realizar un uso lícito de los
+                  servicios, sin contravenir la legislación vigente, ni lesionar
+                  los derechos e intereses de terceras personas. El Cliente
+                  garantiza la veracidad y exactitud de los datos facilitados al
+                  cumplimentar los formularios de contratación. El
+                  incumplimiento de cualquiera de las Condiciones de
+                  Contratación podrá dar lugar a la retirada o cancelación de
+                  los servicios por parte de RG, sin necesidad de preaviso al
+                  Cliente y sin que ello dé derecho a indemnización alguna.
+                </p>
+                <p className="p-1 font-bold">7) SERVICIOS POSTVENTA</p>
+                <p>
+                  Para cualquier consulta, sugerencia, queja o reclamación tras
+                  la adquisición de los productos o servicios, RG pone a
+                  disposición del Cliente un Servicio de Atención al Cliente en
+                  el correo electrónico info@ReadlyGoods.com.uy
+                </p>
+                <p className="p-1 font-bold">
+                  8) PROPIEDAD INDUSTRIAL E INTELECTUAL
+                </p>
+                <p>
+                  Los derechos de propiedad intelectual e industrial sobre las
+                  obras, marcas, logos, y cualquier otro susceptible de
+                  protección, contenidos en la página web de ReadlyGoods
+                  corresponden en exclusiva a RG, a quien corresponde el
+                  ejercicio exclusivo de los derechos de explotación de los
+                  mismos en cualquier forma y, en especial, los derechos de
+                  reproducción, copia ,distribución, transformación,
+                  comercialización, y comunicación pública. La reproducción,
+                  distribución, comercialización o transformación no autorizadas
+                  de tales obras, marcas, logos, etc. constituye una infracción
+                  de los derechos de propiedad intelectual e industrial de RG o
+                  del titular de los mismos, y podrá dar lugar al ejercicio de
+                  cuantas acciones judiciales o extrajudiciales les pudieran
+                  corresponder en el ejercicio de sus derechos. Mediante la
+                  aceptación de las presentes Condiciones Generales de
+                  Contratación, el Cliente se compromete a respetar los derechos
+                  de PropiedadIndustrial e Intelectual titularidad de RG.
+                </p>
+              </>
+            }
+            classContent={"text-[#525252] px-5 py-2"}
             classAccordion={""}
           />
         </div>
