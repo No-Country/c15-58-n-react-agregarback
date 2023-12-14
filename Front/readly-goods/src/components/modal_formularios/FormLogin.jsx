@@ -8,7 +8,7 @@ const FormLogin = () => {
     setLoginOk,
     form,
     loading,
-    response,
+    
     handleChange,
     handleSubmit,
   } = useContext(context);
@@ -49,7 +49,7 @@ const FormLogin = () => {
         onChange={handleChange}
         required
       />
-      <input className="bg-black text-white mt-8 rounded p-2" type="submit" />
+      <input className="bg-[#822626] text-white mt-8 rounded p-2" type="submit" />
       <div className="p-5">
         <p className="text-xs">
           No soy usuario registrado y quiero{" "}

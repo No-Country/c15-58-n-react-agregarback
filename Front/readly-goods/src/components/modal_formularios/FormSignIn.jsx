@@ -11,7 +11,7 @@ const FormSignIn = () => {
     form,
     errors,
     loading,
-    response,
+    
     handleChange,
     handleKeyUpUser,
     handleKeyUpFullName,
@@ -105,12 +105,12 @@ const FormSignIn = () => {
         onBlur={handleOnBlurPassword}
         required
       />
-      {errors.passwordError && (
-        <p className="font-bold text-red-600 text-xs ">
+      
+        <p className={` ${errors.passwordError? 'font-bold text-red-600':'text-gray-600' } p-1 text-xs`}>
           Campo requerido, debe contener al menos una mayuscula, una minuscula,
           un numero y minimo 8 caracteres{/*--error en la validacion---*/}
         </p>
-      )}
+      
       <div className="border-2 rounded mt-5 p-3 flex justify-center items-center">
         <input
           className="mr-4"
@@ -131,7 +131,7 @@ const FormSignIn = () => {
           </span>
         </p>
       </div>
-      <input className="bg-black text-white mt-2 rounded p-2 cursor-pointer" type="submit" onClick={handleSubmit} />
+      <input className="bg-[#822626] text-white mt-2 rounded p-2 cursor-pointer" type="submit" onClick={handleSubmit} />
     </form>
   );
 };
