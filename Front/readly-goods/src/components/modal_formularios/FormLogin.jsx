@@ -1,19 +1,22 @@
 import React, { useContext, useState } from "react";
 import { context } from "../../context";
 
-const Formulario_LogIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const FormLogin = () => {
+  const {
+    setIsLogin,
+    loginOk,
+    setLoginOk,
+    form,
+    loading,
+    response,
+    handleChange,
+    handleSubmit,
+  } = useContext(context);
 
-  const { isOpen, setIsLogin } = useContext(context);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleIsLogin = () => {
+    setIsLogin(false);
   };
-
-  const handleLogin = () => {
-    setIsLogin(false)
-  }
 
   return (
     //-----------------LogIn-----------------------------------------------------------
@@ -30,8 +33,9 @@ const Formulario_LogIn = () => {
         type="email"
         id="email"
         name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={form.email}
+        onChange={handleChange}
+        required
       />
       <label className="font-bold rounded py-2" htmlFor="email">
         Contraseña:
@@ -41,15 +45,21 @@ const Formulario_LogIn = () => {
         type="password"
         id="password"
         name="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={form.password}
+        onChange={handleChange}
+        required
       />
       <input className="bg-black text-white mt-8 rounded p-2" type="submit" />
       <div className="p-5">
-        <p className="text-xs">No soy usuario registrado y quiero <span className="font-bold cursor-pointer" onClick={handleLogin}>crear una cuenta.</span></p>
+        <p className="text-xs">
+          No soy usuario registrado y quiero{" "}
+          <span className="font-bold cursor-pointer" onClick={handleIsLogin}>
+            crear una cuenta.
+          </span>
+        </p>
       </div>
     </form>
   );
 };
 
-export default Formulario_LogIn;
+export default FormLogin;

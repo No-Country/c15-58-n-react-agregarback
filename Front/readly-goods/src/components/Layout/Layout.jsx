@@ -5,11 +5,11 @@ import Footer from "./Footer/Footer";
 
 const Layout = () => {
   return (
-    <div className="flex flex-col justify-between">
+    <>
       <Navbar />
       <Outlet />
       <Footer />
-    </div>
+    </>
   );
 };
 
