@@ -2,23 +2,31 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useLocalStorage } from "./useLocalStorage";
 
-export const useForm = (initialForm) => {
-  const [isLogin, setIsLogin] = useState(false); //
-  const formIsOkRef = useRef(false);
-  const [form, setForm] = useState(initialForm);
+const initialForm = {
+    username: "",
+    fullname: "",
+    email: "",
+    password: "",
+  };
+
+export const useForm = () => {
+
+
+  const [isLogin, setIsLogin] = useState(false); //si ya esta registrado o no, inicia en false
+  const formIsOkRef = useRef(false);//-------------el registro debe estar completado correctamente
+  const [form, setForm] = useState(initialForm);//
+  //-------------errores en el registro---------------------------------
   const [errors, setErrors] = useState({
     userNameError: false,
     fullNameError: false,
     emailError: false,
     passwordError: false,
   });
-
+ //-----------------------localstorage--------------------------------------------------
   const [loginOk, setLoginOk] = useLocalStorage("loginOk", false); // Si inicio sesion correctamente y se guarda en el storage
   const [userData, setUserData] = useLocalStorage("userData", {}); // se guarda datos del usuario en el storage
 
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState(null);
-
   //---------estados y funciones del modal de Registro-------------------------------------------
   const [isOpen, setIsOpen] = useState(false); //
   const openModal = () => setIsOpen(true); //
@@ -26,7 +34,7 @@ export const useForm = (initialForm) => {
 
   const handleCloseSesion = () => {
     setLoginOk(false);
-    setUserData({});
+    setUserData({}); //al cerrar la sesion se borra del storage
     return loginOk;
   };
   const handleOpenSesion = () => {
@@ -34,13 +42,23 @@ export const useForm = (initialForm) => {
     return loginOk;
   };
 
-  const validationSignInOk = () => {
+  const validationSignInOk = () => {    
+    const { username, fullname, email, password} = form;
     const { userNameError, fullNameError, emailError, passwordError } = errors;
-    if (!userNameError && !fullNameError && !emailError && !passwordError) {
-      formIsOkRef.current = true;
-    } else {
-      formIsOkRef.current = false;
-    }
+    
+    if(isLogin){
+      if ( !emailError && !passwordError  && email!=='' && password!=='') {
+        formIsOkRef.current = true;
+      } else {
+        formIsOkRef.current = false;
+      }
+    }else{
+        if (!userNameError && !fullNameError && !emailError && !passwordError && username!=='' && fullname!=='' && email!=='' && password!=='') {
+        formIsOkRef.current = true;
+      } else {
+        formIsOkRef.current = false;
+      }
+    }    
     return formIsOkRef;
   };
 
@@ -51,7 +69,7 @@ export const useForm = (initialForm) => {
       [name]: value,
     });
   };
-
+//------
   const validateForm = (nameError, valueError) => {
     setErrors({
       ...errors,
@@ -129,6 +147,7 @@ export const useForm = (initialForm) => {
         .catch((er) => {
           console.log(er);
           alert("Error en el registro, por favor vuelve a intentarlo");
+          setForm(initialForm);
           handleCloseSesion();
         });
     }
@@ -146,7 +165,7 @@ export const useForm = (initialForm) => {
     setIsLogin,
     handleCloseSesion,
     loading,
-    response,
+    
     handleChange,
     handleKeyUpUser,
     handleKeyUpFullName,
