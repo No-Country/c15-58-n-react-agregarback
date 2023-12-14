@@ -11,7 +11,7 @@ const Cart = () => {
   const navigate = useNavigate()
   return (
     <main className="w-full min-h-[calc(100vh-150px)] ">
-      <div className="w-3/5 m-auto">
+      <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] m-auto">
         {products.length > 0 ? (
           <div className="w-full my-10">
           <div className="bg-[#525252] text-white p-2 rounded-t">

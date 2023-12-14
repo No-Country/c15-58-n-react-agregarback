@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-10 w-full  bg-[#822626]">
-      <nav className="flex items-center justify-between sm:w-[80%] w-[85%] md:w-4/5 lg:w-[65%] h-24 m-auto text-white">
+      <nav className="flex items-center justify-between w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] h-24 m-auto text-white">
         <a className="sm:flex items-center" href="/">
           <span className="font-roboto-serif lg:text-2xl text-sm">Readly</span>
           <img className="w-12 sm:w-20 md:w-24 h-auto" src={Logo} alt="logo" />

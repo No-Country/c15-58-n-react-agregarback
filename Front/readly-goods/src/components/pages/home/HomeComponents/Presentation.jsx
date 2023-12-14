@@ -5,7 +5,7 @@ import BooksCarrousel from "./BooksCarrousel";
 const Presentation = () => {
   return (
     <div className="w-full md:my-7">
-      <div className="flex flex-col items-center justify-center p-1 md:px-5 rounded-lg md:flex-row ">
+      <div className="flex flex-col items-center justify-center p-1 md:px-5 rounded-lg md:flex-row  ">
         <div className="md:w-1/2 p-2  lg:p-2 text-[#1c1c1c]">
           <h1 className="pt-1 text-2xl text-center lg:text-right font-semibold lg:text-3xl text-[#822626] ">
             En Readly Goods...
@@ -22,14 +22,14 @@ const Presentation = () => {
         </div>
       </div>
       <BooksCarrousel/>
-      <div className="flex flex-col md:justify-between w-full mt-10 md:flex-row">
+      <div className="flex flex-col md:justify-between w-[95%]  mt-10 md:flex-row mx-auto">
         <img
-          className="rounded-lg m-1 md:m-0 sm:w-[80%] sm:mx-auto sm:my-2 md:w-[45%]"
+          className="rounded-lg m-1 mx-auto sm:w-[80%]  sm:my-2 md:w-[45%]"
           src={LibrosIngles}
           alt="LibreoIngles"
         />
 
-        <img className="rounded-lg m-1 md:m-0 sm:w-[80%] sm:my-2 sm:mx-auto md:w-[45%]" src={Cupon} alt="LibreoIngles" />
+        <img className="rounded-lg m-1 mx-auto sm:w-[80%] sm:my-2 items-end md:w-[45%]" src={Cupon} alt="LibreoIngles" />
       </div>
     </div>
   );

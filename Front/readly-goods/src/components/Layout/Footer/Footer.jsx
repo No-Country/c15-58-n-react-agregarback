@@ -6,7 +6,7 @@ import logoPya from "../../../assets/pedidosya.png";
 const Footer = () => {
   return (
     <footer className="bg-[#822626] w-full">
-      <div className="flex items-center justify-between w-[100%] md:w-3/5 p-1 md:p-4 m-auto">
+      <div className="flex items-center justify-between w-[90%] sm:w-[85%] md:w-[75%] lg:w-[65%] md:p-4 m-auto">
         <div className="flex items-center justify-center md:p-1 p-5">
           
           <p className="w-5 sm:w-7 sm:h-7 h-5 md:w-10 md:h-10 m-1">
