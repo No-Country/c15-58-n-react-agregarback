@@ -9,11 +9,16 @@ const Cart = () => {
   const { products, deleteAllProducts, deleteProduct,totalPrice } =
     useContext(context);
   const navigate = useNavigate()
+const handleClick =() => {
+  alert('Compra exitosa')
+}
+
   return (
-    <main className="w-full min-h-[calc(100vh-150px)] ">
-      <div className="w-3/5 m-auto">
+    <main className="w-full min-h-[calc(100vh-230px)] ">
+      <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] m-auto">
+        <h1 className="text-4xl p-3 mt-5 bg-gray-200 rounded text-[#690202] font-bold ">Compras:</h1>
         {products.length > 0 ? (
-          <div className="w-full my-10">
+          <div className="w-full my-5">
           <div className="bg-[#525252] text-white p-2 rounded-t">
             <h1 className="text-2xl ">Detalle de pedido</h1>
           </div>
@@ -46,11 +51,11 @@ const Cart = () => {
               
             </div>
             <div className="flex flex-row items-end justify-end w-full">
-            <button onClick={console.log(products)} className="py-3 px-2 mt-5 text-white transition-colors bg-[#690202] rounded-sm hover:bg-[#262525]">IR AL METODO DE PAGO</button>
+            <button onClick={handleClick} className="py-3 px-2 mt-5 text-white transition-colors bg-[#690202] rounded-sm hover:bg-[#262525]">IR AL METODO DE PAGO</button>
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center w-full h-[30rem] rounded mt-12 mb-0 bg-gray-200">
+          <div className="flex items-center justify-center w-full h-[30rem] rounded my-12  bg-gray-200">
             <div className="flex flex-col items-center justify-center py-5">
             <FontAwesomeIcon className="h-16 py-3" icon={faCartShopping} />
               <span className="mb-2 text-lg py-3">Aún no has agregado artículos a tu compra.</span>

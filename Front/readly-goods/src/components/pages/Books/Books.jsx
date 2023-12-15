@@ -128,7 +128,7 @@ const Books = () => {
 
   return (
     <main className=" w-full py-12">
-      <div className="lg:w-3/5 lg:m-auto mx-12 flex flex-col gap-6">
+      <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] m-auto  flex flex-col gap-6">
         <div className="flex flex-row items-center justify-between">
           <h1 className="text-2xl font-semibold uppercase text-[#822626] w-3/6">
             Productos
