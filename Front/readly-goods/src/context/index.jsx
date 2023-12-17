@@ -10,10 +10,14 @@ export const context = createContext();
 
 const ContextProvider = ({ children }) => {
   //---------------cart----------------------------------------------------
-  const { products,
+  const {
+    products,
     addProduct,
     deleteAllProducts,
-    deleteProduct,totalPrice } = useCart();
+    deleteProduct,
+    totalPrice,
+    badgeCount,
+  } = useCart();
   //------------Validacion del form--------------------------------------------------
   const {
     form,
@@ -27,7 +31,7 @@ const ContextProvider = ({ children }) => {
     setLoginOk,
     handleCloseSesion,
     loading,
-    
+
     handleChange,
     handleKeyUpUser,
     handleKeyUpFullName,
@@ -54,7 +58,6 @@ const ContextProvider = ({ children }) => {
         form,
         errors,
         loading,
-        
         handleChange,
         handleKeyUpUser,
         handleKeyUpFullName,
@@ -64,10 +67,11 @@ const ContextProvider = ({ children }) => {
         handleOnFocusPassword,
         handleSubmit,
         products,
-    addProduct,
-    deleteAllProducts,
-    deleteProduct,
-    totalPrice,
+        addProduct,
+        deleteAllProducts,
+        deleteProduct,
+        totalPrice,
+        badgeCount,
       }}
     >
       {children}

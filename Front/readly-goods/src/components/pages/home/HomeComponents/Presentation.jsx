@@ -11,7 +11,10 @@ const Presentation = () => {
             En Readly Goods...
           </h1>
           <p className="md:w-3/4 lg:w-full p-2 md:pl-8 lg:p-2 text-base font-semibold lg:text-right lg:text-lg lg:leading-10">
-          Encuentra la lectura ideal para tus gustos literarios, ya sea una aventura emocionante, conocimiento enriquecedor o entretenimiento, en nuestro amplio catálogo.</p>
+            Encuentra la lectura ideal para tus gustos literarios, ya sea una
+            aventura emocionante, conocimiento enriquecedor o entretenimiento,
+            en nuestro amplio catálogo.
+          </p>
         </div>
         <div className="text-white md:p-5 w-[90%] rounded-lg md:w-[60%]">
           <img
@@ -21,7 +24,7 @@ const Presentation = () => {
           />
         </div>
       </div>
-      <BooksCarrousel/>
+      <BooksCarrousel />
       <div className="flex flex-col md:justify-between w-[95%]  mt-10 md:flex-row mx-auto">
         <img
           className="rounded-lg m-1 mx-auto sm:w-[80%]  sm:my-2 md:w-[45%]"
@@ -29,7 +32,11 @@ const Presentation = () => {
           alt="LibreoIngles"
         />
 
-        <img className="rounded-lg m-1 mx-auto sm:w-[80%] sm:my-2 items-end md:w-[45%]" src={Cupon} alt="LibreoIngles" />
+        <img
+          className="rounded-lg m-1 mx-auto sm:w-[80%] sm:my-2 items-end md:w-[45%]"
+          src={Cupon}
+          alt="LibroIngles"
+        />
       </div>
     </div>
   );

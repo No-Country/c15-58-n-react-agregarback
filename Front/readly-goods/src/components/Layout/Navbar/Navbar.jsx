@@ -8,7 +8,8 @@ import { context } from "../../../context";
 import ButtonUser from "./navbarComponents/ButtonUser";
 
 const Navbar = () => {
-  const {products, openModal, loginOk, form } = useContext(context);
+  const { products, openModal, loginOk, form, badgeCount } =
+    useContext(context);
 
   return (
     <header className="sticky top-0 z-10 w-full  bg-[#822626]">
@@ -31,27 +32,34 @@ const Navbar = () => {
           <li className="uppercase sm:p-2 md:p-3 lg:px-5 p-5 hover:text-[#262525]">
             <Link to="/faq">FAQ</Link>
           </li>
- {/*----------------------------login--------------------------------------------*/}
-          {loginOk?(<ButtonUser/>):
-          (<li
-            className="flex flex-col items-center lg:px-5 p-1 cursor-pointer sm:p-5"
-            onClick={openModal}
-          >
-            
-            <FontAwesomeIcon
-              className={"text-white h-5  hover:text-[#262525]"}
-              icon={faUser}
-            />
-          </li>)}
-   {/*--------------------------CARRITO DE COMPRA---------------------------------*/}
+          {/*----------------------------login--------------------------------------------*/}
+          {loginOk ? (
+            <ButtonUser />
+          ) : (
+            <li
+              className="flex flex-col items-center lg:px-5 p-1 cursor-pointer sm:p-5"
+              onClick={openModal}
+            >
+              <FontAwesomeIcon
+                className={"text-white h-5  hover:text-[#262525]"}
+                icon={faUser}
+              />
+            </li>
+          )}
+          {/*--------------------------CARRITO DE COMPRA---------------------------------*/}
           <li className="relative inline-flex lg:pl-5 p-2 pl-5 sm:pl-5">
-         
             <Link to="/cart">
               <FontAwesomeIcon
                 className=" h-5 hover:text-[#262525]"
                 icon={faCartShopping}
               />
-              {products.length > 0 && <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2">{products.length}</div>}
+              {badgeCount ? (
+                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2">
+                  {badgeCount}
+                </div>
+              ) : (
+                <></>
+              )}
             </Link>
           </li>
         </ul>
