@@ -24,7 +24,7 @@ export default function BookForm() {
           author: "",
           year: "",
           editorial: "",
-          genre: 0,
+          genre: "",
           stock: 0,
           image: "",
           price: 0,
@@ -85,7 +85,7 @@ export default function BookForm() {
             author: "",
             year: "",
             editorial: "",
-            genre: 0,
+            genre: "",
             stock: 0,
             image: "",
             price: 0,
@@ -106,129 +106,123 @@ export default function BookForm() {
   };
 
   return (
-    <main className="h-full w-full m-4">
-      <div>
-        <form
-          onSubmit={handleSubmit}
-          className=" bg-slate-700 shadow-md w-full h-full rounded-xl grid grid-cols-2"
-        >
-          <div className="flex flex-row m-4 justify-around">
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-              <label className="font-bold mb-2 text-center">
-                Título
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="title"
-                value={formData?.title}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="w-full md:w-1/3 px-3 justify-center content-center">
-              <label>Autor:</label>
-              <input
-                className=" w-12 h-12 shadow appearance-none border rounded py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="author"
-                checked={formData?.author}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="w-full md:w-1/3 px-3 justify-center content-center">
-              <label>Año:</label>
-              <input
-                className=" w-12 h-12 shadow appearance-none border rounded py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="year"
-                checked={formData?.year}
-                onChange={handleInputChange}
-              />
-            </div>
+    <main className="h-full w-full flex items-center justify-center text-center my-4 rounded-xl">
+    <div className="h-[70%] w-[70%] bg-[#9c1214ad] rounded-xl">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-[#9c1214ad] w-full h-full rounded-xl grid grid-cols-1 md:grid-cols-3 text-white"
+      >
+        <div className="flex flex-col m-4 justify-around text-white">
+          <div className="mb-6">
+            <label className="font-bold mb-2 text-center">Título</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="title"
+              value={formData?.title}
+              onChange={handleInputChange}
+              required
+            />
           </div>
-          <div className="flex flex-row w-full justify-evenly">
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-              <label className="font-bold mb-2 text-center">Editorial:</label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="editorial"
-                value={formData?.editorial}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="w-full md:w-1/3 px-3">
-              <label className="font-bold mb-2 text-center">Genero:</label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="genre"
-                value={formData?.genre}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="w-full md:w-1/3 px-3">
-              <label className="font-bold mb-2 text-center">Stock:</label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="stock"
-                value={formData?.stock}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-          </div>
-          <div className="flex flex-row m-4 justify-around">
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-              <label className="font-bold mb-2 text-center">
-                Imagen
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="image"
-                value={formData?.image}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="w-full md:w-1/3 px-3 justify-center content-center">
-              <label>Precio:</label>
-              <input
-                className=" w-12 h-12 shadow appearance-none border rounded py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="price"
-                checked={formData?.price}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-            <div className="w-full md:w-1/3 px-3 justify-center content-center">
-              <label>Resumen:</label>
-              <input
-                className=" w-12 h-12 shadow appearance-none border rounded py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                name="description"
-                checked={formData?.description}
-                onChange={handleInputChange}
-              />
-            </div>
-            </div>
+          <div className="mb-6">
+            <label className="font-bold mb-2 text-center">Autor:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="author"
+              checked={formData?.author}
+              onChange={handleInputChange}
+            />
           </div>
           <div>
-            <button
-              className=" hover:border-lime-400 font-second-font font-semibold text-xl rounded-xl text-zinc-50 bg-slate-700 m-2 p-4 border-solid"
-              type="submit"
-            >
-              Guardar Cambios
-            </button>
+            <label className="font-bold mb-2 text-center">Año:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="year"
+              checked={formData?.year}
+              onChange={handleInputChange}
+            />
           </div>
-        </form>
-      </div>
-    </main>
+        </div>
+        <div className="flex flex-col m-4 justify-around">
+          <div className="mb-6">
+            <label className="font-bold mb-2 text-center">Editorial:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="editorial"
+              value={formData?.editorial}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label className="font-bold mb-2 text-center">Genero:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="genre"
+              value={formData?.genre}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="font-bold mb-2 text-center">Stock:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="stock"
+              value={formData?.stock}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+        </div>
+        <div className="flex flex-col m-4 justify-around">
+          <div className="mb-6">
+            <label className="font-bold mb-2 text-center">Imagen</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="image"
+              value={formData?.image}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label className="font-bold mb-2 text-center">Precio:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="price"
+              checked={formData?.price}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label className="font-bold mb-2 text-center">Resumen:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="description"
+              checked={formData?.description}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+        <div className="w-full flex justify-center items-center">
+          <button
+            className="text-white text-2xl w-fit bg-[#822626] hover:shadow-gray-300 hover:bg-[#e9cccc] hover:shadow-md rounded p-1 mx-auto my-2"
+            type="submit"
+          >
+            Guardar Cambios
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
   );
 }
