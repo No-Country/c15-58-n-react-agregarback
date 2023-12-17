@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Card from "./BooksComponents/Card";
 import libroSpinner from "../../../assets/spinner/libroSpinner.gif";
 import { useSearchParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Books = () => {
   const [books, setBooks] = useState();
@@ -40,18 +42,16 @@ const Books = () => {
   
   const handleFilterClick = (e) => {
     const { name, value } = e.target;
-    if(queryFilter[name]==value){
-      setQueryFilter({ ...queryFilter, [name]: "", search:"" });
-    }else{
-      setQueryFilter({ ...queryFilter, [name]: value, search:"" });
-
+    if (queryFilter[name] == value) {
+      setQueryFilter({ ...queryFilter, [name]: "", search: "" });
+    } else {
+      setQueryFilter({ ...queryFilter, [name]: value, search: "" });
     }
   };
   const handlerOnChangeSearchBar = (e) => {
-    const {value} = e.target
-    setQueryFilter({...queryFilter, search:value} )
-  }
-
+    const { value } = e.target;
+    setQueryFilter({ ...queryFilter, search: value });
+  };
 
   const getAllGenre = () => {
     const genres = books?.flatMap((book) =>
@@ -67,7 +67,7 @@ const Books = () => {
           name={"genre"}
           value={genre}
         >
-          {genre} 
+          {genre}
         </button>
       ) : (
         <button
@@ -142,41 +142,71 @@ const Books = () => {
   return (
     <main className="w-full py-12 ">
       <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] m-auto  flex flex-col gap-6">
-        <div className="flex flex-row items-center justify-between">
-          <h1 className="text-2xl font-semibold uppercase text-[#822626] w-3/6">
+        <div className="flex flex-row items-center justify-between ">
+          <h1 className="text-2xl font-semibold uppercase text-[#822626] w-2/6">
             Productos
           </h1>
-          <p className="text-sm text-[#822626] w-1/6 font-semibold">
+
+          <div className="flex w-2/6">
+            <input
+              value={queryFilter.search}
+              onChange={handlerOnChangeSearchBar}
+              type="text"
+              placeholder="Busqueda..."
+              className="w-full text-gray-600 border-gray-400 border-solid rounded lg:h-9 border-1"
+            />
+          </div>
+
+          <p className="text-sm text-[#822626] w-2/6 font-semibold text-right">
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
-          <div className="flex w-2/6">
-
-            <input value={queryFilter.search} onChange={handlerOnChangeSearchBar} type="text" placeholder="Busqueda..." className="w-full text-gray-600 border-gray-400 border-solid rounded border-1" />
-
-          </div>
         </div>
         <hr />
 
         <div className="w-full flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-1">
           <aside className="w-full md:sticky md:block">
             <div className="flex flex-wrap gap-3 pb-5">
-                {queryFilter.genre?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-slate-500 rounded flex gap-2" name="genre">{queryFilter.genre}</button>:null}
-                {queryFilter.editorial?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-slate-500 rounded" name="editorial">{queryFilter.editorial}</button>:null}
-                {queryFilter.author?<button onClick={handleFilterClick} className="bg-[#822626] px-3 py-1 text-white shadow-md shadow-slate-500 rounded" name="author">{queryFilter.author}</button>:null}
+              {queryFilter.genre ? (
+                <button
+                  onClick={handleFilterClick}
+                  className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded flex gap-2 items-center"
+                  name="genre"
+                >
+                  {queryFilter.genre} {""}
+                  <FontAwesomeIcon icon={faCircleXmark} />
+                </button>
+              ) : null}
+              {queryFilter.editorial ? (
+                <button
+                  onClick={handleFilterClick}
+                  className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded items-center"
+                  name="editorial"
+                >
+                  {queryFilter.editorial}{" "}
+                  <FontAwesomeIcon icon={faCircleXmark} />
+                </button>
+              ) : null}
+              {queryFilter.author ? (
+                <button
+                  className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded items-center"
+                  name="author"
+                  onClick={handleFilterClick}
+                >
+                  {queryFilter.author} {""}
+                  <FontAwesomeIcon icon={faCircleXmark} />
+                </button>
+              ) : null}
             </div>
             <h4 className="text-lg font-semibold text-[#822626] ">Género</h4>
             <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm ">
-            
               {books && getAllGenre()}
             </div>
             <h4 className="text-lg font-semibold text-[#822626]">Editorial</h4>
             <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
-              
               {books && getAllEditorial()}
             </div>
             <h4 className="text-lg font-semibold text-[#822626]">Autor</h4>
             <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
-              
               {books && getAllAuthor()}
             </div>
           </aside>
@@ -188,17 +218,22 @@ const Books = () => {
             }`}
           >
             {books?.length > 0 ? (
-              filteredBooks?.length > 0
-              ?filteredBooks?.map(({ _id, image, title, price }) => (
-                <Card
-                  image={image}
-                  title={title}
-                  price={price}
-                  id={_id}
-                  key={_id}
-                />
-              ))
-              : <h2>No hay libros disponibles con esta descripción</h2>
+              filteredBooks?.length > 0 ? (
+                filteredBooks?.map(({ _id, image, title, price }) => (
+                  <Card
+                    image={image}
+                    title={title}
+                    price={price}
+                    id={_id}
+                    key={_id}
+                  />
+                ))
+              ) : (
+                <span className="m-auto mt-72 text-[#822626] font-bold text-xl text-center">
+                  Lo sentimos, el libro que busca no esta disponible. Estaremos
+                  trabajando para conseguirlo pronto.
+                </span>
+              )
             ) : (
               <div className="flex flex-col items-center justify-center w-full h-full">
                 <p className="text-lg text-[#822626] font-semibold">

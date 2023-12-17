@@ -71,16 +71,20 @@ const Presentation = () => {
         </div>
       </div>
       <BooksCarrousel />
+
       <h2 className="text-3xl text-[#822626] mb-8">Compra por categoría</h2>
       <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
-      <Link
+        <Link
           to={"books/?genre=Novela"}
           className=" bg-[#262525] rounded-2xl p-8 text-white hover:bg-[#690202] inline-flex items-center justify-center gap-8 group"
         >
           <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
             Novela
           </h2>
-          <FontAwesomeIcon className="h-5 transition-all md:h-8 group-hover:translate-x-1" icon={faArrowRight} />
+          <FontAwesomeIcon
+            className="h-5 transition-all md:h-8 group-hover:translate-x-1"
+            icon={faArrowRight}
+          />
         </Link>
         <Link
           to={"books/?genre=Inglés"}
@@ -89,7 +93,10 @@ const Presentation = () => {
           <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
             Inglés
           </h2>
-          <FontAwesomeIcon className="h-5 transition-all md:h-8 group-hover:translate-x-1" icon={faArrowRight} />
+          <FontAwesomeIcon
+            className="h-5 transition-all md:h-8 group-hover:translate-x-1"
+            icon={faArrowRight}
+          />
         </Link>
         <Link
           to={"books/?genre=Programación"}
@@ -98,7 +105,10 @@ const Presentation = () => {
           <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
             Programación
           </h2>
-          <FontAwesomeIcon className="h-5 transition-all md:h-8 group-hover:translate-x-1" icon={faArrowRight} />
+          <FontAwesomeIcon
+            className="h-5 transition-all md:h-8 group-hover:translate-x-1"
+            icon={faArrowRight}
+          />
         </Link>
         <Link
           to={"books/?genre=Cocina"}
@@ -107,7 +117,10 @@ const Presentation = () => {
           <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
             Cocina
           </h2>
-          <FontAwesomeIcon className="h-5 transition-all md:h-8 group-hover:translate-x-1" icon={faArrowRight} />
+          <FontAwesomeIcon
+            className="h-5 transition-all md:h-8 group-hover:translate-x-1"
+            icon={faArrowRight}
+          />
         </Link>
       </div>
     </div>
