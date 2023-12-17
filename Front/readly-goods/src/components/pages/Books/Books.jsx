@@ -1,38 +1,53 @@
 import { useEffect, useState } from "react";
 import Card from "./BooksComponents/Card";
 import libroSpinner from "../../../assets/spinner/libroSpinner.gif";
+import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Books = () => {
   const [books, setBooks] = useState();
   const [filteredBooks, setFilteredBooks] = useState();
+  const [searchParams] = useSearchParams();
   const [queryFilter, setQueryFilter] = useState({
     genre: "",
     editorial: "",
     author: "",
     search: "",
   });
+
   const [currentPage, setCurrentPage] = useState({
     min: 0,
     max: 12,
     current: 1,
   });
 
-  let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
+  
+  const genre = searchParams.get('genre');
+
+
+    let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
+ 
+  useEffect(() => {
+    fetch("https://c15-58-readlygoods-three.vercel.app/books")
+    .then((res) => res.json())
+    .then((data) => setBooks(data.allBooks));
+  }, []);
+  
+  useEffect(() => {
+    if(genre){
+      setQueryFilter({...queryFilter, genre:genre} )
+      urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
+    }
+  }, []);
 
   useEffect(() => {
     fetch(urlData)
       .then((res) => res.json())
       .then((data) => setFilteredBooks(data.filteredBooks));
-  }, [urlData]);
-
-  useEffect(() => {
-    fetch("https://c15-58-readlygoods-three.vercel.app/books")
-      .then((res) => res.json())
-      .then((data) => setBooks(data.allBooks));
-  }, []);
-
+  }, [urlData]); 
+  
+  
   const handleFilterClick = (e) => {
     const { name, value } = e.target;
     if (queryFilter[name] == value) {
@@ -165,7 +180,7 @@ const Books = () => {
   };
 
   return (
-    <main className=" w-full py-12">
+    <main className="w-full py-12 ">
       <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] m-auto  flex flex-col gap-6">
         <div className="flex flex-row items-center justify-between ">
           <h1 className="text-2xl font-semibold uppercase text-[#822626] w-2/6">
@@ -178,7 +193,7 @@ const Books = () => {
               onChange={handlerOnChangeSearchBar}
               type="text"
               placeholder="Busqueda..."
-              className="lg:h-9 w-full border-solid border-1 border-gray-400 text-gray-600 rounded"
+              className="w-full text-gray-600 border-gray-400 border-solid rounded lg:h-9 border-1"
             />
           </div>
 
@@ -262,12 +277,12 @@ const Books = () => {
                 </span>
               )
             ) : (
-              <div className="flex justify-center items-center flex-col w-full h-full">
+              <div className="flex flex-col items-center justify-center w-full h-full">
                 <p className="text-lg text-[#822626] font-semibold">
                   Cargando...
                 </p>
                 <img
-                  className="h-auto w-52 p-10"
+                  className="h-auto p-10 w-52"
                   src={libroSpinner}
                   alt="spinner"
                 />
