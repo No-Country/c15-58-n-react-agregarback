@@ -15,8 +15,16 @@ const Books = () => {
     author: "",
     search: "",
   });
+
+  const [currentPage, setCurrentPage] = useState({
+    min: 0,
+    max: 12,
+    current: 1,
+  });
+
   
   const genre = searchParams.get('genre');
+
 
     let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
  
@@ -51,6 +59,38 @@ const Books = () => {
   const handlerOnChangeSearchBar = (e) => {
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
+  };
+  console.log(currentPage);
+  const changePage = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    console.log(name);
+    console.log(value);
+    if (name == "previous" && currentPage.current !== 1) {
+      setCurrentPage({
+        ...currentPage,
+        min: currentPage.min - 12,
+        max: currentPage.max - 12,
+        current: currentPage.current - 1,
+      });
+    } else if (
+      name == "next" &&
+      currentPage.current !== Math.ceil(filteredBooks.length / 12)
+    ) {
+      setCurrentPage({
+        ...currentPage,
+        min: currentPage.min + 12,
+        max: currentPage.max + 12,
+        current: currentPage.current + 1,
+      });
+    } else if (name == "page") {
+      setCurrentPage({
+        ...currentPage,
+        current: Number(value),
+        min: 12 * value - 12,
+        max: 12 * value,
+      });
+    }
   };
 
   const getAllGenre = () => {
@@ -219,15 +259,17 @@ const Books = () => {
           >
             {books?.length > 0 ? (
               filteredBooks?.length > 0 ? (
-                filteredBooks?.map(({ _id, image, title, price }) => (
-                  <Card
-                    image={image}
-                    title={title}
-                    price={price}
-                    id={_id}
-                    key={_id}
-                  />
-                ))
+                filteredBooks?.map(({ _id, image, title, price }, index) =>
+                  index >= currentPage.min && index < currentPage.max ? (
+                    <Card
+                      image={image}
+                      title={title}
+                      price={price}
+                      id={_id}
+                      key={_id}
+                    />
+                  ) : null
+                )
               ) : (
                 <span className="m-auto mt-72 text-[#822626] font-bold text-xl text-center">
                   Lo sentimos, el libro que busca no esta disponible. Estaremos
@@ -247,6 +289,49 @@ const Books = () => {
               </div>
             )}
           </div>
+        </div>
+        <div className="flex justify-center items-center gap-10 bg-slate-600 w-full">
+          <button
+            onClick={changePage}
+            name="previous"
+            className="border-solid border-black border-2 p-2"
+          >
+            {"<"}
+          </button>
+          {filteredBooks?.map((x, index) => {
+            if (index % 12 == 0) {
+              if (index / 12 + 1 == currentPage.current) {
+                return (
+                  <button
+                    className="border-solid border-black border-2 p-2"
+                    onClick={changePage}
+                    key={index}
+                    value={index / 12 + 1}
+                    name="page"
+                  >
+                    {index / 12 + 1}
+                  </button>
+                );
+              } else
+                return (
+                  <button
+                    onClick={changePage}
+                    key={index}
+                    value={index / 12 + 1}
+                    name="page"
+                  >
+                    {index / 12 + 1}
+                  </button>
+                );
+            }
+          })}
+          <button
+            onClick={changePage}
+            name="next"
+            className="border-solid border-black border-2 p-2"
+          >
+            {">"}
+          </button>
         </div>
       </div>
     </main>
