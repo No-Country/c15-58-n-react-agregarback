@@ -2,27 +2,27 @@ import React from "react";
 import Accordion from "../../accordion/Accordion";
 
 const Faq = () => {
-  
   return (
     <main className="w-full pb-44">
-      <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%]	m-auto py-5">
-        <h1 className="text-4xl p-3 bg-gray-200 rounded text-[#690202] font-bold ">
-          Preguntas frecuentes:
+      <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%]	m-auto my-10">
+        <h1 className="text-5xl p-3 rounded text-[#822626] font-bold ">
+          Preguntas frecuentes
         </h1>
-        <div className="py-5">
+
+        <div className="mt-10 ">
           <Accordion
-            title={"CÓMO COMPRAR:"}
+            title={"Cómo comprar"}
             classTitle={
-              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded border-[#525252] hover:bg-gray-200"
+              "text-2xl text-black bg-grey-200 text-left p-3 w-full h-16 border-b font-bold rounded-t hover:bg-[#690202] hover:text-white"
             }
             content={
-              <>
+              <div className="md:p-5 p-1 py-5 leading-7">
                 <div>PROCESO DE COMPRA</div>
                 <p>
                   Comprar en nuestra librería es muy sencillo, sólo debes seguir
                   los siguientes pasos:
                 </p>
-                <ol className="list-decimal">
+                <ol className="list-decimal list-inside">
                   <li>
                     Elige el libro que te interesa. A través de un click
                     conseguirás una ampliación de la fotografía y la información
@@ -80,19 +80,20 @@ const Faq = () => {
                     tu compra, en un plazo no mayor a 48hrs hábiles.
                   </li>
                 </ol>
-              </>
+              </div>
             }
-            classContent={"text-[#525252] px-5 py-2 "}
-            classAccordion={""}
+            classContent={"text-[#525252] px-5"}
+            classAccordion={"bg-white rounded-t"}
           />
+
           <Accordion
-            title={"MEDIOS DE PAGO"}
+            title={"Medios de pago"}
             classTitle={
-              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+              "text-2xl text-black bg-grey-200 text-left p-3 w-full h-16 border-b  font-bold hover:bg-[#690202] hover:text-white"
             }
             content={
-              <>
-                <div className="p-1 font-bold">MEDIOS DE PAGO</div>
+              <div className="md:p-5 p-1 py-5  leading-7">
+                <div className="p-1 font-bold">Medios de pago</div>
                 <p>
                   En nuestra librería online disponemos de los siguientes medios
                   de pago: tarjetas de crédito Visa, American Express y Oca,
@@ -124,19 +125,20 @@ const Faq = () => {
                   en datos de facturación y completar los datos fiscales que
                   solicitamos. ReadlyGoods
                 </p>
-              </>
+              </div>
             }
-            classContent={"text-[#525252] px-5 py-2"}
-            classAccordion={""}
+            classContent={"text-[#525252] px-5"}
+            classAccordion={"bg-white"}
           />
+
           <Accordion
-            title={"ENVÍOS"}
+            title={"Envíos"}
             classTitle={
-              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+              "text-2xl text-black bg-grey-200 text-left p-3 w-full h-16 border-b  font-bold hover:bg-[#690202] hover:text-white"
             }
             content={
-              <>
-                <div className="p-1 font-bold">1. PICK UP CENTER </div>
+              <div className="md:p-5 p-1 py-5  leading-7">
+                <div className="p-1 font-bold">PICK UP CENTER </div>
                 <p>
                   Podés retirar tus pedidos en cualquiera de nuestras 10
                   librerías en todo el país, previa solicitud, la entrega es sin
@@ -161,27 +163,28 @@ const Faq = () => {
                   será enviado a Casa Central, Gabriel A. Pereira 3076.
                 </p>
                 <div className="p-1 font-bold">
-                  2. ENVÍOS DIRECTOS A TODO EL PAÍS
+                  ENVÍOS DIRECTOS A TODO EL PAÍS
                 </div>
                 <p>
                   Entregamos en todo el país, en Montevideo puede demorar hasta
                   3 días hábiles siguientes a su pedido y en el interior hasta 5
                   días hábiles siguientes.
                 </p>
-              </>
+              </div>
             }
-            classContent={"text-[#525252] px-5 py-2"}
-            classAccordion={""}
+            classContent={"text-[#525252] px-5"}
+            classAccordion={"bg-white "}
           />
 
           <Accordion
-            title={"DEVOLUCIONES"}
+            title={"Devoluciones"}
             classTitle={
-              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+              "text-2xl text-black bg-grey-200 text-left p-3 w-full h-16 border-b  font-bold hover:bg-[#690202] hover:text-white"
             }
             content={
-              <>
+              <div className="md:p-5 p-1 py-5  leading-7">
                 <div className="p-1 font-bold">POLITICA DE DEVOLUCIONES</div>
+
                 <p>
                   El cliente tendrá la posibilidad de cancelar la compra de un
                   libro impreso en cualquier momento y sin ningún costo siempre
@@ -189,6 +192,7 @@ const Faq = () => {
                   sido puesto a disposición del transportista para su envío. En
                   caso contrario no se realizarán reembolsos ni cancelaciones.
                 </p>
+
                 <p>
                   Si un producto distinto al solicitado por el cliente fuera
                   entregado por error de readlygoods, se le entregará el
@@ -199,6 +203,7 @@ const Faq = () => {
                   domicilio, sustituyéndolo por otro en buen estado, sin cargos
                   adicionales.{" "}
                 </p>
+
                 <p>
                   No se realizará cambio alguno por otro producto distinto al
                   adquirido originalmente, salvo que por falta de stock no fuese
@@ -211,24 +216,21 @@ const Faq = () => {
                   consulta puede ponerse en contacto con readlygoods a través de
                   nuestro mail info@readlygoods.com.
                 </p>
-              </>
+              </div>
             }
-            classContent={"text-[#525252] px-5 py-2"}
-            classAccordion={""}
+            classContent={"text-[#525252] px-5"}
+            classAccordion={"bg-white "}
           />
+
           <Accordion
-            title={"TÉRMINOS Y CONDICIONES"}
+            title={"Términos y condiciones"}
             classTitle={
-              "text-2xl text-[#822626] text-left p-1 w-full h-10 font-bold  rounded hover:border-5 hover:border-[#525252] hover:bg-gray-200"
+              "text-2xl text-black bg-grey-200 text-left p-3 w-full h-16 font-bold rounded-b hover:bg-[#690202] hover:text-white"
             }
             content={
-              <>
-                <p className="p-1 font-bold">
-                  CONDICIONES GENERALES DE CONTRATACIÓN
-                </p>
-                <p className="p-1 font-bold">
-                  1) OBJETO Y ÁMBITO DE APLICACIÓN
-                </p>
+              <div className="md:p-5 p-1 py-5 leading-7">
+                <p className="p-1 font-bold">OBJETO Y ÁMBITO DE APLICACIÓN:</p>
+
                 <p>
                   Las presentes Condiciones Generales de Contratación tienen
                   como objeto regular la relación entre ReadlyGoods Srl. (en
@@ -238,9 +240,11 @@ const Faq = () => {
                   ReadlyGoods, sociedad legalmente constituida, con domicilio
                   social en Gabriel A. Pereira 3076, 11200 Montevideo (Nigeria).
                 </p>
+
                 <p className="p-1 font-bold">
-                  2) ACEPTACIÓN Y PRUEBA DE ACEPTACIÓN
+                  ACEPTACIÓN Y PRUEBA DE ACEPTACIÓN:
                 </p>
+
                 <p>
                   La adquisición de los productos debe hacerse a través de la
                   activación de los botones PAGAR o COMPRAR que aparecen a pie
@@ -249,6 +253,7 @@ const Faq = () => {
                   Contratación tal y como se muestran en la página web de RG con
                   anterioridad a la adquisición de los productos.
                 </p>
+
                 <p>
                   Desde el momento de la aceptación, el usuario adquiere la
                   condición de Cliente de RG que se describe en estas
@@ -257,10 +262,12 @@ const Faq = () => {
                   quedan formalizadas las compras, a los que Ud. podrá acceder,
                   solicitándolo al e-mail: info@readlygoods.com
                 </p>
+
                 <p className="p-1 font-bold">
-                  3) PRECIOS, FORMA DE PAGO, ENTREGA Y DESISTIMIENTO
+                  PRECIOS, FORMA DE PAGO, ENTREGA Y DESISTIMIENTO:
                 </p>
-                <p className="p-1 font-bold">3.1 Precios</p>
+
+                <p className="p-1 font-bold">Precios</p>
                 <p>
                   Los precios aplicables a cada producto y/o servicio son los
                   indicados en la página web en la fecha del pedido. En los
@@ -268,6 +275,7 @@ const Faq = () => {
                   nacional, RG no asumirá los gastos correspondientes a
                   impuestos y aranceles aduaneros propios de cada país.
                 </p>
+
                 <p>
                   Las ofertas estarán debidamente marcadas e identificadas como
                   tal, indicando convenientemente el precio anterior y el precio
@@ -276,22 +284,30 @@ const Faq = () => {
                   que considere oportunas, pudiendo actualizar productos y
                   servicios en función del mercado.
                 </p>
+
                 <p>
                   Los gastos de envío que aparecen en el sitio web al realizar
                   el pedido se refieren a envíos dentro del territorio nacional.{" "}
                 </p>
-                <p className="p-1 font-bold">3.2 Forma de pago</p>
+
+                <p className="p-1 font-bold">Forma de pago</p>
+
                 <p>
                   Las compras se pueden pagar a través de los medios a
                   continuación enumerados:
                 </p>
+
                 <p>
                   · Contra reembolso: Disponible sólo para compras desde Uruguay
                   y para todos nuestros productos.
                 </p>
+
                 <p>· Tarjeta Visa y Oca.</p>
+
                 <p>· Transferencia bancaria.</p>
-                <p className="p-1 font-bold">3.3 Entrega</p>
+
+                <p className="p-1 font-bold">Entrega</p>
+
                 <p>
                   Los pedidos se envían a la dirección de entrega que el Cliente
                   indica, en el plazo indicado al elegir el modo de envío para
@@ -299,6 +315,7 @@ const Faq = () => {
                   comunicará debidamente al Cliente este extremo a la mayor
                   brevedad.
                 </p>
+
                 <p>
                   También podrás recoger tus envíos en alguna de nuestras
                   librerías físicas. Te lo entregamos en la librería que elijas
@@ -308,33 +325,40 @@ const Faq = () => {
                   librería seleccionada, y el Documento de Identidad de la
                   persona que recoge el pedido.
                 </p>
+
                 <p>
                   El Cliente podrá seleccionar la forma de envío de entre las
                   posibles para su zona de entrega que aparezca en la Web.{" "}
                 </p>
+
                 <p className="p-1 font-bold">
-                  4) TRÁMITES PARA CELEBRAR EL CONTRATO
+                  TRÁMITES PARA CELEBRAR EL CONTRATO:
                 </p>
+
                 <p>
                   Para la adquisición de los productos ofertados en la Web se
                   requiere exclusivamente rellenar el formulario (solicitud) de
                   compra con los datos personales y los datos de pago.
                 </p>
+
                 <p>
                   Una vez recibida una solicitud de compra, RG remitirá de forma
                   inmediata una confirmación del pedido a la dirección de correo
                   electrónico indicada en la solicitud de compra antes de que
                   transcurran 24 horas de la misma.
                 </p>
+
                 <p className="p-1 font-bold">
-                  5) GARANTÍA LEGAL Y RESPONSABILIDADES DE LA COMPAÑÍA
+                  GARANTÍA LEGAL Y RESPONSABILIDADES DE LA COMPAÑÍA:
                 </p>
+
                 <p>
                   El consumidor tiene derecho a reclamar frente al vendedor,
                   ante cualquier falta de conformidad que exista en el momento
                   de la entrega del bien en los plazos y condiciones que allí se
                   establecen.
                 </p>
+
                 <p>
                   Si la falta de conformidad del producto se manifiesta durante
                   los primeros 30 días, se entiende que el fallo ya existía
@@ -343,6 +367,7 @@ const Faq = () => {
                   naturaleza del producto o la índole de la falta de
                   conformidad.
                 </p>
+
                 <p>
                   Si la falta de conformidad se manifiesta después de esos
                   primeros 30 días, le corresponderá al Cliente demostrar que el
@@ -353,6 +378,7 @@ const Faq = () => {
                   precio, tal como establecen las vigentes disposiciones
                   legales.
                 </p>
+
                 <p>
                   La asistencia en garantía requiere la previa presentación de
                   la factura de compra. Para cualquier aclaración, incidencia o
@@ -360,6 +386,7 @@ const Faq = () => {
                   dirigirse al Departamento de Atención al Cliente mediante
                   correo electrónico a la dirección info@grupolibro.com.uy.
                 </p>
+
                 <p>
                   RG garantiza la calidad del servicio contratado a través de la
                   página web www.ReadlyGoods.com.uy Quedan garantizados todos
@@ -369,9 +396,9 @@ const Faq = () => {
                   devolución de los productos o la cancelación de los servicios
                   adquiridos por el Cliente.
                 </p>
-                <p className="p-1 font-bold">
-                  6) RESPONSABILIDADES DEL CLIENTE
-                </p>
+
+                <p className="p-1 font-bold">RESPONSABILIDADES DEL CLIENTE:</p>
+
                 <p>
                   El Cliente se obliga a realizar un uso lícito de los
                   servicios, sin contravenir la legislación vigente, ni lesionar
@@ -383,16 +410,20 @@ const Faq = () => {
                   los servicios por parte de RG, sin necesidad de preaviso al
                   Cliente y sin que ello dé derecho a indemnización alguna.
                 </p>
-                <p className="p-1 font-bold">7) SERVICIOS POSTVENTA</p>
+
+                <p className="p-1 font-bold">SERVICIOS POSTVENTA:</p>
+
                 <p>
                   Para cualquier consulta, sugerencia, queja o reclamación tras
                   la adquisición de los productos o servicios, RG pone a
                   disposición del Cliente un Servicio de Atención al Cliente en
                   el correo electrónico info@ReadlyGoods.com.uy
                 </p>
+
                 <p className="p-1 font-bold">
-                  8) PROPIEDAD INDUSTRIAL E INTELECTUAL
+                  PROPIEDAD INDUSTRIAL E INTELECTUAL:
                 </p>
+
                 <p>
                   Los derechos de propiedad intelectual e industrial sobre las
                   obras, marcas, logos, y cualquier otro susceptible de
@@ -412,10 +443,10 @@ const Faq = () => {
                   Contratación, el Cliente se compromete a respetar los derechos
                   de PropiedadIndustrial e Intelectual titularidad de RG.
                 </p>
-              </>
+              </div>
             }
-            classContent={"text-[#525252] px-5 py-2"}
-            classAccordion={""}
+            classContent={"text-[#525252] px-5"}
+            classAccordion={"bg-white rounded-b"}
           />
         </div>
       </div>
