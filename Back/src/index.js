@@ -5,6 +5,7 @@ import { connectDB } from './db/config.js'
 import { userRouter } from './routers/users.router.js'
 import { booksRouter } from './routers/books.router.js'
 import { cartRouter } from './routers/cart.router.js'
+import { paymentRouter } from './routers/payment.router.js'
 
 const app = express()
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use('/users', userRouter)
 app.use('/books', booksRouter)
 app.use('/cart', cartRouter)
+app.use('/pay', paymentRouter)
 
 connectDB()
 
