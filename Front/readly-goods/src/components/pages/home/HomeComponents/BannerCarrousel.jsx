@@ -6,8 +6,8 @@ import { Carousel } from "flowbite-react";
 
 const BannerCarrousel = () => {
   return (
-    <div className="h-72 sm:h-64 xl:h-80 2xl:h-96">
-      <Carousel>
+    <div className="h-72 sm:h-64 xl:h-80 2xl:h-96 rounded-none">
+      <Carousel id="carousel" className="rounded-none" >
         <img className="h-full" src={image1} alt="Banner Image 1" />
         <img className="h-full" src={image2} alt="Banner Image 2" />
         <img className="h-full" src={image3} alt="Banner Image 3" />

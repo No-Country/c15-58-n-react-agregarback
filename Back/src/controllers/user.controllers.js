@@ -50,9 +50,11 @@ export const createUser = async (req, res) => {
         const token = await generarJWT(newUser._id, newUser.name)
 
         res.status(201).json({
+
             message: 'User created successfully',
             user: newUser,
             token
+
         })
 
     } catch (error) {
