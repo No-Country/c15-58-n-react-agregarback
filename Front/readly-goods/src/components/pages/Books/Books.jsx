@@ -4,6 +4,8 @@ import libroSpinner from "../../../assets/spinner/libroSpinner.gif";
 import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import Accordion from "../../accordion/Accordion";
+
 
 const Books = () => {
   const [books, setBooks] = useState();
@@ -57,12 +59,11 @@ const Books = () => {
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
   };
-  //console.log(currentPage);
+
   const changePage = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    //console.log(name);
-    //console.log(value);
+
     if (name == "previous" && currentPage.current !== 1) {
       setCurrentPage({
         ...currentPage,
@@ -210,11 +211,7 @@ const Books = () => {
                   name="genre"
                 >
                   {queryFilter.genre} {""}
-                  <FontAwesomeIcon
-                    onClick={handleFilterClick}
-                    icon={faCircleXmark}
-                    name="genre"
-                  />
+                  <FontAwesomeIcon icon={faCircleXmark} />
                 </button>
               ) : null}
               {queryFilter.editorial ? (
@@ -238,18 +235,33 @@ const Books = () => {
                 </button>
               ) : null}
             </div>
-            <h4 className="text-lg font-semibold text-[#822626] ">Género</h4>
-            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm ">
-              {books && getAllGenre()}
-            </div>
-            <h4 className="text-lg font-semibold text-[#822626]">Editorial</h4>
-            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
-              {books && getAllEditorial()}
-            </div>
-            <h4 className="text-lg font-semibold text-[#822626]">Autor</h4>
-            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
-              {books && getAllAuthor()}
-            </div>
+            <Accordion
+              title={"Género"}
+              classTitle={"text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"}
+              content={books && getAllGenre()}
+              classContent={
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start"
+              }
+              classAccordion={""}
+            />
+            <Accordion
+              title={"Editorial"}
+              classTitle={"text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"}
+              content={books && getAllEditorial()}
+              classContent={
+                "flex flex-col items-start gap-2 py-1 my-1 text-sm w-44 p-2 justify-items-start"
+              }
+              classAccordion={""}
+            />
+            <Accordion
+              title={"Autor"}
+              classTitle={"text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"}
+              content={books && getAllAuthor()}
+              classContent={
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start text-left"
+              }
+              classAccordion={""}
+            />
           </aside>
           <div
             className={`${
