@@ -54,7 +54,7 @@ const Books = () => {
     }
   };
   const handleFilterClickClose = (name, value) => queryFilter[name] !== value && setQueryFilter({ ...queryFilter, [name]: value, search: "" });
-  
+    
   const handlerOnChangeSearchBar = (e) => {
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
@@ -191,7 +191,7 @@ const Books = () => {
               onChange={handlerOnChangeSearchBar}
               type="text"
               placeholder="Busqueda..."
-              className="w-full text-gray-600 border-gray-400 border-solid rounded h-7 lg:h-9 border-1"
+              className="w-full text-gray-600 border-gray-400 border-solid rounded h-7 lg:h-9 border-1 text-xs sm:text-sm md:text-base"
             />
           </div>
 
@@ -206,8 +206,7 @@ const Books = () => {
             <div className="flex flex-wrap gap-3 pb-5">
               {queryFilter.genre ? (
                 <button
-                  onClick={
-                    handleFilterClick}
+                  onClick={handleFilterClick}
                   className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded flex gap-2 items-center"
                   name="genre"
                 >
@@ -215,7 +214,7 @@ const Books = () => {
                   <FontAwesomeIcon                    
                     onClick={(e)=> {
                       e.stopPropagation()
-                      handleFilterClickClose('genre')}}                    
+                      handleFilterClickClose('genre','')}}                    
                     icon={faCircleXmark}
                   />
                 </button>
@@ -230,7 +229,7 @@ const Books = () => {
                   <FontAwesomeIcon
                   onClick={(e)=> {
                     e.stopPropagation()
-                    handleFilterClickClose('editorial')}}  
+                    handleFilterClickClose('editorial','')}}  
                   icon={faCircleXmark} />
                 </button>
               ) : null}
@@ -244,7 +243,7 @@ const Books = () => {
                   <FontAwesomeIcon 
                   onClick={(e)=> {
                     e.stopPropagation()
-                    handleFilterClickClose('author')}}  
+                    handleFilterClickClose('author','')}}  
                   icon={faCircleXmark} />
                 </button>
               ) : null}
