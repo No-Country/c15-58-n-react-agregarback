@@ -22,21 +22,19 @@ const Books = () => {
     current: 1,
   });
 
-  
-  const genre = searchParams.get('genre');
+  const genre = searchParams.get("genre");
 
+  let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
 
-    let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
- 
   useEffect(() => {
     fetch("https://c15-58-readlygoods-three.vercel.app/books")
-    .then((res) => res.json())
-    .then((data) => setBooks(data.allBooks));
+      .then((res) => res.json())
+      .then((data) => setBooks(data.allBooks));
   }, []);
-  
+
   useEffect(() => {
-    if(genre){
-      setQueryFilter({...queryFilter, genre:genre} )
+    if (genre) {
+      setQueryFilter({ ...queryFilter, genre: genre });
       urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
     }
   }, []);
@@ -45,9 +43,8 @@ const Books = () => {
     fetch(urlData)
       .then((res) => res.json())
       .then((data) => setFilteredBooks(data.filteredBooks));
-  }, [urlData]); 
-  
-  
+  }, [urlData]);
+
   const handleFilterClick = (e) => {
     const { name, value } = e.target;
     if (queryFilter[name] == value) {
@@ -64,6 +61,7 @@ const Books = () => {
   const changePage = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+
     if (name == "previous" && currentPage.current !== 1) {
       setCurrentPage({
         ...currentPage,
@@ -179,9 +177,9 @@ const Books = () => {
 
   return (
     <main className="w-full py-12 ">
-      <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] m-auto  flex flex-col gap-6">
+      <div className="w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] m-auto  flex flex-col gap-6">
         <div className="flex flex-row items-center justify-between ">
-          <h1 className="text-2xl font-semibold uppercase text-[#822626] w-2/6">
+          <h1 className="text-sm md:text-xl lg:text-2xl font-semibold uppercase text-[#822626] w-2/6">
             Productos
           </h1>
 
@@ -191,11 +189,11 @@ const Books = () => {
               onChange={handlerOnChangeSearchBar}
               type="text"
               placeholder="Busqueda..."
-              className="w-full text-gray-600 border-gray-400 border-solid rounded lg:h-9 border-1"
+              className="w-full text-gray-600 border-gray-400 border-solid rounded h-7 lg:h-9 border-1"
             />
           </div>
 
-          <p className="text-sm text-[#822626] w-2/6 font-semibold text-right">
+          <p className="text-xs md:text-sm text-[#822626] w-2/6 font-semibold text-right">
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
         </div>
@@ -211,7 +209,11 @@ const Books = () => {
                   name="genre"
                 >
                   {queryFilter.genre} {""}
-                  <FontAwesomeIcon icon={faCircleXmark} />
+                  <FontAwesomeIcon
+                    onClick={handleFilterClick}
+                    icon={faCircleXmark}
+                    name="genre"
+                  />
                 </button>
               ) : null}
               {queryFilter.editorial ? (

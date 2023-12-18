@@ -29,7 +29,7 @@ const Cart = () => {
 
   return (
     <main className="w-full min-h-[calc(100vh-230px)] ">
-      <div className="w-[90%] sm:w-[80%] md:w-[75%] lg:w-[65%] m-auto">
+      <div className="w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] m-auto">
         <h1 className="text-5xl p-3 mt-5 text-center rounded text-[#690202] font-bold ">
           Realiza tu compra
         </h1>
@@ -114,7 +114,7 @@ const Cart = () => {
           <div className="flex items-center justify-center w-full h-[30rem] rounded-lg my-12  bg-white">
             <div className="flex flex-col items-center justify-center py-5">
               <FontAwesomeIcon className="h-16 py-3" icon={faCartShopping} />
-              <span className="mb-2 text-lg py-3">
+              <span className="mb-2 text-lg py-3 p-2 text-center">
                 Aún no has agregado artículos a tu carrito.
               </span>
               <span>Busca los libros que más te gusten!</span>
