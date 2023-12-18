@@ -288,7 +288,7 @@ const Books = () => {
             )}
           </div>
         </div>
-        {filteredBooks.length>12
+        {filteredBooks?.length>12
         ?
         <div className="flex justify-center items-center w-full">
           <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min">
