@@ -22,15 +22,15 @@ const Navbar = () => {
 
         <ul className="flex items-center justify-evenly md:justify-end text-xs md:text-sm  lg:text-lg w-full">
           <li className="uppercase sm:p-3 md:p-3 lg:px-6 pr-1 hover:text-[#262525]">
-            <Link to="/">inicio</Link>
+            <Link to="/"  >inicio</Link>
           </li>
 
           <li className="uppercase sm:p-3 md:p-3 lg:px-5 p-1 hover:text-[#262525]">
-            <Link to="/books">catalogo</Link>
+            <Link to="/books" >catalogo</Link>
           </li>
 
           <li className="uppercase sm:p-3 md:p-3 lg:px-5 p-1 hover:text-[#262525]">
-            <Link to="/faq">FAQ</Link>
+            <Link to="/faq" >FAQ</Link>
           </li>
           {/*----------------------------login--------------------------------------------*/}
           {loginOk ? (
