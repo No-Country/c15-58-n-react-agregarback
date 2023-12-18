@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
     try {
-        mongoose.connect("mongodb+srv://michiqueli:Rasputin1407@cluster0.xk5yz6w.mongodb.net/?retryWrites=true&w=majority");
+        mongoose.connect("mongodb+srv://michiqueli:Rasputin1407@cluster0.xk5yz6w.mongodb.net/");
         console.log(`MongoDB Connected`);
     } catch (error) {
         console.error(`Error: ${error.message}`);
