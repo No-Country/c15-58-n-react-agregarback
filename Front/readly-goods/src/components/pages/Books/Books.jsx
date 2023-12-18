@@ -57,12 +57,11 @@ const Books = () => {
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
   };
-  //console.log(currentPage);
+ 
   const changePage = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    //console.log(name);
-    //console.log(value);
+
     if (name == "previous" && currentPage.current !== 1) {
       setCurrentPage({
         ...currentPage,
@@ -291,49 +290,56 @@ const Books = () => {
             )}
           </div>
         </div>
-        <div className="flex justify-center items-center gap-10 bg-slate-600 w-full">
-          <button
-            onClick={changePage}
-            name="previous"
-            className="border-solid border-black border-2 p-2"
-          >
-            {"<"}
-          </button>
-          {filteredBooks?.map((x, index) => {
-            if (index % 12 == 0) {
-              if (index / 12 + 1 == currentPage.current) {
-                return (
-                  <button
-                    className="border-solid border-black border-2 p-2"
-                    onClick={changePage}
-                    key={index}
-                    value={index / 12 + 1}
-                    name="page"
-                  >
-                    {index / 12 + 1}
-                  </button>
-                );
-              } else
-                return (
-                  <button
-                    onClick={changePage}
-                    key={index}
-                    value={index / 12 + 1}
-                    name="page"
-                  >
-                    {index / 12 + 1}
-                  </button>
-                );
-            }
-          })}
-          <button
-            onClick={changePage}
-            name="next"
-            className="border-solid border-black border-2 p-2"
-          >
-            {">"}
-          </button>
+        {filteredBooks?.length>12
+        ?
+        <div className="flex justify-center items-center w-full">
+          <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min">
+            <button
+              onClick={changePage}
+              name="previous"
+              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
+            >
+              {"<"}
+            </button>
+            {filteredBooks?.map((x, index) => {
+              if (index % 12 == 0) {
+                if (index / 12 + 1 == currentPage.current) {
+                  return (
+                    <button
+                      className="bg-[#822626] text-white h-10 w-10"
+                      onClick={changePage}
+                      key={index}
+                      value={index / 12 + 1}
+                      name="page"
+                    >
+                      {index / 12 + 1}
+                    </button>
+                  );
+                } else
+                  return (
+                    <button
+                      className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] h-10 w-10"
+                      onClick={changePage}
+                      key={index}
+                      value={index / 12 + 1}
+                      name="page"
+                    >
+                      {index / 12 + 1}
+                    </button>
+                  );
+              }
+            })}
+            <button
+              onClick={changePage}
+              name="next"
+              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
+
+            >
+              {">"}
+            </button>
+          </div>
         </div>
+        :null}
       </div>
     </main>
   );
