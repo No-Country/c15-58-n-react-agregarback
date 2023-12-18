@@ -15,7 +15,9 @@ export const createSession = async (req, res) => {
                 currency: 'usd',
                 unit_amount: producto.price * 100 // Convertir el precio a centavos (USD)
             },
+
             quantity: producto.quantity // Podrías cambiar la cantidad según lo necesites
+
         });
     });
 
