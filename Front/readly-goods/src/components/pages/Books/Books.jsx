@@ -4,6 +4,7 @@ import libroSpinner from "../../../assets/spinner/libroSpinner.gif";
 import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import Accordion from "../../accordion/Accordion";
 
 const Books = () => {
   const [books, setBooks] = useState();
@@ -53,11 +54,15 @@ const Books = () => {
       setQueryFilter({ ...queryFilter, [name]: value, search: "" });
     }
   };
+  const handleFilterClickClose = (name, value) =>
+    queryFilter[name] !== value &&
+    setQueryFilter({ ...queryFilter, [name]: value, search: "" });
+
   const handlerOnChangeSearchBar = (e) => {
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
   };
- 
+
   const changePage = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -189,7 +194,7 @@ const Books = () => {
               onChange={handlerOnChangeSearchBar}
               type="text"
               placeholder="Busqueda..."
-              className="w-full text-gray-600 border-gray-400 border-solid rounded h-7 lg:h-9 border-1"
+              className="w-full text-gray-600 border-gray-400 border-solid rounded h-7 lg:h-9 border-1 text-xs sm:text-sm md:text-base"
             />
           </div>
 
@@ -210,9 +215,11 @@ const Books = () => {
                 >
                   {queryFilter.genre} {""}
                   <FontAwesomeIcon
-                    onClick={handleFilterClick}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFilterClickClose("genre", "");
+                    }}
                     icon={faCircleXmark}
-                    name="genre"
                   />
                 </button>
               ) : null}
@@ -223,7 +230,13 @@ const Books = () => {
                   name="editorial"
                 >
                   {queryFilter.editorial}{" "}
-                  <FontAwesomeIcon icon={faCircleXmark} />
+                  <FontAwesomeIcon
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFilterClickClose("editorial", "");
+                    }}
+                    icon={faCircleXmark}
+                  />
                 </button>
               ) : null}
               {queryFilter.author ? (
@@ -233,22 +246,49 @@ const Books = () => {
                   onClick={handleFilterClick}
                 >
                   {queryFilter.author} {""}
-                  <FontAwesomeIcon icon={faCircleXmark} />
+                  <FontAwesomeIcon
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleFilterClickClose("author", "");
+                    }}
+                    icon={faCircleXmark}
+                  />
                 </button>
               ) : null}
             </div>
-            <h4 className="text-lg font-semibold text-[#822626] ">Género</h4>
-            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm ">
-              {books && getAllGenre()}
-            </div>
-            <h4 className="text-lg font-semibold text-[#822626]">Editorial</h4>
-            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
-              {books && getAllEditorial()}
-            </div>
-            <h4 className="text-lg font-semibold text-[#822626]">Autor</h4>
-            <div className="flex flex-col items-start gap-2 py-2 my-2 overflow-auto text-sm">
-              {books && getAllAuthor()}
-            </div>
+            <Accordion
+              title={"Género"}
+              classTitle={
+                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
+              }
+              content={books && getAllGenre()}
+              classContent={
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start"
+              }
+              classAccordion={""}
+            />
+            <Accordion
+              title={"Editorial"}
+              classTitle={
+                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
+              }
+              content={books && getAllEditorial()}
+              classContent={
+                "flex flex-col items-start gap-2 py-1 my-1 text-sm w-44 p-2 justify-items-start"
+              }
+              classAccordion={""}
+            />
+            <Accordion
+              title={"Autor"}
+              classTitle={
+                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
+              }
+              content={books && getAllAuthor()}
+              classContent={
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start text-left"
+              }
+              classAccordion={""}
+            />
           </aside>
           <div
             className={`${
@@ -290,56 +330,54 @@ const Books = () => {
             )}
           </div>
         </div>
-        {filteredBooks?.length>12
-        ?
-        <div className="flex justify-center items-center w-full">
-          <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min">
-            <button
-              onClick={changePage}
-              name="previous"
-              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
-            >
-              {"<"}
-            </button>
-            {filteredBooks?.map((x, index) => {
-              if (index % 12 == 0) {
-                if (index / 12 + 1 == currentPage.current) {
-                  return (
-                    <button
-                      className="bg-[#822626] text-white h-10 w-10"
-                      onClick={changePage}
-                      key={index}
-                      value={index / 12 + 1}
-                      name="page"
-                    >
-                      {index / 12 + 1}
-                    </button>
-                  );
-                } else
-                  return (
-                    <button
-                      className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] h-10 w-10"
-                      onClick={changePage}
-                      key={index}
-                      value={index / 12 + 1}
-                      name="page"
-                    >
-                      {index / 12 + 1}
-                    </button>
-                  );
-              }
-            })}
-            <button
-              onClick={changePage}
-              name="next"
-              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
-
-            >
-              {">"}
-            </button>
+        {filteredBooks?.length > 12 ? (
+          <div className="flex justify-center items-center w-full">
+            <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min rounded-md">
+              <button
+                onClick={changePage}
+                name="previous"
+                className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10 rounded-s-md "
+              >
+                {"<"}
+              </button>
+              {filteredBooks?.map((x, index) => {
+                if (index % 12 == 0) {
+                  if (index / 12 + 1 == currentPage.current) {
+                    return (
+                      <button
+                        className="bg-[#822626] text-white h-10 w-10"
+                        onClick={changePage}
+                        key={index}
+                        value={index / 12 + 1}
+                        name="page"
+                      >
+                        {index / 12 + 1}
+                      </button>
+                    );
+                  } else
+                    return (
+                      <button
+                        className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] h-10 w-10"
+                        onClick={changePage}
+                        key={index}
+                        value={index / 12 + 1}
+                        name="page"
+                      >
+                        {index / 12 + 1}
+                      </button>
+                    );
+                }
+              })}
+              <button
+                onClick={changePage}
+                name="next"
+                className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10 rounded-e-md"
+              >
+                {">"}
+              </button>
+            </div>
           </div>
-        </div>
-        :null}
+        ) : null}
       </div>
     </main>
   );
