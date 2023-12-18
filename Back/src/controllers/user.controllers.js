@@ -6,7 +6,21 @@ import bcrypt from "bcryptjs";
 export const getAllUsers = async (req, res) => {
     try {
 
-        res.send('Realizado con exito')
+        const user = req.user
+
+        const userFound = await User.findById(user.uid)
+
+        if (userFound.role !== 'admin') {
+
+            return res.status(401).json({
+                ok: false,
+                msg: 'No tiene privilegios para realizar esta accion'
+            })
+        }
+
+
+        const users = await User.find()
+        res.send(users)
 
     } catch (error) {
         console.log(error);
@@ -33,9 +47,12 @@ export const createUser = async (req, res) => {
 
         await newUser.save()
 
+        const token = await generarJWT(newUser._id, newUser.name)
+
         res.status(201).json({
             message: 'User created successfully',
-            user: newUser
+            user: newUser,
+            token
         })
 
     } catch (error) {
@@ -81,7 +98,9 @@ export const loginUsuario = async (req, res) => {
             })
         }
 
-        const token = await generarJWT(usuariobuscado.id, usuariobuscado.name)
+        const token = await generarJWT(usuariobuscado.id, usuariobuscado.fullname)
+
+
 
         res.json({
             status: 'successful login',
@@ -139,23 +158,23 @@ export const addToCart = async (req, res) => {
             })
         }
 
-        const {title, price} = await Book.findById(pid);
+        const { title, price } = await Book.findById(pid);
 
         const productExist = user.cart.findIndex(p => p._id === pid);
-        
+
 
         if (productExist === -1) {
-            
-            user.cart.push({title, price,cantidad: productQuantity.cantidad, _id: pid });        
-           await user.save();
+
+            user.cart.push({ title, price, cantidad: productQuantity.cantidad, _id: pid });
+            await user.save();
         }
         else {
-            
+
             user.cart[productExist].cantidad += productQuantity.cantidad
             await user.save();
         }
 
-        
+
         res.status(200).json({
             ok: true,
             username: user.username,
@@ -182,9 +201,9 @@ export const clearCart = async (req, res) => {
         }
 
         user.cart = [];
-        
+
         await user.save();
-        
+
         res.status(200).json({
             ok: true,
             username: user.username,
@@ -223,6 +242,44 @@ export const RemoveFromCart = async (req, res) => {
             username: user.username,
             fullname: user.fullname,
             cart: user.cart,
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+export const createAdmin = async (req, res) => {
+    try {
+        const user = req.user
+
+        const userFound = await User.findById(user.uid)
+
+        if (userFound.role !== 'admin') {
+
+            return res.status(401).json({
+                ok: false,
+                msg: 'No tiene privilegios para realizar esta accion'
+            })
+        }
+
+
+        const { username, fullname, email, password } = req.body
+        const newUser = new User({ username, fullname, email, password, role: 'admin' })
+
+        // encriptamos
+        const salt = bcrypt.genSaltSync();
+        newUser.password = bcrypt.hashSync(password, salt)
+
+        await newUser.save()
+
+        const token = await generarJWT(newUser._id, newUser.name)
+
+        res.status(201).json({
+            message: 'User created successfully',
+            user: newUser,
+            token
         })
 
     } catch (error) {
