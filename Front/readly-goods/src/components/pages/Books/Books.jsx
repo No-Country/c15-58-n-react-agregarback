@@ -53,6 +53,8 @@ const Books = () => {
       setQueryFilter({ ...queryFilter, [name]: value, search: "" });
     }
   };
+  const handleFilterClickClose = (name, value) => queryFilter[name] !== value && setQueryFilter({ ...queryFilter, [name]: value, search: "" });
+  
   const handlerOnChangeSearchBar = (e) => {
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
@@ -204,15 +206,17 @@ const Books = () => {
             <div className="flex flex-wrap gap-3 pb-5">
               {queryFilter.genre ? (
                 <button
-                  onClick={handleFilterClick}
+                  onClick={
+                    handleFilterClick}
                   className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded flex gap-2 items-center"
                   name="genre"
                 >
                   {queryFilter.genre} {""}
-                  <FontAwesomeIcon
-                    onClick={handleFilterClick}
+                  <FontAwesomeIcon                    
+                    onClick={(e)=> {
+                      e.stopPropagation()
+                      handleFilterClickClose('genre')}}                    
                     icon={faCircleXmark}
-                    name="genre"
                   />
                 </button>
               ) : null}
@@ -223,7 +227,11 @@ const Books = () => {
                   name="editorial"
                 >
                   {queryFilter.editorial}{" "}
-                  <FontAwesomeIcon icon={faCircleXmark} />
+                  <FontAwesomeIcon
+                  onClick={(e)=> {
+                    e.stopPropagation()
+                    handleFilterClickClose('editorial')}}  
+                  icon={faCircleXmark} />
                 </button>
               ) : null}
               {queryFilter.author ? (
@@ -233,7 +241,11 @@ const Books = () => {
                   onClick={handleFilterClick}
                 >
                   {queryFilter.author} {""}
-                  <FontAwesomeIcon icon={faCircleXmark} />
+                  <FontAwesomeIcon 
+                  onClick={(e)=> {
+                    e.stopPropagation()
+                    handleFilterClickClose('author')}}  
+                  icon={faCircleXmark} />
                 </button>
               ) : null}
             </div>
@@ -293,11 +305,11 @@ const Books = () => {
         {filteredBooks?.length>12
         ?
         <div className="flex justify-center items-center w-full">
-          <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min">
+          <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min rounded-md">
             <button
               onClick={changePage}
               name="previous"
-              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
+              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10 rounded-s-md "
             >
               {"<"}
             </button>
@@ -332,7 +344,7 @@ const Books = () => {
             <button
               onClick={changePage}
               name="next"
-              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
+              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10 rounded-e-md"
 
             >
               {">"}
