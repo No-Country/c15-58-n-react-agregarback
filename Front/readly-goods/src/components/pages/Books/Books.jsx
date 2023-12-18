@@ -99,10 +99,10 @@ const Books = () => {
       book.genre.split(",").map((genre) => genre.trim())
     );
     const allGenres = [...new Set(genres)];
-    return allGenres.map((genre) =>
+    return allGenres.sort().map((genre) =>
       genre == queryFilter.genre ? (
         <button
-          className="bg-[#822626] text-white rounded p-1 "
+          className="bg-[#822626] text-white rounded p-1 text-left"
           key={genre}
           onClick={handleFilterClick}
           name={"genre"}
@@ -112,7 +112,7 @@ const Books = () => {
         </button>
       ) : (
         <button
-          className="text-gray-500 hover:shadow-gray-300 hover:bg-[#e9cccc] hover:shadow-md rounded p-1"
+          className="text-gray-500 hover:shadow-gray-300 hover:bg-[#e9cccc] hover:shadow-md rounded p-1 text-left"
           key={genre}
           onClick={handleFilterClick}
           name={"genre"}
@@ -127,10 +127,10 @@ const Books = () => {
   const getAllEditorial = () => {
     const editorials = books?.map((book) => book.editorial);
     const allEditorials = [...new Set(editorials)];
-    return allEditorials.map((editorial) =>
+    return allEditorials.sort().map((editorial) =>
       editorial == queryFilter.editorial ? (
         <button
-          className="bg-[#822626] text-white rounded p-1"
+          className="bg-[#822626] text-white rounded p-1 text-left "
           key={editorial}
           onClick={handleFilterClick}
           name={"editorial"}
@@ -140,7 +140,7 @@ const Books = () => {
         </button>
       ) : (
         <button
-          className="text-gray-500 hover:shadow-gray-300 hover:bg-[#e9cccc] hover:shadow-md rounded p-1"
+          className="text-gray-500 hover:shadow-gray-300 hover:bg-[#e9cccc] hover:shadow-md rounded p-1 text-left"
           key={editorial}
           onClick={handleFilterClick}
           name={"editorial"}
@@ -155,10 +155,10 @@ const Books = () => {
   const getAllAuthor = () => {
     const Authors = books?.map((book) => book.author);
     const AllAuthor = [...new Set(Authors)];
-    return AllAuthor.map((author) =>
+    return AllAuthor.sort().map((author) =>
       author == queryFilter.author ? (
         <button
-          className="bg-[#822626] text-white rounded p-1"
+          className="bg-[#822626] text-white rounded p-1 text-left"
           key={author}
           onClick={handleFilterClick}
           name={"author"}
@@ -168,7 +168,7 @@ const Books = () => {
         </button>
       ) : (
         <button
-          className="text-gray-500 hover:shadow-gray-300 hover:bg-[#e9cccc] hover:shadow-md rounded p-1"
+          className="text-gray-500 hover:shadow-gray-300 hover:bg-[#e9cccc] hover:shadow-md rounded p-1 text-left"
           key={author}
           onClick={handleFilterClick}
           name={"author"}
@@ -259,33 +259,33 @@ const Books = () => {
             <Accordion
               title={"Género"}
               classTitle={
-                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
+                "text-lg font-semibold text-[#822626] hover:scale-110 hover:text-[#690202]  w-auto px-2 text-left"
               }
               content={books && getAllGenre()}
               classContent={
-                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start"
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start "
               }
               classAccordion={""}
             />
             <Accordion
               title={"Editorial"}
               classTitle={
-                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
+                "text-lg font-semibold text-[#822626] hover:scale-110 hover:text-[#690202]  w-auto px-2 text-left"
               }
               content={books && getAllEditorial()}
               classContent={
-                "flex flex-col items-start gap-2 py-1 my-1 text-sm w-44 p-2 justify-items-start"
+                "flex flex-col items-start gap-2 py-1 my-1 text-sm w-44 p-2 justify-items-start "
               }
               classAccordion={""}
             />
             <Accordion
               title={"Autor"}
               classTitle={
-                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
+                "text-lg font-semibold text-[#822626] hover:scale-110 hover:text-[#690202]  w-auto px-2 text-left"
               }
               content={books && getAllAuthor()}
               classContent={
-                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start text-left"
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start "
               }
               classAccordion={""}
             />
