@@ -4,9 +4,7 @@ import { useCart } from "../components/hooks/useCart";
 
 export const context = createContext();
 
-//------------Validacion del form---------------------------------------------------
 
-//----------------------------------------------------------------------------------------------
 
 const ContextProvider = ({ children }) => {
   //---------------cart----------------------------------------------------
