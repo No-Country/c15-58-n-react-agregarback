@@ -182,7 +182,7 @@ const Books = () => {
 
   return (
     <main className="w-full py-12 ">
-      <div className="w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] m-auto  flex flex-col gap-6">
+      <div className="w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] m-auto flex flex-col gap-6">
         <div className="flex flex-row items-center justify-between ">
           <h1 className="text-sm md:text-xl lg:text-2xl font-semibold uppercase text-[#822626] w-2/6">
             Productos
@@ -206,7 +206,7 @@ const Books = () => {
 
         <div className="w-full flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-1">
           <aside className="w-full md:sticky md:block">
-            <div className="flex flex-wrap gap-3 pb-5">
+            <div className="flex flex-wrap  pb-5">
               {queryFilter.genre ? (
                 <button
                   onClick={handleFilterClick}
@@ -329,10 +329,10 @@ const Books = () => {
               </div>
             )}
           </div>
-        </div>
+        
         {filteredBooks?.length > 12 ? (
-          <div className="flex justify-center items-center w-full">
-            <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min rounded-md">
+          <div className="flex justify-center items-center sm:w-full md:col-start-2 col-end-3 m-auto w-[19rem]">
+            <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-full mt-4 h-min rounded-md">
               <button
                 onClick={changePage}
                 name="previous"
@@ -378,6 +378,7 @@ const Books = () => {
             </div>
           </div>
         ) : null}
+      </div>
       </div>
     </main>
   );
