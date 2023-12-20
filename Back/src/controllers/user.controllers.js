@@ -111,9 +111,9 @@ export const loginUsuario = async (req, res) => {
                 "_id": usuariobuscado._id,
                 "username": usuariobuscado.username,
                 "fullname": usuariobuscado.fullname,
-                "email": usuariobuscado.email
+                "email": usuariobuscado.email,
+                "role": usuariobuscado.role
             },
-            role: usuariobuscado.role
         })
 
     } catch (error) {
