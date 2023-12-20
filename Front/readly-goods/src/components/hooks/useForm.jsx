@@ -1,15 +1,19 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { useLocalStorage } from "./useLocalStorage";
+import { context } from "../../context";
 
 const initialForm = {
-    username: "",
-    fullname: "",
-    email: "",
-    password: "",
-  };
+  username: "",
+  fullname: "",
+  email: "",
+  password: "",
+};
 
 export const useForm = () => {
+
+  // const { products, badgeCount } = useContext(context)
+  // console.log(badgeCount);
 
 
   const [isLogin, setIsLogin] = useState(false); //si ya esta registrado o no, inicia en false
@@ -22,7 +26,7 @@ export const useForm = () => {
     emailError: false,
     passwordError: false,
   });
- //-----------------------localstorage--------------------------------------------------
+  //-----------------------localstorage--------------------------------------------------
   const [loginOk, setLoginOk] = useLocalStorage("loginOk", false); // Si inicio sesion correctamente y se guarda en el storage
   const [userData, setUserData] = useLocalStorage("userData", {}); // se guarda datos del usuario en el storage
 
@@ -42,31 +46,31 @@ export const useForm = () => {
     return loginOk;
   };
 
-  const validationSignInOk = () => {    
-    const { username, fullname, email, password} = form;
+  const validationSignInOk = () => {
+    const { username, fullname, email, password } = form;
     const { userNameError, fullNameError, emailError, passwordError } = errors;
-    
-    if(isLogin){
-      email===''&& validateForm("emailError", true);
-      password==='' && validateForm("emailError", true);
-      if ( !emailError && !passwordError ) {
+
+    if (isLogin) {
+      email === '' && validateForm("emailError", true);
+      password === '' && validateForm("emailError", true);
+      if (!emailError && !passwordError) {
         formIsOkRef.current = true;
       } else {
         formIsOkRef.current = false;
       }
-    }else{
-        username ==='' && validateForm("userNameError", true);
-         fullname==='' && validateForm("fullNameError", true);
-         email===''&& validateForm("emailError", true);
-         password==='' && validateForm("passwordError", true);
-        if (!userNameError && !fullNameError && !emailError && !passwordError) {
+    } else {
+      username === '' && validateForm("userNameError", true);
+      fullname === '' && validateForm("fullNameError", true);
+      email === '' && validateForm("emailError", true);
+      password === '' && validateForm("passwordError", true);
+      if (!userNameError && !fullNameError && !emailError && !passwordError) {
         formIsOkRef.current = true;
-        console.log('formOk', username, fullname, email, password,'error:', userNameError, fullNameError, emailError, passwordError)
+        console.log('formOk', username, fullname, email, password, 'error:', userNameError, fullNameError, emailError, passwordError)
       } else {
-        console.log('form no ok', username, fullname, email, password,'error:', userNameError, fullNameError, emailError, passwordError)
+        console.log('form no ok', username, fullname, email, password, 'error:', userNameError, fullNameError, emailError, passwordError)
         formIsOkRef.current = false;
       }
-    }    
+    }
     return formIsOkRef;
   };
 
@@ -77,7 +81,7 @@ export const useForm = () => {
       [name]: value,
     });
   };
-//------
+  //------
   const validateForm = (nameError, valueError) => {
     setErrors({
       ...errors,
@@ -136,6 +140,7 @@ export const useForm = () => {
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     validationSignInOk();
     if (formIsOkRef.current) {
@@ -161,6 +166,7 @@ export const useForm = () => {
     }
   };
 
+
   return {
     isOpen,
     openModal,
@@ -173,7 +179,7 @@ export const useForm = () => {
     setIsLogin,
     handleCloseSesion,
     loading,
-    
+
     handleChange,
     handleKeyUpUser,
     handleKeyUpFullName,
