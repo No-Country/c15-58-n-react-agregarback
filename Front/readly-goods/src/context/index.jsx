@@ -9,7 +9,7 @@ export const context = createContext();
 const ContextProvider = ({ children }) => {
   //---------------cart----------------------------------------------------
   const {
-    products,
+    storageProducts,
     addProduct,
     deleteAllProducts,
     deleteProduct,
@@ -64,7 +64,7 @@ const ContextProvider = ({ children }) => {
         handleOnBlurPassword,
         handleOnFocusPassword,
         handleSubmit,
-        products,
+        storageProducts,
         addProduct,
         deleteAllProducts,
         deleteProduct,

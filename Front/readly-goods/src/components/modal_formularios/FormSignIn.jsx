@@ -31,7 +31,7 @@ const FormSignIn = () => {
 
     <form className="flex flex-col p-2" >
       <h1 className="font-bold text-center text-2xl p-2 items-center">
-        Registrate
+        Crear cuenta
       </h1>
       <label className="font-bold py-2" htmlFor="username">
         Usuario:
@@ -130,7 +130,7 @@ const FormSignIn = () => {
           </span>
         </p>
       </div>
-      <input className="bg-[#822626] hover:bg-[#690202] text-white mt-2 rounded p-2 cursor-pointer" type="submit" onClick={handleSubmit} />
+      <input value="Registrarme" className="bg-[#822626] hover:bg-[#690202] text-white mt-2 rounded p-2 cursor-pointer hover:scale-[102%]" type="submit" onClick={handleSubmit} />
     </form>
   );
 };
