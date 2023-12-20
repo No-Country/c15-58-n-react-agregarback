@@ -10,7 +10,7 @@ const Presentation = () => {
       <div className="grid grid-cols-1 gap-8 xl:grid-cols-3">
         <div className="xl:col-span-2 bg-[#690202] p-8 rounded-2xl gap-8 flex flex-col md:flex-row">
           <div className="text-white">
-            <h1 className="mb-3 text-3xl font-bold uppercase">
+            <h1 className="mb-3 text-3xl font-bold uppercase ">
               ¡Bienvenidos a Readly Goods!
             </h1>
             <p className="text-lg font-light">
@@ -18,11 +18,11 @@ const Presentation = () => {
               aventura emocionante, conocimiento enriquecedor o entretenimiento,
               en nuestro amplio catálogo.
             </p>
-            <p className="text-lg font-light ">
+            <p className="text-lg font-light  ">
               ¡Disfruta de la lectura y descubre nuevas experiencias!
             </p>
           </div>
-          <img src={book} alt="book lover" className="self-center w-60 h-60" />
+          <img src={book} alt="book lover" className="self-center w-60 h-60 hover:scale-105 duration-500 " />
         </div>
         <div className="bg-[#e6ddbc] text-black rounded-2xl p-8 ">
           <h2 className="mb-3 text-3xl font-bold uppercase">
@@ -55,7 +55,7 @@ const Presentation = () => {
           <img
             src={reading}
             alt="reading book"
-            className="self-center w-60 h-60"
+            className="self-center w-60 h-60 hover:scale-105 duration-500"
           />
           <div className="text-white">
             <h2 className="mb-3 text-3xl font-bold uppercase">Comprá Online</h2>
@@ -76,9 +76,12 @@ const Presentation = () => {
       <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
         <Link
           to={"books/?genre=Novela"}
-          className=" bg-[#262525] rounded-2xl p-8 text-white hover:bg-[#690202] inline-flex items-center justify-center gap-8 group"
+          //className=" bg-[#262525] rounded-2xl p-8 text-white hover:bg-[#690202] inline-flex items-center justify-center gap-8 group"
+          className="bg-[#70cc54] rounded p-8 text-white inline-flex items-center justify-center gap-8 group animationBotton before:rounded before:bg-[#dc4444c8]"
         >
-          <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
+          <h2 
+          //className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline"
+          className="text-lg font-bold uppercase transition-all md:text-3xl  ">
             Novela
           </h2>
           <FontAwesomeIcon
