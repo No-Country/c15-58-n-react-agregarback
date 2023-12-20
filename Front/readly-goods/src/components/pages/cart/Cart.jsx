@@ -5,16 +5,18 @@ import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
+
 const Cart = () => {
-  const { products, deleteAllProducts, deleteProduct, totalPrice, loginOk, openModal } =
+  const { storageProducts, deleteAllProducts, deleteProduct, totalPrice, loginOk, openModal } =
     useContext(context);
+    
 
   const navigate = useNavigate();
 
   const handleClick = () => {
     if(loginOk)
     {
-      let refCart = products.map(({ title, price, quantity }) => {
+      let refCart = storageProducts.map(({ title, price, quantity }) => {
       return { title, price, quantity };
     });
     axios
@@ -38,7 +40,7 @@ const Cart = () => {
           Realiza tu compra
         </h1>
 
-        {products.length > 0 ? (
+        {storageProducts.length > 0 ? (
           <div className="w-full my-5">
             <div className="bg-[#525252] text-white p-2  rounded-t">
               <h1 className=" text-base sm:text-lg md:text-xl lg:text-2xl">Detalle de pedido</h1>
@@ -56,7 +58,7 @@ const Cart = () => {
             </div>
 
             <div className={`overflow-y-auto h-96 min-h-full bg-gray-200 text-xs sm:text-sm md:text-base lg:text-lg`}>
-              {products.map((product) => (
+              {storageProducts.map((product) => (
                 <div
                   className="grid items-center grid-cols-9 px-2 py-3  "
                   key={product.id}
@@ -91,8 +93,8 @@ const Cart = () => {
               ))}
             </div>
 
-            <div className="grid w-full items-center grid-cols-9 p-2 bg-gray-200 border-t border-gray-400 rounded-b">
-              <div className="col-span-4">
+            <div className="grid w-full items-center grid-cols-9 p-0.5 md:p-2 bg-gray-200 border-t border-gray-400 rounded-b">
+              <div className=" col-span-3 sm:col-span-4">
                 <button
                   onClick={deleteAllProducts}
                   className="p-2 text-xs sm:text-sm md:text-base lg:text-lg underline rounded-sm transition-colors border hover:border-[#822626] hover:text-[#822626]"
@@ -104,7 +106,7 @@ const Cart = () => {
               <span className="col-span-2 font-bold text-center text-xs sm:text-sm md:text-base lg:text-lg">Total:</span>
               <span className="col-span-2 text-center text-xs sm:text-sm md:text-base lg:text-lg">$ {totalPrice}</span>
 
-              <div className="flex flex-row items-end justify-end w-full">
+              <div className="flex flex-row items-end justify-end w-full col-span-2 sm:col-span-1">
                 <button
                   onClick={handleClick}
                   className="w-full h-full text-[0.6rem] sm:text-sm md:text-base lg:text-lg text-center py-1 px-0.5 md:py-2 md:px-1 rounded-sm transition-colors bg-[#822626] hover:bg-[#262525] text-white"
