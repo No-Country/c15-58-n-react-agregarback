@@ -24,7 +24,7 @@ const NavMenu = () => {
 
         <div
           className={`flex flex-col items-center absolute bg-[#822626] rounded-b mt-2 w-full ease-in-out transition-all duration-500 ${
-            toggleOpen ? "h-full opacity-100" : "h-0 opacity-0"
+            toggleOpen ? "h-full sm:h-36 opacity-100" : "h-0 opacity-0"
           }`}
         >
           <span className="uppercase sm:p-3 md:p-3 lg:px-6 p-1 hover:text-[#262525]">
