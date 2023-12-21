@@ -48,7 +48,7 @@ export const useForm = () => {
     
     if(isLogin){
       email===''&& validateForm("emailError", true);
-      password==='' && validateForm("emailError", true);
+      password==='' && validateForm("passwordError", true);
       if ( !emailError && !passwordError ) {
         formIsOkRef.current = true;
       } else {
