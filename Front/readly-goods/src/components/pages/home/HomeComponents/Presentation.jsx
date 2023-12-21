@@ -22,7 +22,11 @@ const Presentation = () => {
               ¡Disfruta de la lectura y descubre nuevas experiencias!
             </p>
           </div>
-          <img src={book} alt="book lover" className="self-center w-60 h-60 hover:scale-105 duration-500 hover:drop-shadow-2xl hover:shadow-black" />
+          <img
+            src={book}
+            alt="book lover"
+            className="self-center w-60 h-60 hover:scale-105 duration-500 hover:drop-shadow-2xl hover:shadow-black"
+          />
         </div>
         <div className="bg-[#e6ddbc] text-black rounded-2xl p-8 ">
           <h2 className="mb-3 text-3xl font-bold uppercase">
@@ -75,13 +79,11 @@ const Presentation = () => {
       <h2 className="text-3xl text-[#822626] mb-8">Compra por categoría</h2>
       <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
         <Link
-          to={"books/?genre=Novela"}
-  
+          to={"books/?genre=Narrativa"}
           className="bg-[#822626] rounded p-8 text-white inline-flex items-center justify-center gap-8 group animationBotton before:rounded before:bg-[#7750a7fe] relative z-0 before:absolute before:-z-10 before:inset-0 before:content-[' ']  before:origin-bottom-right hover:before:origin-bottom-left "
         >
-          <h2
-          className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline ">
-            Novela
+          <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline ">
+            Narrativa
           </h2>
           <FontAwesomeIcon
             className="h-5 transition-all md:h-8 group-hover:translate-x-1"

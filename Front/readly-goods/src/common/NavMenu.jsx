@@ -6,10 +6,6 @@ import { Link } from "react-router-dom";
 const NavMenu = () => {
   const [toggleOpen, setToggleOpen] = useState(false);
 
-  useEffect(() => {
-    console.log(toggleOpen);
-  }, [toggleOpen]);
-
   return (
     <>
       <div className="md:hidden w-1/3">
