@@ -44,7 +44,7 @@ const Accordion = ({
       </button>
 
       <div
-        className={`${classContent} grid overflow-hidden transition-all duration-1000 ease-in cursor-pointer 
+        className={`${classContent} grid overflow-hidden transition-all duration-300 ease-in cursor-pointer 
             ${
               accordionOpen
                 ? "grid-rows-[1fr] opacity-100  inline-block"
