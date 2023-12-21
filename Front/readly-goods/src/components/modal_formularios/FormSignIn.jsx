@@ -31,7 +31,7 @@ const FormSignIn = () => {
 
     <form className="flex flex-col p-2" >
       <h1 className="font-bold text-center text-2xl p-2 items-center">
-        Registrate
+        Crear cuenta
       </h1>
       <label className="font-bold py-2" htmlFor="username">
         Usuario:
@@ -107,8 +107,7 @@ const FormSignIn = () => {
       />
       
         <p className={` ${errors.passwordError? 'font-bold text-red-600':'text-gray-600' } p-1 text-xs`}>
-          Campo requerido, debe contener al menos una mayuscula, una minuscula,
-          un numero y minimo 8 caracteres{/*--error en la validacion---*/}
+          Campo requerido, solo debe contener entre 4 a 8 digitos{/*--error en la validacion---*/}
         </p>
       
       <div className="border-2 rounded mt-5 p-3 flex justify-center items-center">
@@ -131,7 +130,7 @@ const FormSignIn = () => {
           </span>
         </p>
       </div>
-      <input className="bg-[#822626] text-white mt-2 rounded p-2 cursor-pointer" type="submit" onClick={handleSubmit} />
+      <input value="Registrarme" className="bg-[#822626] hover:bg-[#690202] text-white mt-2 rounded p-2 cursor-pointer hover:scale-[102%]" type="submit" onClick={handleSubmit} />
     </form>
   );
 };

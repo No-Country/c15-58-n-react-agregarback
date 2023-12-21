@@ -4,14 +4,14 @@ import { useCart } from "../components/hooks/useCart";
 
 export const context = createContext();
 
-//------------Validacion del form---------------------------------------------------
 
-//----------------------------------------------------------------------------------------------
 
 const ContextProvider = ({ children }) => {
+
+  const [userData, setUserData] = useState(null)
   //---------------cart----------------------------------------------------
   const {
-    products,
+    storageProducts,
     addProduct,
     deleteAllProducts,
     deleteProduct,
@@ -44,6 +44,10 @@ const ContextProvider = ({ children }) => {
 
   //----------------------------------------------------------------------------------------------
 
+  const getDataUser = (data) => {
+    setUserData(data)
+  }
+
   return (
     <context.Provider
       value={{
@@ -66,12 +70,14 @@ const ContextProvider = ({ children }) => {
         handleOnBlurPassword,
         handleOnFocusPassword,
         handleSubmit,
-        products,
+        storageProducts,
         addProduct,
         deleteAllProducts,
         deleteProduct,
         totalPrice,
         badgeCount,
+        getDataUser,
+        userData
       }}
     >
       {children}

@@ -1,48 +1,55 @@
 import { useEffect, useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const useCart = () => {
   const [products, setProducts] = useState([]);
   const [badgeCount, setbadgeCount] = useState(0);
+  const [storageProducts, setStorageProducts] = useLocalStorage("products", []);
 
   useEffect(() => {
     badgeCounter();
-  }, [products]);
+  }, [storageProducts]);
 
   const addProduct = (product) => {
     const id = crypto.randomUUID();
-    let refCart = [...products];
+    //let refCart = [...products];
+    let refCart = [...storageProducts];
     const { title, price, quantity, image } = product;
     let productIndex = refCart.findIndex((elem) => elem.title === title);
 
     if (productIndex == -1) {
-      setProducts([...products, { id, title, price, quantity, image }]);
+      //setProducts([...products, { id, title, price, quantity, image }]);
+      setStorageProducts([...storageProducts, { id, title, price, quantity, image }]);
     } else {
       refCart[productIndex].quantity += quantity;
-      setProducts([...refCart]);
+      //setProducts([...refCart]);
+      setStorageProducts([...refCart]);
     }
   };
 
   const deleteProduct = (id) => {
-    const productFilter = products.filter((p) => {
+    const productFilter = storageProducts.filter((p) => {
       if (p.id !== id) {
         return p;
       }
     });
-    setProducts(productFilter);
+    //setProducts(productFilter);
+    setStorageProducts(productFilter);
   };
 
   const deleteAllProducts = () => {
-    setProducts([]);
+    //setProducts([]);
+    setStorageProducts([]);
   };
 
-  const totalPrice = products.reduce((acc, product) => {
+  const totalPrice = storageProducts.reduce((acc, product) => {
     return Math.round((acc + product.price * product.quantity) * 100) / 100;
   }, 0);
 
   const badgeCounter = () => {
     let refCount = 0;
 
-    products.forEach((elem) => {
+    storageProducts.forEach((elem) => {
       refCount += elem.quantity;
     });
 
@@ -51,7 +58,7 @@ export const useCart = () => {
 
   return {
     badgeCount,
-    products,
+    storageProducts,
     addProduct,
     deleteAllProducts,
     deleteProduct,
