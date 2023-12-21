@@ -7,6 +7,8 @@ export const context = createContext();
 
 
 const ContextProvider = ({ children }) => {
+
+  const [userData, setUserData] = useState(null)
   //---------------cart----------------------------------------------------
   const {
     storageProducts,
@@ -42,6 +44,10 @@ const ContextProvider = ({ children }) => {
 
   //----------------------------------------------------------------------------------------------
 
+  const getDataUser = (data) => {
+    setUserData(data)
+  }
+
   return (
     <context.Provider
       value={{
@@ -70,6 +76,8 @@ const ContextProvider = ({ children }) => {
         deleteProduct,
         totalPrice,
         badgeCount,
+        getDataUser,
+        userData
       }}
     >
       {children}
