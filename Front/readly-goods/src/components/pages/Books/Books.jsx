@@ -24,8 +24,6 @@ const Books = () => {
 
   const genre = searchParams.get("genre");
 
-  let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
-
   useEffect(() => {
     fetch("https://c15-58-readlygoods-three.vercel.app/books")
       .then((res) => res.json())
@@ -35,15 +33,16 @@ const Books = () => {
   useEffect(() => {
     if (genre) {
       setQueryFilter({ ...queryFilter, genre: genre });
-      urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
     }
   }, []);
 
   useEffect(() => {
-    fetch(urlData)
+    fetch(
+      `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`
+    )
       .then((res) => res.json())
       .then((data) => setFilteredBooks(data.filteredBooks));
-  }, [urlData]);
+  }, [filteredBooks]);
 
   const handleFilterClick = (e) => {
     const { name, value } = e.target;
@@ -57,7 +56,7 @@ const Books = () => {
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
   };
- 
+
   const changePage = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -290,56 +289,54 @@ const Books = () => {
             )}
           </div>
         </div>
-        {filteredBooks?.length>12
-        ?
-        <div className="flex justify-center items-center w-full">
-          <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min">
-            <button
-              onClick={changePage}
-              name="previous"
-              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
-            >
-              {"<"}
-            </button>
-            {filteredBooks?.map((x, index) => {
-              if (index % 12 == 0) {
-                if (index / 12 + 1 == currentPage.current) {
-                  return (
-                    <button
-                      className="bg-[#822626] text-white h-10 w-10"
-                      onClick={changePage}
-                      key={index}
-                      value={index / 12 + 1}
-                      name="page"
-                    >
-                      {index / 12 + 1}
-                    </button>
-                  );
-                } else
-                  return (
-                    <button
-                      className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] h-10 w-10"
-                      onClick={changePage}
-                      key={index}
-                      value={index / 12 + 1}
-                      name="page"
-                    >
-                      {index / 12 + 1}
-                    </button>
-                  );
-              }
-            })}
-            <button
-              onClick={changePage}
-              name="next"
-              className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
-
-            >
-              {">"}
-            </button>
+        {filteredBooks?.length > 12 ? (
+          <div className="flex justify-center items-center w-full">
+            <div className="flex justify-between items-center bg-[#e9cccc] shadow-slate-300 shadow-xl w-3/4 h-min">
+              <button
+                onClick={changePage}
+                name="previous"
+                className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
+              >
+                {"<"}
+              </button>
+              {filteredBooks?.map((x, index) => {
+                if (index % 12 == 0) {
+                  if (index / 12 + 1 == currentPage.current) {
+                    return (
+                      <button
+                        className="bg-[#822626] text-white h-10 w-10"
+                        onClick={changePage}
+                        key={index}
+                        value={index / 12 + 1}
+                        name="page"
+                      >
+                        {index / 12 + 1}
+                      </button>
+                    );
+                  } else
+                    return (
+                      <button
+                        className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] h-10 w-10"
+                        onClick={changePage}
+                        key={index}
+                        value={index / 12 + 1}
+                        name="page"
+                      >
+                        {index / 12 + 1}
+                      </button>
+                    );
+                }
+              })}
+              <button
+                onClick={changePage}
+                name="next"
+                className="border-solid border-2 border-[#e9cccc] hover:border-[#822626] active:bg-[#822626] active:text-white h-10 w-10"
+              >
+                {">"}
+              </button>
+            </div>
           </div>
-        </div>
-        :null}
+        ) : null}
       </div>
     </main>
   );

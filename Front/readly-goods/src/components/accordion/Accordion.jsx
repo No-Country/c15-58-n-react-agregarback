@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import {useClickAway} from 'react-use';
+import { useClickAway } from "react-use";
 {
   /* ----Ejemplo de como llamar el component-----------------------------
         <Accordion
@@ -30,23 +30,20 @@ const Accordion = ({
   const handleOutsideClick = () => {
     setTimeout(() => {
       setAccordionOpen(false);
-    },200);         
-    } 
-  useClickAway(acordionRef, handleOutsideClick)
-   
+    }, 200);
+  };
+  useClickAway(acordionRef, handleOutsideClick);
 
   return (
     <div className={`${classAccordion}  `} ref={acordionRef}>
       <button
         className={`${classTitle}`}
-        
         onClick={() => setAccordionOpen(!accordionOpen)}
       >
         {title}
       </button>
-      
+
       <div
-       
         className={`${classContent} grid overflow-hidden transition-all duration-1000 ease-in cursor-pointer 
             ${
               accordionOpen
