@@ -12,6 +12,10 @@ const ButtonUser = () => {
   const userdata = JSON.parse(user); //
   //---------------------------------------------------------
 
+  const handleAdmin = () => {
+    window.location.href = "/adminDashboard";
+  }
+
   return (
     <>
       <li>
@@ -30,14 +34,22 @@ const ButtonUser = () => {
           }
           content={
             <>
-              
+              {
+                userdata.data.user.role === "admin" &&
+                <div className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
+                  onClick={handleAdmin}>
+                  Admin
+                </div>
+              }
+
               <div
                 className="text-[##E6DDBC] text-xs text-center overflow-hidden hover:text-[#000000] p-2 "
                 onClick={handleCloseSesion}
               >
                 Salir
               </div>
-              
+
+
             </>
           }
           classTitle={
