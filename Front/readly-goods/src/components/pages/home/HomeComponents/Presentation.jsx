@@ -22,7 +22,7 @@ const Presentation = () => {
               ¡Disfruta de la lectura y descubre nuevas experiencias!
             </p>
           </div>
-          <img src={book} alt="book lover" className="self-center w-60 h-60 hover:scale-105 duration-500 " />
+          <img src={book} alt="book lover" className="self-center w-60 h-60 hover:scale-105 duration-500 hover:drop-shadow-2xl hover:shadow-black" />
         </div>
         <div className="bg-[#e6ddbc] text-black rounded-2xl p-8 ">
           <h2 className="mb-3 text-3xl font-bold uppercase">
@@ -55,7 +55,7 @@ const Presentation = () => {
           <img
             src={reading}
             alt="reading book"
-            className="self-center w-60 h-60 hover:scale-105 duration-500"
+            className="self-center w-60 h-60 hover:scale-105 duration-500 hover:drop-shadow-2xl hover:shadow-black"
           />
           <div className="text-white">
             <h2 className="mb-3 text-3xl font-bold uppercase">Comprá Online</h2>
@@ -76,12 +76,11 @@ const Presentation = () => {
       <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
         <Link
           to={"books/?genre=Novela"}
-          //className=" bg-[#262525] rounded-2xl p-8 text-white hover:bg-[#690202] inline-flex items-center justify-center gap-8 group"
-          className="bg-[#70cc54] rounded p-8 text-white inline-flex items-center justify-center gap-8 group animationBotton before:rounded before:bg-[#dc4444c8]"
+  
+          className="bg-[#822626] rounded p-8 text-white inline-flex items-center justify-center gap-8 group animationBotton before:rounded before:bg-[#7750a7fe] relative z-0 before:absolute before:-z-10 before:inset-0 before:content-[' ']  before:origin-bottom-right hover:before:origin-bottom-left "
         >
-          <h2 
-          //className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline"
-          className="text-lg font-bold uppercase transition-all md:text-3xl  ">
+          <h2
+          className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline ">
             Novela
           </h2>
           <FontAwesomeIcon
@@ -91,7 +90,7 @@ const Presentation = () => {
         </Link>
         <Link
           to={"books/?genre=Inglés"}
-          className=" bg-[#262525] rounded-2xl p-8 text-white hover:bg-[#690202] inline-flex items-center justify-center gap-8 group"
+          className=" bg-[#822626] rounded p-8 text-white inline-flex items-center justify-center gap-8 group animationBotton before:rounded before:bg-[#50a79dfe] relative z-0 before:absolute before:-z-10 before:inset-0 before:content-[' ']  before:origin-bottom-right hover:before:origin-bottom-left "
         >
           <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
             Inglés
@@ -103,7 +102,7 @@ const Presentation = () => {
         </Link>
         <Link
           to={"books/?genre=Programación"}
-          className=" bg-[#262525] rounded-2xl p-8 text-white hover:bg-[#690202] inline-flex items-center justify-center gap-8 group"
+          className=" bg-[#822626] rounded p-8 text-white  inline-flex items-center justify-center gap-8 group animationBotton before:rounded before:bg-[#262525] relative z-0 before:absolute before:-z-10 before:inset-0 before:content-[' ']  before:origin-bottom-right hover:before:origin-bottom-left "
         >
           <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
             Programación
@@ -115,7 +114,7 @@ const Presentation = () => {
         </Link>
         <Link
           to={"books/?genre=Cocina"}
-          className=" bg-[#262525] rounded-2xl p-8 text-white hover:bg-[#690202] inline-flex items-center justify-center gap-8 group"
+          className=" bg-[#822626] rounded p-8 text-white inline-flex items-center justify-center gap-8 group animationBotton before:rounded before:bg-[#61af63fe] relative z-0 before:absolute before:-z-10 before:inset-0 before:content-[' ']  before:origin-bottom-right hover:before:origin-bottom-left "
         >
           <h2 className="text-lg font-bold uppercase transition-all md:text-3xl group-hover:underline">
             Cocina
