@@ -29,9 +29,6 @@ const Books = () => {
 
   const genre = searchParams.get("genre");
 
-  let urlData = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}&search=${queryFilter.search}`;
-
-  console.log(urlData);
   useEffect(() => {
     fetch("https://c15-58-readlygoods-three.vercel.app/books")
       .then((res) => res.json())
@@ -40,7 +37,7 @@ const Books = () => {
 
   useEffect(() => {
     if (genre) {
-      setQueryFilter({ ...queryFilter, genre: genre });
+      setQueryFilter({ ...queryFilter, genre: [genre] });
     }
   }, []);
 
@@ -50,7 +47,7 @@ const Books = () => {
     )
       .then((res) => res.json())
       .then((data) => setFilteredBooks(data.filteredBooks));
-  }, [filteredBooks]);
+  }, [queryFilter]);
 
   const handleFilterClick = (e) => {
     const { name, value } = e.target;
@@ -124,9 +121,7 @@ const Books = () => {
   };
 
   const getAllGenre = () => {
-    const genres = books?.flatMap((book) =>
-      book.genre.split(",").map((genre) => genre.trim())
-    );
+    const genres = books?.map((book) => book.genre);
     const allGenres = [...new Set(genres)];
     return allGenres.map((genre) =>
       queryFilter["genre"]?.indexOf(genre) >= 0 ? (
@@ -211,10 +206,10 @@ const Books = () => {
 
   return (
     <main className="w-full py-12 min-h-screen">
-      <div className="w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] m-auto flex flex-col gap-6">
+      <div className="w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] m-auto  flex flex-col gap-6">
         <div className="flex flex-row items-center justify-between ">
-          <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold uppercase text-[#822626] w-2/6">
-            Libros
+          <h1 className="text-sm md:text-xl lg:text-2xl font-semibold uppercase text-[#822626] w-2/6">
+            Productos
           </h1>
 
           <div className="flex w-2/6">
@@ -227,7 +222,7 @@ const Books = () => {
             />
           </div>
 
-          <p className="text-sm md:text-base text-[#822626] w-2/6 text-right">
+          <p className="text-xs md:text-sm text-[#822626] w-2/6 font-semibold text-right">
             {filteredBooks ? filteredBooks?.length : 0} articulos
           </p>
         </div>
@@ -235,86 +230,98 @@ const Books = () => {
 
         <div className="w-full flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-1">
           <aside className="w-full md:sticky md:block">
-            <div className="flex flex-wrap  pb-5">
-              {queryFilter.genre ? (
-                <button
-                  onClick={handleFilterClick}
-                  className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded flex gap-2 items-center"
-                  name="genre"
-                >
-                  {queryFilter.genre} {""}
-                  <FontAwesomeIcon
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleFilterClickClose("genre", "");
-                    }}
-                    icon={faCircleXmark}
-                  />
-                </button>
-              ) : null}
-              {queryFilter.editorial ? (
-                <button
-                  onClick={handleFilterClick}
-                  className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded items-center"
-                  name="editorial"
-                >
-                  {queryFilter.editorial}{" "}
-                  <FontAwesomeIcon
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleFilterClickClose("editorial", "");
-                    }}
-                    icon={faCircleXmark}
-                  />
-                </button>
-              ) : null}
-              {queryFilter.author ? (
-                <button
-                  className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded items-center"
-                  name="author"
-                  onClick={handleFilterClick}
-                >
-                  {queryFilter.author} {""}
-                  <FontAwesomeIcon
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleFilterClickClose("author", "");
-                    }}
-                    icon={faCircleXmark}
-                  />
-                </button>
-              ) : null}
+            <div className="flex flex-wrap gap-3 pb-5">
+              {queryFilter.genre
+                ? queryFilter["genre"].map((x) => {
+                    return (
+                      <button
+                        key={x}
+                        className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded flex gap-2 items-center"
+                        name="genre"
+                      >
+                        {x}{" "}
+                        <FontAwesomeIcon
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleFilterClickClose("genre", x);
+                          }}
+                          icon={faCircleXmark}
+                        />
+                      </button>
+                    );
+                  })
+                : null}
+              {queryFilter.editorial
+                ? queryFilter["editorial"].map((x) => {
+                    return (
+                      <button
+                        key={x}
+                        className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded items-center"
+                        name="editorial"
+                      >
+                        {x}{" "}
+                        <FontAwesomeIcon
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleFilterClickClose("editorial", x);
+                          }}
+                          icon={faCircleXmark}
+                        />
+                      </button>
+                    );
+                  })
+                : null}
+              {queryFilter.author
+                ? queryFilter.author.map((x) => {
+                    return (
+                      <button
+                        key={x}
+                        className="bg-[#822626] px-2 py-1 text-white hover:bg-[#525252] hover:shadow-md hover:scale-105 transition-all text-sm shadow-slate-300 rounded items-center"
+                        name="author"
+                      >
+                        {x}{" "}
+                        <FontAwesomeIcon
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleFilterClickClose("author", x);
+                          }}
+                          icon={faCircleXmark}
+                        />
+                      </button>
+                    );
+                  })
+                : null}
             </div>
             <Accordion
               title={"Género"}
               classTitle={
-                "text-lg font-semibold text-[#822626] hover:scale-110 hover:text-[#690202]  w-auto px-2 text-left"
+                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
               }
               content={books && getAllGenre()}
               classContent={
-                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start "
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start"
               }
               classAccordion={""}
             />
             <Accordion
               title={"Editorial"}
               classTitle={
-                "text-lg font-semibold text-[#822626] hover:scale-110 hover:text-[#690202]  w-auto px-2 text-left"
+                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
               }
               content={books && getAllEditorial()}
               classContent={
-                "flex flex-col items-start gap-2 py-1 my-1 text-sm w-44 p-2 justify-items-start "
+                "flex flex-col items-start gap-2 py-1 my-1 text-sm w-44 p-2 justify-items-start"
               }
               classAccordion={""}
             />
             <Accordion
               title={"Autor"}
               classTitle={
-                "text-lg font-semibold text-[#822626] hover:scale-110 hover:text-[#690202]  w-auto px-2 text-left"
+                "text-lg font-semibold text-[#822626] hover:bg-gray-200 w-44 px-2 text-left"
               }
               content={books && getAllAuthor()}
               classContent={
-                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start "
+                "flex flex-col items-start gap-2 py-1 my-1 overflow-auto text-sm w-44 p-2 justify-items-start text-left"
               }
               classAccordion={""}
             />
