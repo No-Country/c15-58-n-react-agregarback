@@ -1,11 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { useLocalStorage } from "./useLocalStorage";
-
 import Swal from "sweetalert2";
-
-import { context } from "../../context";
-
 
 const initialForm = {
   username: "",
@@ -15,12 +11,6 @@ const initialForm = {
 };
 
 export const useForm = () => {
-
-
-
-  // const { products, badgeCount } = useContext(context)
-  // console.log(badgeCount);
-
 
 
   const [isLogin, setIsLogin] = useState(false); //si ya esta registrado o no, inicia en false
@@ -56,29 +46,28 @@ export const useForm = () => {
   const validationSignInOk = () => {
     const { username, fullname, email, password } = form;
     const { userNameError, fullNameError, emailError, passwordError } = errors;
-
     if (isLogin) {
-
-      email === "" && validateForm("emailError", true);
-      password === "" && validateForm("emailError", true);
-
-      if (!emailError && !passwordError) {
+      
+      if (email!=='' && password!=='' && !emailError && !passwordError) {
         formIsOkRef.current = true;
       } else {
         formIsOkRef.current = false;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Hubo un error en el formulario",
+          footer: '<a href="#">Por favor complete los campos correctamente.</a>',
+        });
       }
     } else {
-
-      username === '' && validateForm("userNameError", true);
-      fullname === '' && validateForm("fullNameError", true);
-      email === '' && validateForm("emailError", true);
-      password === '' && validateForm("passwordError", true);
-      if (!userNameError && !fullNameError && !emailError && !passwordError) {
+      if (username !=='' && fullname!=='' && email!=='' && password!=='' && !userNameError && !fullNameError && !emailError && !passwordError) {
         formIsOkRef.current = true;
-        console.log('formOk', username, fullname, email, password, 'error:', userNameError, fullNameError, emailError, passwordError)
       } else {
-        console.log('form no ok', username, fullname, email, password, 'error:', userNameError, fullNameError, emailError, passwordError)
-
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Hubo un error en el formulario",
+          footer: '<a href="#">Por favor complete los campos correctamente.</a>',});
         formIsOkRef.current = false;
       }
     }
@@ -119,7 +108,7 @@ export const useForm = () => {
     }
     return errors;
   };
-
+//----------validar al sacar el foco del campo----------------
   const handleOnBlurEmail = () => {
     let regExpEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
     if (!regExpEmail.test(form.email.trim())) {
@@ -129,12 +118,12 @@ export const useForm = () => {
     }
     return errors;
   };
-
+///------------funcion para sacar el error al hacer click en el campo-----------------
   const handleOnFocusEmail = () => {
     validateForm("emailError", false);
     return errors;
   };
-
+//----------validar al sacar el foco del campo----------------
   const handleOnBlurPassword = () => {
     let regExpPassword = /^\d{4,8}$/; // ------entre 4 a 8 digitos--------------------------
     if (!regExpPassword.test(form.password.trim())) {
@@ -144,7 +133,7 @@ export const useForm = () => {
     }
     return errors;
   };
-
+//------------funcion para sacar el error al hacer click en el campo-----------------
   const handleOnFocusPassword = () => {
     validateForm("passwordError", false);
     return errors;
@@ -202,7 +191,6 @@ export const useForm = () => {
     setIsLogin,
     handleCloseSesion,
     loading,
-
     handleChange,
     handleKeyUpUser,
     handleKeyUpFullName,
