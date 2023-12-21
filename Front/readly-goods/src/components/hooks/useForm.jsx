@@ -1,7 +1,11 @@
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { useLocalStorage } from "./useLocalStorage";
+
+import Swal from "sweetalert2";
+
 import { context } from "../../context";
+
 
 const initialForm = {
   username: "",
@@ -12,13 +16,16 @@ const initialForm = {
 
 export const useForm = () => {
 
+
+
   // const { products, badgeCount } = useContext(context)
   // console.log(badgeCount);
 
 
+
   const [isLogin, setIsLogin] = useState(false); //si ya esta registrado o no, inicia en false
-  const formIsOkRef = useRef(false);//-------------el registro debe estar completado correctamente
-  const [form, setForm] = useState(initialForm);//
+  const formIsOkRef = useRef(false); //-------------el registro debe estar completado correctamente
+  const [form, setForm] = useState(initialForm); //
   //-------------errores en el registro---------------------------------
   const [errors, setErrors] = useState({
     userNameError: false,
@@ -51,14 +58,17 @@ export const useForm = () => {
     const { userNameError, fullNameError, emailError, passwordError } = errors;
 
     if (isLogin) {
-      email === '' && validateForm("emailError", true);
-      password === '' && validateForm("emailError", true);
+
+      email === "" && validateForm("emailError", true);
+      password === "" && validateForm("emailError", true);
+
       if (!emailError && !passwordError) {
         formIsOkRef.current = true;
       } else {
         formIsOkRef.current = false;
       }
     } else {
+
       username === '' && validateForm("userNameError", true);
       fullname === '' && validateForm("fullNameError", true);
       email === '' && validateForm("emailError", true);
@@ -68,6 +78,7 @@ export const useForm = () => {
         console.log('formOk', username, fullname, email, password, 'error:', userNameError, fullNameError, emailError, passwordError)
       } else {
         console.log('form no ok', username, fullname, email, password, 'error:', userNameError, fullNameError, emailError, passwordError)
+
         formIsOkRef.current = false;
       }
     }
@@ -158,8 +169,20 @@ export const useForm = () => {
           closeModal();
         })
         .catch((er) => {
-          console.log(er);
-          alert("Error en el registro, por favor vuelve a intentarlo");
+          isLogin
+            ? Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Hubo un error en su email o contraseña",
+                footer: '<a href="#">Por favor vuelve a intentarlo.</a>',
+              })
+            : Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Hubo un error",
+                footer: '<a href="#">Por favor vuelve a intentarlo.</a>',
+              });
+
           setForm(initialForm);
           handleCloseSesion();
         });
