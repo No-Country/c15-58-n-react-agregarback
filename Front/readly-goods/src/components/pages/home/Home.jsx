@@ -11,7 +11,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    getDataUser(JSON.parse(localStorage.getItem('userData')).data)
+    getDataUser(JSON.parse(localStorage.getItem('userData'))?.data ?? {})
   }, [])
 
   return (

@@ -3,6 +3,8 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { context } from "../../../../context";
+import Swal from 'sweetalert2'
+
 
 export default function BookForm() {
 
@@ -10,7 +12,7 @@ export default function BookForm() {
 
 
   useEffect(() => {
-    getDataUser(JSON.parse(localStorage.getItem('userData')).data)
+    getDataUser(JSON.parse(localStorage.getItem('userData'))?.data ?? {})
   }, [])
 
 
@@ -110,10 +112,15 @@ export default function BookForm() {
         })
         .catch((error) => window.alert(error.message));
     } else {
-
-
-      await axios
-        .put(
+      Swal.fire({
+        title: "Quieres guardar los cambios?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Guardar",
+        denyButtonText: `NO, No quiero`
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.put(
           `https://c15-58-readlygoods-three.vercel.app/books/update/${id}`,
           book, {
           headers: {
@@ -135,11 +142,15 @@ export default function BookForm() {
             inCart: false,
           });
           window.location.href = "/adminDashboard";
-          window.alert("Libro actualizado correctamente");
         })
         .catch((error) => window.alert(error.message));
+          
+          Swal.fire("Guardado!", "", "success");
+        } else if (result.isDenied) {
+          Swal.fire("No se Guardaron Cambios", "", "info");
+        }
+      })
     }
-
   };
 
   return (
