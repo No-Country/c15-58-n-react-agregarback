@@ -12,10 +12,11 @@
 </div>
 
 
---
+
 <p>Proyecto de NoCountry de simulacion laboral, un ecommerce de libros creado apartir del Figma basados en la pagina GrupoLibros SRL. El proyecto se llevo a cabo, vale aclarar, por siete desarrolladores FrontEnd con un poco de conociemiento en Back siendo este, la falta de roles principales como BackEnd o diseñadores UI/UX entre otros, el desafio principal.</p>
 <p>El proyecto se trabajo bajo la metodologia Scrum utilizando Jira para asignar las Task, con un Daily Meet y pair programming y dos reuniones semanales con el TL a modo de cliente y una presentacion semanal del Sprint.</p>
 <p>La simulacion tuvo una duracion de 5 semanas, la primera para la preparacion del figma y cuatro semanas para la presentacion de los 4 sprints</p>
+
 ---
 
 <h3 align="center"  ><b>Puedes consultar nuestra pagina web aqui­:</b></h3>
@@ -67,7 +68,7 @@
 
 ## Stripe
 
-##Jsonwebtoke
+## Jsonwebtoke
 
 ## Librerias entre otras: React Tablet, fontawesome, flowbite, swiper, React-modal
 
