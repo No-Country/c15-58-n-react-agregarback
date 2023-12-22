@@ -52,8 +52,7 @@ export const getAllBooks = async (req, res) => {
 
     console.log(filter)
 
-    res.status(201).json({filteredBooks: filteredBooks });
-    // res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
+    res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
 
   } catch (error) {
     res.status(400).send(error.message);
