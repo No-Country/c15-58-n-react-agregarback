@@ -13,6 +13,7 @@ import Accordion from "../../accordion/Accordion";
 const Books = () => {
   const [books, setBooks] = useState();
   const [filteredBooks, setFilteredBooks] = useState();
+  const [searchTitle, setSearchTitle] = useState('');
   const [searchParams] = useSearchParams();
   const [queryFilter, setQueryFilter] = useState({
     genre: "",
@@ -27,17 +28,28 @@ const Books = () => {
     current: 1,
   });
 
+
+  let url = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${queryFilter.genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}`;
+
   const genre = searchParams.get("genre");
+
 
   useEffect(() => {
     fetch("https://c15-58-readlygoods-three.vercel.app/books")
       .then((res) => res.json())
       .then((data) => setBooks(data.allBooks));
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }, []);
 
   useEffect(() => {
     if (genre) {
-      setQueryFilter({ ...queryFilter, genre: [genre] });
+
+      setQueryFilter({ ...queryFilter, genre: genre });
+      url = `https://c15-58-readlygoods-three.vercel.app/books/?genre=${genre}&editorial=${queryFilter.editorial}&author=${queryFilter.author}`;
+
     }
   }, []);
 
@@ -48,6 +60,8 @@ const Books = () => {
       .then((res) => res.json())
       .then((data) => setFilteredBooks(data.filteredBooks));
   }, [queryFilter]);
+
+
 
   const handleFilterClick = (e) => {
     const { name, value } = e.target;
@@ -85,8 +99,14 @@ const Books = () => {
   };
 
   const handlerOnChangeSearchBar = (e) => {
+
+    // Window.scrollTo(0,0)
     const { value } = e.target;
     setQueryFilter({ ...queryFilter, search: value });
+    const filtered = books.filter(book => book.title.toLowerCase().includes(value.toLowerCase()));
+    console.log(filtered);
+    setFilteredBooks(filtered);
+
   };
 
   const changePage = (e) => {
@@ -336,11 +356,10 @@ const Books = () => {
             />
           </aside>
           <div
-            className={`${
-              filteredBooks?.length > 0
-                ? "grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3"
-                : "flex justify-start items-start flex-col w-full h-full"
-            }`}
+            className={`${filteredBooks?.length > 0
+              ? "grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 mt-0 xl:grid-cols-3"
+              : "flex justify-start items-start flex-col w-full h-full"
+              }`}
           >
             {books?.length > 0 ? (
               filteredBooks?.length > 0 ? (
