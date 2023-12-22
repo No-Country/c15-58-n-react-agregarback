@@ -1,23 +1,29 @@
 # c15-58-n-react-agregarback
+
 <hr/>
-<p>Readly</p>
-          <img
-            align="center" width="20px"  height="20px" 
-            src='./Front/readly-goods/src/assets/logo/logo.png'
-            alt="logo"
-          />
-          <p >Goods</p>
+<div align="center">
+  <h4 align="center">Readly</h4>
+    <img
+      align="center" width="60px"  height="60px" 
+      src='./Front/readly-goods/src/assets/logo/logo.png'
+      alt="logo"        
+    />        
+  <h4 align="center">Goods</h4>
+</div>
 
 
-<p></p>
-
+--
+<p>Proyecto de NoCountry de simulacion laboral, un ecommerce de libros creado apartir del Figma basados en la pagina GrupoLibros SRL. El proyecto se llevo a cabo, vale aclarar, por siete desarrolladores FrontEnd con un poco de conociemiento en Back siendo este, la falta de roles principales como BackEnd o diseñadores UI/UX entre otros, el desafio principal.</p>
+<p>El proyecto se trabajo bajo la metodologia Scrum utilizando Jira para asignar las Task, con un Daily Meet y pair programming y dos reuniones semanales con el TL a modo de cliente y una presentacion semanal del Sprint.</p>
+<p>La simulacion tuvo una duracion de 5 semanas, la primera para la preparacion del figma y cuatro semanas para la presentacion de los 4 sprints</p>
+---
 
 <h3 align="center"  ><b>Puedes consultar nuestra pagina web aqui­:</b></h3>
 <h3 align="center"><a href="https://c15-58-readlygoods.vercel.app/" target="_blank" rel="noopener noreferrer"> <img align="center" width="20px"  height="20px" src="./Front/readly-goods/src/assets/logo/logo.png"> Ecommerce de libros <img align="center" width="20px"  height="20px" src="./Front/readly-goods/src/assets/logo/logo.png"> </a></h3>
 
 <hr>
 
-<h4> Developers</h4>
+<h4>Developers</h4>
 
 | <img src="https://avatars.githubusercontent.com/u/81337401?v=4" width="50"> | <img src="https://avatars.githubusercontent.com/u/150639085?v=4" width="50"> | <img src="https://avatars.githubusercontent.com/u/97346804?s=400&u=ad8a7d6f8038ee3819bd0f28abb9ef5983eddda0&v=4" width="50"> | <img src="https://avatars.githubusercontent.com/u/129871413?v=4" width="50"> |
 |:-:|:-:|:-:|:-:|
@@ -41,22 +47,31 @@
 
 ---
 
-# Integrantes:
+# Stack:
 
-## Montecinos Esteban
+## Jira
 
-## Lopez Andree
+## Figma
 
-## Coronel Matias
+## Vite+React.Js
 
-## Perez Mauricio
+## Tailwind
 
-## Americo Cornelio
+## Node.Js
 
-## Mennichelli Nicolas
+## Express
 
-## Baldion Jefferson
+## Moongoose
 
+## MoongoDB
+
+## Stripe
+
+##Jsonwebtoke
+
+## Librerias entre otras: React Tablet, fontawesome, flowbite, swiper, React-modal
+
+---
 ---
 
 # TL:
