@@ -32,6 +32,10 @@ const Books = () => {
     fetch("https://c15-58-readlygoods-three.vercel.app/books")
       .then((res) => res.json())
       .then((data) => setBooks(data.allBooks));
+      window.scrollTo({
+        top:0,
+        behavior:'smooth'
+      })
   }, []);
   const genre = searchParams.get("genre");
   useEffect(() => {
