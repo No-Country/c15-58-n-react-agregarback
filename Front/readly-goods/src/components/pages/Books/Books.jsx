@@ -71,8 +71,10 @@ const Books = () => {
   const changePage = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+    const {dataset} = e.currentTarget
+    console.log(dataset.name)
 
-    if (name == "previous" && currentPage.current !== 1) {
+    if ((name == "previous" || dataset.name == "previous")&& currentPage.current !== 1) {
       setCurrentPage({
         ...currentPage,
         min: currentPage.min - 12,
@@ -80,7 +82,7 @@ const Books = () => {
         current: currentPage.current - 1,
       });
     } else if (
-      name == "next" &&
+      (name == "next" || dataset.name == "next") &&
       currentPage.current !== Math.ceil(filteredBooks.length / 12)
     ) {
       setCurrentPage({
@@ -97,6 +99,12 @@ const Books = () => {
         max: 12 * value,
       });
     }
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+
   };
 
   const getAllGenre = () => {
@@ -330,7 +338,7 @@ const Books = () => {
                   name="previous"
                   className="active:bg-[#822626] text-white h-10 w-10 rounded-s-md hover:scale-150 transition-all"
                 >
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon onClick={changePage} data-name="previous" icon={faArrowLeft} />
                 </button>
                 {filteredBooks?.map((x, index) => {
                   if (index % 12 == 0) {
@@ -365,7 +373,7 @@ const Books = () => {
                   name="next"
                   className=" hover:border-[#822626] active:bg-[#822626] text-white h-10 w-10 rounded-e-md hover:scale-150 transition-all"
                 >
-                  <FontAwesomeIcon icon={faArrowRight} />
+                  <FontAwesomeIcon onClick={changePage} data-name="next" icon={faArrowRight} />
                 </button>
               </div>
             </div>
