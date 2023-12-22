@@ -51,10 +51,7 @@ export const getAllBooks = async (req, res) => {
     const allBooks = await Book.find({});
     const filteredBooks = await Book.find(search?regexFilter:filter)
 
-    console.log(filteredBooks)
-
-    res.status(201).json({filteredBooks: filteredBooks });
-    // res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
+    res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
 
   } catch (error) {
     res.status(400).send(error.message);
