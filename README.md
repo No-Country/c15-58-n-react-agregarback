@@ -1,12 +1,12 @@
 # c15-58-n-react-agregarback
 <hr/>
-<h1>Readly</h1>
+<h4>Readly</h4>
           <img
             align="center" width="20px"  height="20px" 
             src='./Front/readly-goods/src/assets/logo/logo.png'
             alt="logo"
           />
-          <h1 >Goods</h1>
+          <h4 >Goods</h4>
 
 
 <p>Repositorio de la App ReadlyGoods, un e-commerce de libros</p>
