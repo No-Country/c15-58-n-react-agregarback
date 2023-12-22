@@ -16,7 +16,7 @@ export const getAllBooks = async (req, res) => {
         if(author.includes(',')){
           const data = author.split(',')
           const regexArray = data.map(g => ({ author: { $regex: new RegExp(g, 'i') } }));
-          filter = { $and: regexArray };
+          filter = { ...filter, $and: regexArray };
         }else{
           filter = { ...filter, author: author }
         }
@@ -26,7 +26,7 @@ export const getAllBooks = async (req, res) => {
         if(editorial.includes(',')){
           const data = editorial.split(',')
           const regexArray = data.map(g => ({ editorial: { $regex: new RegExp(g, 'i') } }));
-          filter = { $and: regexArray };
+          filter = { ...filter, $and: regexArray };
         }else{
           filter = { ...filter, editorial: editorial }
         }
@@ -36,7 +36,7 @@ export const getAllBooks = async (req, res) => {
         if(genre.includes(',')){
           const data = genre.split(',')
           const regexArray = data.map(g => ({ genre: { $regex: new RegExp(g, 'i') } }));
-          filter = { $and: regexArray };
+          filter = { ...filter, $and: regexArray };
         }else{
           filter = { ...filter, genre: genre};
         }
@@ -50,7 +50,10 @@ export const getAllBooks = async (req, res) => {
     const allBooks = await Book.find({});
     const filteredBooks = await Book.find(filter)
 
-    res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
+    console.log(filter)
+
+    res.status(201).json({filteredBooks: filteredBooks });
+    // res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
 
   } catch (error) {
     res.status(400).send(error.message);
