@@ -9,7 +9,8 @@ export const getAllBooks = async (req, res) => {
     const { author, editorial, genre, search } = req.query
 
     if (search) {
-      filter = { ...filter, title: search }
+      console.log(search)
+      filter = {title: search}
     }
     else {
       if (author) {
@@ -48,11 +49,12 @@ export const getAllBooks = async (req, res) => {
     }
 
     const allBooks = await Book.find({});
-    const filteredBooks = await Book.find(filter)
+    const filteredBooks = await Book.find(search?regexFilter:filter)
 
-    console.log(filter)
+    console.log(filteredBooks)
 
-    res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
+    res.status(201).json({filteredBooks: filteredBooks });
+    // res.status(201).json({ allBooks: allBooks, filteredBooks: filteredBooks });
 
   } catch (error) {
     res.status(400).send(error.message);
